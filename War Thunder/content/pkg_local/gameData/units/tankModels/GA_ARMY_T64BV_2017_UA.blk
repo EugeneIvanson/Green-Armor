@@ -1,0 +1,30 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_64_b_1984.blk"
+skin{
+name:t="GA_ARMY_T64BV_2017_UA"
+
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_T64BV_2017_UA\ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_64_b_bv_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_T64BV_2017_UA\t_64_b_bv_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="era_kontakt_1_t_64_bv_mount_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_T64BV_2017_UA\era_kontakt_1_t_64_bv_mount.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_64_b_bv_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_T64BV_2017_UA\t_64_b_bv_gun.dds"
+  param:t="camo_skin_tex"
+}
+
+}

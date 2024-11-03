@@ -1,0 +1,28 @@
+include "#/develop/gameBase/gameData/units/tankModels/germ_leopard_2a4_pzbtl_123.blk"
+skin{
+name:t="GA_ARMY_Leopard2A4_Piksel_UA_2"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Leopard2A4_Piksel_UA\ger_camo_bronzegruen.dds"
+}
+
+set_tex{
+  from:t="leopard_2a4_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Leopard2A4_Piksel_UA\leopard_2a4_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="leopard_2a4_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Leopard2A4_Piksel_UA\leopard_2a4_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="leopard_2a4_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Leopard2A4_Piksel_UA\leopard_2a4_gun.dds"
+  param:t="camo_skin_tex"
+}
+
+}

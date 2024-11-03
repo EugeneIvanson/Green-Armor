@@ -1,0 +1,40 @@
+include "#/develop/gameBase/gameData/units/tankModels/germ_marder_1a3.blk"
+skin{
+name:t="GA_ARMY_Marder1A3_UA"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\ger_camo_bronzegruen.tga"
+}
+
+set_tex{
+  from:t="marder_1a3_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\marder_1a3_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="marder_1a3_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\marder_1a3_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="marder_1a3_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\marder_1a3_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="milan_rocket_mount_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\milan_rocket_mount.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="marder_1a3_body_add_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Marder1A3_UA\marder_1a3_body_add_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

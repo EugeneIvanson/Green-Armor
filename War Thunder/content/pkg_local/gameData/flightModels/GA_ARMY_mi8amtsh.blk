@@ -1,0 +1,26 @@
+include "#/develop/gameBase/gameData/flightModels/mi_8amtsh.blk"
+skin{
+
+name:t="GA_ARMY_mi8amtsh"
+
+replace_tex{
+  from:t="mi_8amtsh_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_mi8amtsh\mi_8amtsh_c.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_mi8amtsh\mi_8amtsh_n.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_details_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_mi8amtsh\mi_8amtsh_details_c.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_details_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_mi8amtsh\mi_8amtsh_details_n.dds"
+}
+
+}

@@ -1,0 +1,18 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_9p149.blk"
+skin{
+
+name:t="GA_ARMY_Shturm_UA"
+
+set_tex{
+  from:t="9p149_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Shturm_UA\9p149_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="9p149_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Shturm_UA\9p149_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

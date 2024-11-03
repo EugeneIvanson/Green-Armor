@@ -1,0 +1,52 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_80bvm.blk"
+skin{
+
+name:t="GA_ARMY_t80bvm_127th"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_80bvm_armor_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_armor_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_mount_nsvt_t_80_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\mg_mount_nsvt_t_80_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_80bvm_armor_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_armor_n.dds"
+}
+
+set_tex{
+  from:t="t_80bvm_armor_mod_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80bvm_127th\t_80bvm_armor_mod_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

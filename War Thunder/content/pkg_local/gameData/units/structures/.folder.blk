@@ -1,0 +1,11 @@
+scan_assets:b=yes
+scan_folders:b=no
+
+virtual_res_blk{
+  find:t="^(.*)\.blk$"
+  exclude:t="^_"
+  className:t="wtUnit"
+  contents{
+    propsInTargetBlk:b=yes
+  }
+}

@@ -1,0 +1,59 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_72b3_2011.blk"
+skin{
+name:t="GA_ARMY_t72b3_FRA"
+
+set_tex{
+  from:t="t_72b_1989_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b_1989_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b3_2011_2017_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b3_2011_2017_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b_1989_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_nsvt_mount_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\mg_nsvt_mount_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_1989_body_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_body_n.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_1989_turret_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_turret_n.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b3_2011_2017_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b3_2011_2017_n.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_1989_gun_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_FRA\t_72b_1989_gun_n.dds"
+  param:t="camo_skin_tex"
+}
+
+}

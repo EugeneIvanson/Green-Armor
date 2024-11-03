@@ -1,0 +1,7858 @@
+// ==============================================================================
+// Sample Model (based on I_185 M-82)
+// ==============================================================================
+
+model:t="warmate"
+fmFile:t="fm/warmate.blk"
+tpsCameraOffset:p3=11.8, -3.2, 0.0
+hasQualityModels:b=true
+
+// ikPilot{
+//   model:t="pilot_su_char"
+//   maxHeadHorAngle:r = 60
+//   maxHeadDownAngle:r = 60
+//   maxHeadUpAngle:r = 10
+//   headNode:t = "Bip01 Head"
+//   pelvisNode:t = "Bip01 Pelvis"
+//   pelvisTargetNode:t = "Bip01 Pelvis01"
+
+//   ikNode
+//   {
+//     downNode:t = "Bip01 L Hand"
+//     midNode:t = "Bip01 L Forearm"
+//     upNode:t = "Bip01 L UpperArm"
+//     targetNode:t = "throttle_lhand_1"
+//     flexionDir:p3 = 0, -1, 0.2
+//   }
+
+//   ikNode
+//   {
+//     downNode:t = "Bip01 R Hand"
+//     midNode:t = "Bip01 R Forearm"
+//     upNode:t = "Bip01 R UpperArm"
+//     targetNode:t = "stick_rhand_1"
+//     flexionDir:p3 = 0, -1, -0.5
+//   }
+
+//   ikNode
+//   {
+//     downNode:t = "Bip01 L Foot"
+//     midNode:t = "Bip01 L Calf"
+//     upNode:t = "Bip01 L Thigh"
+//     targetNode:t = "pedal_lfoot_1"
+//     flexionDir:p3 = 0, 1, 0.3
+//   }
+
+//   ikNode
+//   {
+//     downNode:t = "Bip01 R Foot"
+//     midNode:t = "Bip01 R Calf"
+//     upNode:t = "Bip01 R Thigh"
+//     targetNode:t = "pedal_rfoot_1"
+//     flexionDir:p3 = 0, 1, -0.3
+//   }
+// }
+
+// attach{
+//   "pilot1":t="pilot_su_500"
+// }
+
+cut_parts
+{
+  wing_l
+  {
+    part:t="wing_l"
+    part:t="slat_l"
+    part:t="aileron_l"
+  }
+
+  wing_r
+  {
+    part:t="wing_r"
+    part:t="flap1_r"
+    part:t="slat_r"
+    part:t="aileron_r"
+    part:t="pylon_rocket2"
+    part:t="rocket5"
+    part:t="rocket6"
+    part:t="rocket7"
+    part:t="rocket8"
+    part:t="pylon_bomb3"
+    part:t="pylon_bomb4"
+    part:t="bomb3"
+    part:t="bomb4"
+  }
+
+  tail
+  {
+    part:t="tail"
+    part:t="rudder0"
+    part:t="rudder1"    
+    part:t="elevator0"
+    part:t="elevator1"
+    part:t="antenna"
+    part:t="aerial"
+  }
+}
+
+// cockpit {
+//   include _sample_i_185_m82_cockpit.blk
+// }
+
+// commonWeapons{
+//   Weapon
+//   {
+//     trigger:t = "cannon"
+//     blk:t = "gameData/Weapons/cannonShVAKS.blk"
+//     emitter:t = "flare1"
+//     flash:t = "flare1"
+//     bullets:i = 250
+//     spread:r = 1
+//     counterIndex:i = 2
+//   }
+
+//   Weapon
+//   {
+//     trigger:t = "cannon"
+//     blk:t = "gameData/Weapons/cannonShVAKS.blk"
+//     emitter:t = "flare2"
+//     flash:t = "flare2"
+//     bullets:i = 140
+//     spread:r = 1
+//     traceOffset:i = 1
+//     counterIndex:i = 1
+//   }
+
+//   Weapon
+//   {
+//     trigger:t = "cannon"
+//     blk:t = "gameData/Weapons/cannonShVAKS.blk"
+//     emitter:t = "flare3"
+//     flash:t = "flare3"
+//     bullets:i = 170
+//     spread:r = 1
+//     traceOffset:i = 1
+//     counterIndex:i = 3
+//   }
+// }
+
+damagePartsToCollisionObjectsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_collision_objects.blk"
+
+damagePartsToFmPartsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_fm_parts_map.blk"
+
+damagePartsToHudPartsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_hud_parts_map.blk"
+
+damagePartsDependencyMapBlk:t = "gameData/FlightModels/DM/dm_parts_dependency_map.blk"
+
+damagePartsToCollisionPointsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_collision_points_map.blk"
+
+damagePartsToWeaponsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_weapons_map.blk"
+
+damagePartsToVisualEffectsMapBlk:t = "gameData/FlightModels/DM/dm_parts_to_visual_effects_map.blk"
+
+fightAiBehaviour:t="fighter"
+
+Shop{
+  maxAltitude:r=4000
+  maxSpeed:r=180.83
+  turnTime:r=22
+  airfieldLen:r=357.74
+  climbTime:r=324
+  maxSpeedAlt:r=250
+  climbAlt:r=4500
+  climbSpeed:r=15.43
+}
+
+testFlight:t="testFlight_stalingrad"
+type:t="typeFighter"
+paratrooper:t="ally"
+
+balanceData{
+  accSpd:r=2.62542
+  climbSpeed:r=18.51
+  maxSpeed:r=180.83
+  turnTime:r=22
+}
+
+// weapon_presets{
+//   preset{
+//     name:t= "I-185_default"
+//     blk:t= "gameData/FlightModels/weaponPresets/sample_i-185_default.blk"
+//   }
+// }
+modifications{}
+
+tags{
+  piston_engine:b=yes
+  training:b=yes
+  all:b=yes
+  ally:b=yes
+  country_ussr:b=yes
+  type_fighter:b=yes
+  year1941:b=yes
+  year1942:b=yes
+  year1943:b=yes
+  soviet:b=yes
+
+  berlin:b=yes
+
+  eastern_front:b=yes
+  far_eastern_front:b=yes
+
+  can_be_played_with_cockpit_view_only:b=yes; hangar:b=yes
+}
+
+years_active {
+  year1941 {
+    khalkin_gol:r=0.5; berlin:r=0.5; korsun:r=0.5; krymsk:r=0.5; mozdok:r=0.5; stalingrad:r=0.5; stalingrad_w:r=0.5
+  }
+  year1942 {
+    khalkin_gol:r=0.3; berlin:r=0.3; korsun:r=0.3; krymsk:r=0.3; mozdok:r=0.3; stalingrad:r=0.3; stalingrad_w:r=0.3
+  }
+  year1943 {
+    khalkin_gol:r=0.2; berlin:r=0.1; korsun:r=0.1; krymsk:r=0.1; mozdok:r=0.1; stalingrad:r=0.1; stalingrad_w:r=0.1
+  }
+}
+
+DamageParts{
+  armor10{
+    cannon1_dm{
+      hp:r=15
+    }
+
+    cannon2_dm{
+      hp:r=15
+    }
+  }
+
+  armor8{
+    armor1_dm{
+      hp:r=40
+    }
+  }
+
+  armor_engine_light{
+    engine1_dm{
+      hp:r=49.5
+    }
+  }
+
+  c_dural3{
+    aileron_l_dm{
+      genericDamageMult:r=0.3
+      hp:r=9.5
+    }
+
+    aileron_r_dm{
+      genericDamageMult:r=0.3
+      hp:r=9.5
+    }
+
+    fin_dm{
+      hp:r=12.8
+    }
+
+    rudder0_dm{
+      genericDamageMult:r=0.3
+      hp:r=11.4
+    }
+    rudder1_dm{
+      genericDamageMult:r=0.3
+      hp:r=11.4
+    }
+    
+    stab_dm{
+      hp:r=9.7
+    }
+  }
+
+  c_wood30{
+    fuse1_dm{
+      hp:r=51.8
+    }
+
+    fuse_dm{
+      hp:r=30.7
+    }
+
+    tail_dm{
+      genericDamageMult:r=0.7
+      hp:r=65.2
+    }
+
+    wing1_l_dm{
+      genericDamageMult:r=0.5
+      hp:r=20.6
+    }
+
+    wing1_r_dm{
+      genericDamageMult:r=0.5
+      hp:r=20.6
+    }
+
+    wing2_l_dm{
+      genericDamageMult:r=0.5
+      hp:r=19.5
+    }
+
+    wing2_r_dm{
+      genericDamageMult:r=0.5
+      hp:r=19.5
+    }
+
+    wing_l_dm{
+      genericDamageMult:r=0.5
+      hp:r=23.3
+    }
+
+    wing_r_dm{
+      genericDamageMult:r=0.5
+      hp:r=23.3
+    }
+  }
+
+  dural{
+    cover1_dm{
+      hp:r=19.5
+    }
+
+    cover2_dm{
+      hp:r=19.5
+    }
+  }
+
+  dural30{
+    spar1_l_dm{
+      hp:r=12.7
+    }
+
+    spar1_r_dm{
+      hp:r=13.7
+    }
+
+    spar2_l_dm{
+      hp:r=9.5
+    }
+
+    spar2_r_dm{
+      hp:r=9.5
+    }
+
+    spar_l_dm{
+      hp:r=19.9
+    }
+
+    spar_r_dm{
+      hp:r=20.6
+    }
+  }
+
+  protected_controls{
+    tailcontrol_dm{
+      hp:r=20.5
+    }
+
+    wingcontrol_l_dm{
+      hp:r=20.5
+    }
+
+    wingcontrol_r_dm{
+      hp:r=20.5
+    }
+  }
+
+  steel{
+    gear_l_dm{
+      hp:r=39.5
+    }
+
+    gear_r_dm{
+      hp:r=40.2
+    }
+  }
+
+  steel_cooling_sys_light{
+    oil1_dm{
+      hp:r=9.5
+    }
+  }
+
+  steel_pilot{
+    pilot_dm{
+      fireProtectionHp:r=20
+      hp:r=20
+    }
+  }
+
+  steel_tank_light{
+    tank1_dm{
+      hp:r=53.2
+    }
+  }
+
+  wood{
+    cannon3_dm{
+      hp:r=11.8
+    }
+
+    cover3_dm{
+      hp:r=13.8
+    }
+
+    cover4_dm{
+      hp:r=4.6
+    }
+
+    elevator0_dm{
+      hp:r=15
+    }
+
+    elevator1_dm{
+      hp:r=14.9
+    }
+
+    flap1_l_dm{
+      hp:r=8
+    }
+
+    flap1_r_dm{
+      hp:r=7.9
+    }
+
+    flap_l_dm{
+      hp:r=12.9
+    }
+
+    flap_r_dm{
+      hp:r=12.9
+    }
+
+    gear_c_dm{
+      hp:r=3.4
+    }
+
+    oil2_dm{
+      hp:r=5.6
+    }
+
+    tank2_dm{
+      hp:r=27.7
+    }
+
+    tank3_dm{
+      hp:r=27.7
+    }
+  }
+}
+
+DamageEffects{
+  part{
+    name:t="aileron_l_dm"
+
+    onHit{
+      damage:r=10
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.7
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=50
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="aileron_r_dm"
+
+    onHit{
+      damage:r=10
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.7
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=50
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="armor1_dm"
+  }
+
+  part{
+    name:t="cannon1_dm"
+  }
+
+  part{
+    name:t="cannon2_dm"
+  }
+
+  part{
+    name:t="cannon3_dm"
+  }
+
+  part{
+    name:t="cover1_dm"
+  }
+
+  part{
+    name:t="cover2_dm"
+  }
+
+  part{
+    name:t="cover3_dm"
+  }
+
+  part{
+    name:t="cover4_dm"
+  }
+
+  part{
+    name:t="elevator0_dm"
+  }
+
+  part{
+    name:t="elevator1_dm"
+  }
+
+  part{
+    name:t="engine1_dm"
+
+    onHit{
+      expl:r=0.01
+      fire:r=0.01
+    }
+
+    onHit{
+      damage:r=2
+      expl:r=0.01
+      fire:r=0.01
+      leak_oil:r=0.2
+    }
+
+    onHit{
+      damage:r=30
+      expl:r=0.05
+      fire:r=0.1
+      leak_oil:r=1
+    }
+
+    onKill{
+      expl:r=0.1
+      fire:r=10
+      nothing:r=90
+    }
+
+    onKill{
+      damage:r=30
+      expl:r=1
+      fire:r=44
+      nothing:r=55
+    }
+  }
+
+  part{
+    name:t="fin_dm"
+
+    onHit{
+      tailcontrol_dm:r=0.005
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onKill{
+      cut:r=1
+      tailcontrol_dm:r=0.005
+      nothing:r=9
+    }
+
+    onKill{
+      damage:r=4.2
+      cut:r=1
+      nothing:r=9
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+      nothing:r=2
+    }
+  }
+
+  part{
+    name:t="flap1_l_dm"
+  }
+
+  part{
+    name:t="flap1_r_dm"
+  }
+
+  part{
+    name:t="flap_l_dm"
+  }
+
+  part{
+    name:t="flap_r_dm"
+  }
+
+  part{
+    name:t="fuse1_dm"
+
+    onHit{
+      damage:r=5
+      wing_r_dm:r=0.1
+      wing_l_dm:r=0.1
+    }
+
+    onHit{
+      damage:r=9
+      wing_r_dm:r=0.3
+      wing_l_dm:r=0.3
+    }
+
+    onHit{
+      damage:r=10
+      wing_r_dm:r=0.5
+      wing_l_dm:r=0.5
+    }
+
+    onHit{
+      damage:r=20
+      wing_r_dm:r=0.7
+      wing_l_dm:r=0.7
+    }
+
+    onHit{
+      damage:r=30
+      wing_r_dm:r=0.9
+      wing_l_dm:r=0.9
+    }
+
+    onKill{
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+      nothing:r=6
+    }
+
+    onKill{
+      damage:r=3
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=7
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=10
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=20
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=30
+      wing_l_dm:r=1
+      wing_r_dm:r=1
+    }
+  }
+
+  part{
+    name:t="fuse_dm"
+
+    onHit{
+      damage:r=7
+      tail_dm:r=0.2
+    }
+
+    onHit{
+      damage:r=10
+      tail_dm:r=0.4
+    }
+
+    onHit{
+      damage:r=20
+      tail_dm:r=0.6
+    }
+
+    onHit{
+      damage:r=30
+      tail_dm:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      tail_dm:r=1
+    }
+
+    onKill{
+      tail_dm:r=1
+      nothing:r=9
+    }
+
+    onKill{
+      damage:r=3
+      tail_dm:r=1
+      nothing:r=6
+    }
+
+    onKill{
+      damage:r=7
+      tail_dm:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=10
+      tail_dm:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=20
+      tail_dm:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=30
+      tail_dm:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=50
+      tail_dm:r=1
+    }
+  }
+
+  part{
+    name:t="gear_c_dm"
+  }
+
+  part{
+    name:t="gear_l_dm"
+
+    onHit{
+      damage:r=20
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=0.7
+    }
+
+    onHit{
+      damage:r=70
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="gear_r_dm"
+
+    onHit{
+      damage:r=20
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=0.7
+    }
+
+    onHit{
+      damage:r=70
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="oil1_dm"
+
+    onHit{
+      leak_oil:r=0.3
+    }
+
+    onKill{
+      leak_oil:r=1
+    }
+  }
+
+  part{
+    name:t="oil2_dm"
+  }
+
+  part{
+    name:t="pilot_dm"
+  }
+
+  part{
+    name:t="rudder_dm"
+
+    onHit{
+      damage:r=10
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.7
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=50
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="spar1_l_dm"
+  }
+
+  part{
+    name:t="spar1_r_dm"
+  }
+
+  part{
+    name:t="spar2_l_dm"
+  }
+
+  part{
+    name:t="spar2_r_dm"
+  }
+
+  part{
+    name:t="spar_l_dm"
+  }
+
+  part{
+    name:t="spar_r_dm"
+  }
+
+  part{
+    name:t="stab_dm"
+
+    onKill{
+      nothing:r=7
+      elevator_dm:r=1
+    }
+  }
+
+  part{
+    name:t="tail_dm"
+
+    onHit{
+      damage:r=20
+      cut:r=0.25
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.5
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=0.75
+    }
+
+    onHit{
+      damage:r=70
+      cut:r=1
+    }
+
+    onKill{
+      tailcontrol_dm:r=1
+      nothing:r=9
+    }
+
+    onKill{
+      damage:r=7
+      tailcontrol_dm:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=50
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=70
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="tailcontrol_dm"
+  }
+
+  part{
+    name:t="tank1_dm"
+
+    onHit{
+      fire:r=0.05
+      leak:r=0.5
+    }
+
+    onHit{
+      damage:r=7
+      fire:r=0.5
+      leak:r=0.7
+    }
+
+    onHit{
+      damage:r=20
+      fire:r=0.9
+      leak:r=0.9
+    }
+
+    onKill{
+      expl:r=0.05
+      fire:r=3
+      leak:r=12
+      nothing:r=85
+    }
+
+    onKill{
+      damage:r=30
+      expl:r=0.5
+      fire:r=5
+      leak:r=10
+      nothing:r=85
+    }
+
+    onKill{
+      damage:r=50
+      expl:r=1
+      fire:r=20
+      leak:r=50
+      nothing:r=30
+    }
+  }
+
+  part{
+    name:t="tank2_dm"
+  }
+
+  part{
+    name:t="tank3_dm"
+  }
+
+  part{
+    name:t="wing1_l_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wing1_r_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wing2_l_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wing2_r_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wing_l_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wing_r_dm"
+
+    onHit{
+      damage:r=7
+      cut:r=0.1
+    }
+
+    onHit{
+      damage:r=10
+      cut:r=0.2
+    }
+
+    onHit{
+      damage:r=20
+      cut:r=0.4
+    }
+
+    onHit{
+      damage:r=30
+      cut:r=0.8
+    }
+
+    onHit{
+      damage:r=50
+      cut:r=1
+    }
+
+    onKill{
+      cut:r=1
+      nothing:r=5
+    }
+
+    onKill{
+      damage:r=3
+      cut:r=1
+      nothing:r=4
+    }
+
+    onKill{
+      damage:r=7
+      cut:r=1
+      nothing:r=3
+    }
+
+    onKill{
+      damage:r=10
+      cut:r=1
+      nothing:r=2
+    }
+
+    onKill{
+      damage:r=20
+      cut:r=1
+      nothing:r=1
+    }
+
+    onKill{
+      damage:r=30
+      cut:r=1
+    }
+  }
+
+  part{
+    name:t="wingcontrol_l_dm"
+  }
+
+  part{
+    name:t="wingcontrol_r_dm"
+  }
+}
+
+MetaParts{
+  wing_l_structure{
+    hp:r=150
+    part:t="wing_l_dm"
+    part:t="wing1_l_dm"
+    part:t="wing2_l_dm"
+    part:t="fuse1_l_dm"
+    part:t="fuse2_l_dm"
+
+    effects{
+      cutPart:t="wing_l_dm"
+    }
+  }
+
+  wing_r_structure{
+    hp:r=150
+    part:t="wing_r_dm"
+    part:t="wing1_r_dm"
+    part:t="wing2_r_dm"
+    part:t="fuse1_l_dm"
+    part:t="fuse2_l_dm"
+
+    effects{
+      cutPart:t="wing_r_dm"
+    }
+  }
+
+  tail_structure{
+    hp:r=450
+    part:t="fuse_dm"
+    part:t="tail_dm"
+    part:t="stab_dm"
+    part:t="fin_dm"
+
+    effects{
+      cutPart:t="tail_dm"
+    }
+  }
+}
+
+Sound{
+  Engine:t="engine03"
+  gun:t="gun_default"
+}
+
+explosion_dm
+{
+  hitPowerMult:r=1
+  nearHitPower:p2=1.0,50
+  midHitPower:p2=0.9,400
+  farHitPower:p2=0.1,1000
+  endHitPower:p2=0.01,1500
+
+  relativeVelHitShift:p2=300,1000
+  nearArmorPower:p2=10,50
+  midArmorPower:p2=7,400
+  farArmorPower:p2=0.2,700
+  relativeVelArmorShift:p2=200,1000
+
+  explodeTreshold:r=0.0001
+  explodeHitPower:r=60
+  explodeArmorPower:r=60
+  explodeRadius:p2=5,30
+}
+
+turbulence{
+  segmentlength:r=100
+  startSpeed:r=28
+  maxSpeed:r=140
+  maxPower:r=6
+  initialRadius:r=12
+  radiusSpeed:r=2
+}
+
+overheat_arcade
+{
+  engineOverheatCooldownTime:r = 14
+  engineOverheatTime:r = 25
+  engineCooldownTime:r = 18
+  engineTempAfterOverheat:r = 0.15
+
+  gunOverheatCooldownTime:r = 3
+  gunOverheatTime:r = 8
+  gunCooldownTime:r = 2.5
+  gunTempAfterOverheat:r = 0.15
+}
+
+cutting {
+  wingRDist:p2 =   -2.52349, -1.52349
+  wingLDist:p2 =   2.32564, 3.32564
+  tailDist:p2 = 10,  11
+  color:p4 = 0.151, 0.151, 0.151, 1
+}
+
+//dm_parts_to_collision_objects.blk
+
+object {
+  dm:t = "fuse_dm"
+  dm:t = "fuse%d_dm"
+}
+
+object {
+  dm:t = "tail_dm"
+}
+
+object {
+  dm:t = "wing_l_dm"
+}
+
+object {
+  dm:t = "wing1_l_dm"
+}
+
+object {
+  dm:t = "wing2_l_dm"
+}
+
+object {
+  dm:t = "wing_r_dm"
+}
+
+object {
+  dm:t = "wing1_r_dm"
+}
+
+object {
+  dm:t = "wing2_r_dm"
+}
+
+object {
+  dm:t = "stab_dm"
+  dm:t = "stab%d_dm"
+  dm:t = "elevator_dm"
+  dm:t = "elevator%d_dm"
+}
+
+object {
+  dm:t = "fin_dm"
+  dm:t = "rudder_dm"
+}
+
+object {
+  dm:t = "fin1_dm"
+  dm:t = "rudder0_dm"
+}
+
+object {
+  dm:t = "fin2_dm"
+  dm:t = "rudder1_dm"
+}
+
+object {
+  dm:t = "engine1_dm"
+}
+
+object {
+  dm:t = "engine2_dm"
+}
+
+object {
+  dm:t = "engine3_dm"
+}
+
+object {
+  dm:t = "engine4_dm"
+}
+
+object {
+  dm:t = "engine5_dm"
+}
+
+object {
+  dm:t = "engine6_dm"
+}
+
+object {
+  dm:t = "_Clip_prop_1_%02d"
+  propellerIndex:i = 0
+}
+
+object {
+  dm:t = "_Clip_prop_2_%02d"
+  propellerIndex:i = 1
+}
+
+object {
+  dm:t = "_Clip_prop_3_%02d"
+  propellerIndex:i = 2
+}
+
+object {
+  dm:t = "_Clip_prop_4_%02d"
+  propellerIndex:i = 3
+}
+
+object {
+  dm:t = "_Clip_prop_5_%02d"
+  propellerIndex:i = 4
+}
+
+object {
+  dm:t = "_Clip_prop_6_%02d"
+  propellerIndex:i = 5
+}
+
+//dm_parts_to_fm_parts_map.blk
+
+fm {
+  fm:t = "pilot"
+
+  dm:t = "pilot_dm"
+  dm:t = "pilot1_dm"
+  type:t = "max"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "fuselage"
+
+  dm:t = "fuse_dm"
+  dm:t = "fuse1_dm"
+  dm:t = "fuse2_dm"
+  dm:t = "fuse3_dm"
+  dm:t = "fuse4_dm"
+  dm:t = "tail_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "tail"
+
+  dm:t = "tail_dm"
+}
+
+fm {
+  fm:t = "wing_root_l"
+
+  dm:t = "wing_l_dm"
+}
+
+fm {
+  fm:t = "wing_middle_l"
+
+  dm:t = "wing1_l_dm"
+}
+
+fm {
+  fm:t = "wing_end_l"
+
+  dm:t = "wing2_l_dm"
+}
+
+fm {
+  fm:t = "wing_root_r"
+
+  dm:t = "wing_r_dm"
+}
+
+fm {
+  fm:t = "wing_middle_r"
+
+  dm:t = "wing1_r_dm"
+}
+
+fm {
+  fm:t = "wing_end_r"
+
+  dm:t = "wing2_r_dm"
+}
+
+fm {
+  fm:t = "hor_stab_l"
+
+  dm:t = "stab_dm"
+  dm:t = "stab1_dm"
+  type:t = "mult"
+}
+
+fm {
+  fm:t = "hor_stab_r"
+
+  dm:t = "stab_dm"
+  dm:t = "stab2_dm"
+  type:t = "mult"
+}
+
+fm {
+  fm:t = "ver_stab"
+
+  dependency {
+    dm:t = "fin_dm"
+    dm:t = "fin1_dm"
+    type:t = "mult"
+  }
+  dependency {
+    dm:t = "fin_dm"
+    dm:t = "fin2_dm"
+    type:t = "mult"
+  }
+  type:t = "average"
+}
+
+fm {
+  fm:t = "aileron_l"
+
+  dm:t = "aileron_l_dm"
+  dm:t = "aileron1_l_dm"
+  dm:t = "elevon_l_dm"
+  dm:t = "flaperon_l_dm"
+  dm:t = "flaperon1_l_dm"
+  dm:t = "aileron_interceptor_l_dm"
+  dm:t = "aileron_interceptor1_l_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "aileron_r"
+
+  dm:t = "aileron_r_dm"
+  dm:t = "aileron1_r_dm"
+  dm:t = "elevon_r_dm"
+  dm:t = "flaperon_r_dm"
+  dm:t = "flaperon1_r_dm"
+  dm:t = "aileron_interceptor_r_dm"
+  dm:t = "aileron_interceptor1_r_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "elevator_l"
+
+  dependency {
+    dm:t = "elevator_dm"
+    dm:t = "elevator0_dm"
+    type:t = "mult"
+  }
+  dependency {
+    dm:t = "elevon_l_dm"
+  }
+  type:t = "average"
+}
+
+fm {
+  fm:t = "elevator_r"
+
+  dependency {
+    dm:t = "elevator_dm"
+    dm:t = "elevator1_dm"
+  }
+  dependency {
+    dm:t = "elevon_r_dm"
+  }
+  type:t = "average"
+}
+
+fm {
+  fm:t = "rudder"
+
+  dependency {
+    dependency {
+      dm:t = "rudder_dm"
+      dm:t = "rudder0_dm"
+      type:t = "mult"
+    }
+    dependency {
+      dm:t = "rudder_interceptor_l_dm"
+      dm:t = "rudder_interceptor1_l_dm"
+      type:t = "average"
+    }
+    type:t = "average"
+  }
+  dependency {
+    dependency {
+      dm:t = "rudder_dm"
+      dm:t = "rudder1_dm"
+      type:t = "mult"
+    }
+    dependency {
+      dm:t = "rudder_interceptor_r_dm"
+      dm:t = "rudder_interceptor1_r_dm"
+      type:t = "average"
+    }
+    type:t = "average"
+  }
+  type:t = "average"
+}
+
+fm {
+  fm:t = "flap_l"
+
+  dm:t = "flap_l_dm"
+  dm:t = "flap1_l_dm"
+  dm:t = "flap2_l_dm"
+  dm:t = "flap3_l_dm"
+  dm:t = "flap_c_dm"
+  dm:t = "flapperon_l_dm"
+  dm:t = "flapperon1_l_dm"
+  dm:t = "flap_airbrake_l_dm"
+  dm:t = "flap_airbrake1_l_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "flap_r"
+
+  dm:t = "flap_r_dm"
+  dm:t = "flap1_r_dm"
+  dm:t = "flap2_r_dm"
+  dm:t = "flap3_r_dm"
+  dm:t = "flap_c_dm"
+  dm:t = "flapperon_r_dm"
+  dm:t = "flapperon1_r_dm"
+  dm:t = "flap_airbrake_r_dm"
+  dm:t = "flap_airbrake1_r_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "airbrake_l"
+
+  dm:t = "airbrake_l_dm"
+  dm:t = "airbrake_c_dm"
+  dm:t = "flap_airbrake_l_dm"
+  dm:t = "flap_airbrake1_l_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "airbrake_r"
+
+  dm:t = "airbrake_r_dm"
+  dm:t = "airbrake_c_dm"
+  dm:t = "flap_airbrake_r_dm"
+  dm:t = "flap_airbrake1_r_dm"
+  type:t = "average"
+}
+
+fm {
+  fm:t = "aileron_control_l"
+
+  dm:t = "wingcontrol_dm"
+  dm:t = "wingcontrol_l_dm"
+  type:t = "min"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "aileron_control_r"
+
+  dm:t = "wingcontrol_dm"
+  dm:t = "wingcontrol_r_dm"
+  type:t = "min"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "elevator_control_l"
+
+  dm:t = "tailcontrol_dm"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "elevator_control_r"
+
+  dm:t = "tailcontrol_dm"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "rudder_control"
+
+  dm:t = "tailcontrol_dm"
+  cutHealth:r = 0.0
+}
+
+fm {
+  fm:t = "gear_l"
+
+  dm:t = "gear_l_dm"
+  dm:t = "gear_1l_dm"
+  type:t = "max"
+}
+
+fm {
+  fm:t = "gear_r"
+
+  dm:t = "gear_r_dm"
+  dm:t = "gear_1r_dm"
+  type:t = "max"
+}
+
+fm {
+  fm:t = "gear_c"
+
+  dm:t = "gear_c_dm"
+  dm:t = "gear_2c_dm"
+  dm:t = "gear_3c_dm"
+  type:t = "max"
+}
+
+fm {
+  fm:t = "arrestor"
+
+  dm:t = "hook_dm"
+}
+
+enginesAutoConfiguration {
+  engine:t = "engine1_dm"
+  engine:t = "engine2_dm"
+  engine:t = "engine3_dm"
+  engine:t = "engine4_dm"
+  engine:t = "engine5_dm"
+  engine:t = "engine6_dm"
+}
+
+fm {
+  fm:t = "engine_shaft1"
+
+  dm:t = "engine_shaft1_dm"
+}
+
+fm {
+  fm:t = "engine_shaft2"
+
+  dm:t = "engine_shaft2_dm"
+}
+
+fm {
+  fm:t = "engine_shaft3"
+
+  dm:t = "engine_shaft3_dm"
+}
+
+fm {
+  fm:t = "engine_shaft4"
+
+  dm:t = "engine_shaft4_dm"
+}
+
+fm {
+  fm:t = "engine_shaft5"
+
+  dm:t = "engine_shaft5_dm"
+}
+
+fm {
+  fm:t = "engine_shaft6"
+
+  dm:t = "engine_shaft6_dm"
+}
+
+fm {
+  fm:t = "propeller1"
+
+  dm:t = "prop02_1_dm"
+}
+
+fm {
+  fm:t = "propeller2"
+
+  dm:t = "prop02_2_dm"
+}
+
+fm {
+  fm:t = "propeller3"
+
+  dm:t = "prop02_3_dm"
+}
+
+fm {
+  fm:t = "propeller4"
+
+  dm:t = "prop02_4_dm"
+}
+
+fm {
+  fm:t = "propeller5"
+
+  dm:t = "prop02_5_dm"
+}
+
+fm {
+  fm:t = "propeller6"
+
+  dm:t = "prop02_6_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft1"
+
+  dm:t = "propeller_shaft1_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft2"
+
+  dm:t = "propeller_shaft2_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft3"
+
+  dm:t = "propeller_shaft3_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft4"
+
+  dm:t = "propeller_shaft4_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft5"
+
+  dm:t = "propeller_shaft5_dm"
+}
+
+fm {
+  fm:t = "propeller_shaft6"
+
+  dm:t = "propeller_shaft6_dm"
+}
+
+fm {
+  fm:t = "transmission1"
+
+  dm:t = "transmission1_dm"
+}
+
+fm {
+  fm:t = "transmission2"
+
+  dm:t = "transmission2_dm"
+}
+
+fuelTanksAutoConfiguration {
+  fuelTank:t = "tank1_dm"
+  fuelTank:t = "tank2_dm"
+  fuelTank:t = "tank3_dm"
+  fuelTank:t = "tank4_dm"
+  fuelTank:t = "tank5_dm"
+  fuelTank:t = "tank6_dm"
+  fuelTank:t = "tank7_dm"
+  fuelTank:t = "tank8_dm"
+}
+
+radiatorsAutoConfiguration {
+  engine:t = "engine1_dm"
+  engine:t = "engine2_dm"
+  engine:t = "engine3_dm"
+  engine:t = "engine4_dm"
+  engine:t = "engine5_dm"
+  engine:t = "engine6_dm"
+
+  oil:t = "oil1_dm"
+  oil:t = "oil2_dm"
+  oil:t = "oil3_dm"
+  oil:t = "oil4_dm"
+  oil:t = "oil5_dm"
+  oil:t = "oil6_dm"
+  oil:t = "oil7_dm"
+  oil:t = "oil8_dm"
+  oil:t = "oil9_dm"
+  oil:t = "oil10_dm"
+  oil:t = "oil11_dm"
+  oil:t = "oil12_dm"
+
+  water:t = "water1_dm"
+  water:t = "water2_dm"
+  water:t = "water3_dm"
+  water:t = "water4_dm"
+  water:t = "water5_dm"
+  water:t = "water6_dm"
+}
+
+//dm_parts_to_hud_parts_map.blk
+
+item {
+  item:t = "fuse"
+
+  dm:t = "fuse_dm"
+  dm:t = "fuse1_dm"
+  dm:t = "fuse2_dm"
+  dm:t = "fuse3_dm"
+  dm:t = "fuse4_dm"
+  type:t = "average"
+}
+
+item {
+  item:t = "tail"
+
+  dm:t = "tail_dm"
+}
+
+item {
+  item:t = "wingl"
+
+  dm:t = "wing_l_dm"
+  dm:t = "wing1_l_dm"
+  dm:t = "wing2_l_dm"
+  type:t = "average"
+}
+
+item {
+  item:t = "wingr"
+
+  dm:t = "wing_r_dm"
+  dm:t = "wing1_r_dm"
+  dm:t = "wing2_r_dm"
+  type:t = "average"
+}
+
+item {
+  item:t = "aileron_l"
+
+  dm:t = "aileron_l"
+  dm:t = "aileron1_l"
+  type:t = "average"
+}
+
+item {
+  item:t = "aileron_r"
+
+  dm:t = "aileron_r"
+  dm:t = "aileron1_r"
+  type:t = "average"
+}
+
+item {
+  item:t = "elevator"
+
+  dependency {
+    dm:t = "elevator_dm"
+  }
+  dependency {
+    dm:t = "elevator0_dm"
+    dm:t = "elevator1_dm"
+    type:t = "average"
+  }
+  type:t = "mult"
+}
+
+item {
+  item:t = "rudder"
+
+  dependency {
+    dm:t = "rudder_dm"
+  }
+  dependency {
+    dm:t = "rudder0_dm"
+    dm:t = "rudder1_dm"
+    type:t = "average"
+  }
+  type:t = "mult"
+}
+
+fm {
+  fm:t = "gear"
+
+  dm:t = "gear_l_dm"
+  dm:t = "gear_r_dm"
+  dm:t = "gear_c_dm"
+  dm:t = "gear_2c_dm"
+  dm:t = "gear_3c_dm"
+  type:t = "average"
+}
+
+item {
+  item:t = "gunner1"
+
+  dm:t = "gunner1_dm"
+}
+
+item {
+  item:t = "gunner2"
+
+  dm:t = "gunner3_dm"
+}
+
+item {
+  item:t = "gunner3"
+
+  dm:t = "gunner3_dm"
+}
+
+item {
+  item:t = "gunner4"
+
+  dm:t = "gunner4_dm"
+}
+
+item {
+  item:t = "gunner5"
+
+  dm:t = "gunner5_dm"
+}
+
+item {
+  item:t = "gunner6"
+
+  dm:t = "gunner6_dm"
+}
+
+item {
+  item:t = "gunner7"
+
+  dm:t = "gunner7_dm"
+}
+
+item {
+  item:t = "gunner8"
+
+  dm:t = "gunner8_dm"
+}
+
+//dm_parts_dependency_map.blk
+
+dp {
+  dm:t = "wing_l_dm"
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, 1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.1
+}
+
+dp {
+  dm:t = "wing1_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+}
+
+dp {
+  dm:t = "wing2_l_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 0.95
+}
+
+dp {
+  dm:t = "wing_r_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, -1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.1
+}
+
+dp {
+  dm:t = "wing1_r_dm"
+
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+}
+
+dp {
+  dm:t = "wing2_r_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+}
+
+dp {
+  dm:t = "tail_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = -1, 0, 0
+  dm1:t = "tail_dm"
+  dm1:t = "stab_dm"
+  dm1:t = "stab1_dm"
+  dm1:t = "stab2_dm"
+  dm1:t = "elevator_dm"
+  dm1:t = "elevator0_dm"
+  dm1:t = "elevator1_dm"
+  side1:r = -0.95
+}
+
+dp {
+  dm:t = "fin_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 1, 0
+  side1:r = -0.65
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+dp {
+  dm:t = "stab_dm"
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = 0.4
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+dp {
+  dm:t = "stab_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, -1
+  side1:r = 0.4
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+dp {
+  dm:t = "stab1_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, 1
+  side1:r = 0.4
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+dp {
+  dm:t = "stab2_dm"
+
+
+  //_dm_out_of_fuselage_dependent_parts.blk
+  dp:t = "gear_l_dm"
+  dp:t = "gear_r_dm"
+  dp:t = "gear_c_dm"
+  dp:t = "gear_2c_dm"
+  dp:t = "gear_3c_dm"
+
+  //_dm_out_of_fuselage_dependent_parts_no_gear.blk
+  dp:t = "stab_dm"
+  dp:t = "stab%d_dm"
+
+  dp:t = "fin_dm"
+  dp:t = "fin%d_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+
+  dp:t = "aileron_l_dm"
+  dp:t = "aileron1_l_dm"
+  dp:t = "aileron_r_dm"
+  dp:t = "aileron1_r_dm"
+
+  dp:t = "elevon_l_dm"
+  dp:t = "elevon_r_dm"
+
+  dp:t = "airbrake_l_dm"
+  dp:t = "airbrake_r_dm"
+  dp:t = "airbrake_c_dm"
+
+  dp:t = "aileron_interceptor_l_dm"
+  dp:t = "aileron_interceptor%d_l_dm"
+  dp:t = "aileron_interceptor_r_dm"
+  dp:t = "aileron_interceptor%d_r_dm"
+
+  dp:t = "rudder_interceptor_l_dm"
+  dp:t = "rudder_interceptor%_l_dm"
+  dp:t = "rudder_interceptor_r_dm"
+  dp:t = "rudder_interceptor%_r_dm"
+
+  dp:t = "wingcontrol_dm"
+  dp:t = "wingcontrol_l_dm"
+  dp:t = "wingcontrol_r_dm"
+  dp:t = "tailcontrol_dm"
+
+  //dp:t = "engine%d_dm"
+  dp:t = "oil%d_dm"
+  dp:t = "water%d_dm"
+  dp:t = "tank%d_dm"
+
+  //dp:t = "gun%d_dm"
+  dp:t = "cannon%d_dm"
+  dp:t = "mgun%d_dm"
+  dp:t = "gunner%d_dm"
+
+  dp:t = "flap_l_dm"
+  dp:t = "flap%d_l_dm"
+  dp:t = "flap_r_dm"
+  dp:t = "flap%d_r_dm"
+  dp:t = "flap_c_dm"
+  dp:t = "flap%d_c_dm"
+
+  dp:t = "flap_airbrake_l_dm"
+  dp:t = "flap_airbrake%d_l_dm"
+  dp:t = "flap_airbrake_r_dm"
+  dp:t = "flap_airbrake%d_r_dm"
+
+  //dp:t = "cover%d_dm"
+
+
+  axis1:p3 = 0, 0, -1
+  side1:r = 0.4
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+// with negative axes
+
+dp {
+  dm:t = "wing_l_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, 1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.1
+
+  axis4:p3 = 0, 0, -1
+  positive4:b = no
+  dm4:t = "fuse_dm"
+  dm4:t = "fuse%d_dm"
+  side4:r = -0.955
+}
+
+dp {
+  dm:t = "wing1_l_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, -1
+  positive3:b = no
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = -0.955
+}
+
+dp {
+  dm:t = "wing2_l_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, -1
+  positive3:b = no
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = -0.955
+}
+
+dp {
+  dm:t = "wing_r_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, -1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.1
+
+  axis4:p3 = 0, 0, 1
+  positive4:b = no
+  dm4:t = "fuse_dm"
+  dm4:t = "fuse%d_dm"
+  side4:r = -0.955
+}
+
+dp {
+  dm:t = "wing1_r_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, 1
+  positive3:b = no
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = -0.955
+}
+
+dp {
+  dm:t = "wing2_r_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -0.95
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.05
+
+  axis3:p3 = 0, 0, 1
+  positive3:b = no
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = -0.955
+}
+
+dp {
+  dm:t = "tail_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = -1, 0, 0
+  dm1:t = "tail_dm"
+  dm1:t = "stab_dm"
+  dm1:t = "stab1_dm"
+  dm1:t = "stab2_dm"
+  dm1:t = "elevator_dm"
+  dm1:t = "elevator0_dm"
+  dm1:t = "elevator1_dm"
+  side1:r = -0.95
+}
+
+dp {
+  dm:t = "fin_dm"
+
+  //_dm_in_fuselage_dependent_parts.blk
+  dp:t = "engine%d_dm"
+
+  dp:t = "cover%d_dm"
+
+  dp:t = "gun%d_dm"
+
+  dp:t = "engine_shaft%d_dm"
+
+  dp:t = "propeller_shaft%d_dm"
+
+  dp:t = "transmission%d_dm"
+
+  axis1:p3 = 0, 1, 0
+  side1:r = -0.65
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -0.95
+}
+
+//_dm_no_axes_check_dependent_parts.blk
+
+dp {
+  dm:t = "wing_l_dm"
+
+  dp:t = "spar_l_dm"
+  dp:t = "wire_l"
+  dp:t = "wire_lc"
+}
+
+dp {
+  dm:t = "wing1_l_dm"
+
+  dp:t = "spar1_l_dm"
+  dp:t = "wire_l"
+  dp:t = "wire_lc"
+}
+
+dp {
+  dm:t = "wing2_l_dm"
+
+  dp:t = "spar2_l_dm"
+  dp:t = "wire_l"
+  dp:t = "wire_lc"
+}
+
+dp {
+  dm:t = "wing_r_dm"
+
+  dp:t = "spar_r_dm"
+  dp:t = "wire_r"
+  dp:t = "wire_rc"
+}
+
+dp {
+  dm:t = "wing1_r_dm"
+
+  dp:t = "spar1_r_dm"
+  dp:t = "wire_r"
+  dp:t = "wire_rc"
+}
+
+dp {
+  dm:t = "wing2_r_dm"
+
+  dp:t = "spar2_r_dm"
+  dp:t = "wire_r"
+  dp:t = "wire_rc"
+}
+
+dp {
+  dm:t = "spar_l_dm"
+
+  dp:t = "wing_l_dm"
+  dp:t = "spar1_l_dm"
+}
+
+dp {
+  dm:t = "spar1_l_dm"
+
+  dp:t = "wing1_l_dm"
+  dp:t = "spar2_l_dm"
+}
+
+dp {
+  dm:t = "spar2_l_dm"
+
+  dp:t = "wing2_l_dm"
+}
+
+dp {
+  dm:t = "spar_r_dm"
+
+  dp:t = "wing_r_dm"
+  dp:t = "spar1_r_dm"
+}
+
+dp {
+  dm:t = "spar1_r_dm"
+
+  dp:t = "wing1_r_dm"
+  dp:t = "spar2_r_dm"
+}
+
+dp {
+  dm:t = "spar2_r_dm"
+
+  dp:t = "wing2_r_dm"
+}
+
+dp {
+  dm:t = "tail_dm"
+
+  dp:t = "antenna"
+  dp:t = "wire_lc"
+  dp:t = "wire_rc"
+  dp:t = "wire_c"
+}
+
+dp {
+  dm:t = "stab_dm"
+
+  dp:t = "elevator_dm"
+  dp:t = "elevator%d_dm"
+}
+
+dp {
+  dm:t = "stab1_dm"
+
+  dp:t = "elevator0_dm"
+}
+
+dp {
+  dm:t = "stab2_dm"
+
+  dp:t = "elevator1_dm"
+}
+
+dp {
+  dm:t = "fin_dm"
+
+  dp:t = "rudder_dm"
+  dp:t = "rudder%d_dm"
+}
+
+dp {
+  dm:t = "fin1_dm"
+
+  dp:t = "rudder0_dm"
+}
+
+dp {
+  dm:t = "fin2_dm"
+
+  dp:t = "rudder1_dm"
+}
+
+dp {
+  dm:t = "rudder_dm"
+
+  dp:t = "rudder_rod"
+}
+
+dp {
+  dm:t = "rudder0_dm"
+
+  dp:t = "rudder0_rod"
+}
+
+dp {
+  dm:t = "rudder1_dm"
+
+  dp:t = "rudder1_rod"
+}
+
+dp {
+  dm:t = "elevator_dm"
+
+  dp:t = "elevator_rod"
+}
+
+dp {
+  dm:t = "elevator0_dm"
+
+  dp:t = "elevator0_rod"
+}
+
+dp {
+  dm:t = "elevator1_dm"
+
+  dp:t = "elevator1_rod"
+}
+
+dp {
+  dm:t = "aileron_l_dm"
+
+  dp:t = "aileron_l_rod"
+}
+
+dp {
+  dm:t = "aileron1_l_dm"
+
+  dp:t = "aileron1_l_rod"
+}
+
+dp {
+  dm:t = "aileron_r_dm"
+
+  dp:t = "aileron_r_rod"
+}
+
+dp {
+  dm:t = "aileron1_r_dm"
+
+  dp:t = "aileron1_r_rod"
+}
+
+dp {
+  dm:t = "gear_l_dm"
+
+  dp:t = "gear_l%d"
+  dp:t = "wheel_l"
+  dp:t = "wheel%d_l"
+}
+
+dp {
+  dm:t = "gear_1l_dm"
+
+  dp:t = "gear_1l%d"
+  dp:t = "wheel_1l"
+  dp:t = "wheel%d_1l"
+}
+
+dp {
+  dm:t = "gear_r_dm"
+
+  dp:t = "gear_r%d"
+  dp:t = "wheel_r"
+  dp:t = "wheel%d_r"
+}
+
+dp {
+  dm:t = "gear_1r_dm"
+
+  dp:t = "gear_1r%d"
+  dp:t = "wheel_1r"
+  dp:t = "wheel%d_1r"
+}
+
+dp {
+  dm:t = "gear_c_dm"
+
+  dp:t = "gear_c%d"
+  dp:t = "wheel_c"
+  dp:t = "wheel%d_c"
+}
+
+dp {
+  dm:t = "gear_2c_dm"
+
+  dp:t = "gear_2c%d"
+  dp:t = "wheel_2c"
+  dp:t = "wheel%d_2c"
+}
+
+dp {
+  dm:t = "gear_3c_dm"
+
+  dp:t = "gear_3c%d"
+  dp:t = "wheel_3c"
+  dp:t = "wheel%d_3c"
+}
+
+dp {
+  dm:t = "engine1_dm"
+
+  dp:t = "prop01_1"
+  dp:t = "prop02_1"
+  dp:t = "prop03_1"
+  dp:t = "prop_side_1"
+
+  dp:t = "fan01_1"
+  dp:t = "fan02_1"
+  dp:t = "fan03_1"
+}
+
+dp {
+  dm:t = "engine2_dm"
+
+  dp:t = "prop01_2"
+  dp:t = "prop02_2"
+  dp:t = "prop03_2"
+  dp:t = "prop_side_2"
+
+  dp:t = "fan01_2"
+  dp:t = "fan02_2"
+  dp:t = "fan03_2"
+}
+
+dp {
+  dm:t = "engine3_dm"
+
+  dp:t = "prop01_3"
+  dp:t = "prop02_3"
+  dp:t = "prop03_3"
+  dp:t = "prop_side_3"
+
+  dp:t = "fan01_3"
+  dp:t = "fan02_3"
+  dp:t = "fan03_3"
+}
+
+dp {
+  dm:t = "engine4_dm"
+
+  dp:t = "prop01_4"
+  dp:t = "prop02_4"
+  dp:t = "prop03_4"
+  dp:t = "prop_side_4"
+
+  dp:t = "fan01_4"
+  dp:t = "fan02_4"
+  dp:t = "fan03_4"
+}
+
+dp {
+  dm:t = "engine5_dm"
+
+  dp:t = "prop01_5"
+  dp:t = "prop02_5"
+  dp:t = "prop03_5"
+  dp:t = "prop_side_5"
+
+  dp:t = "fan01_5"
+  dp:t = "fan02_5"
+  dp:t = "fan03_5"
+}
+
+dp {
+  dm:t = "engine6_dm"
+
+  dp:t = "prop01_6"
+  dp:t = "prop02_6"
+  dp:t = "prop03_6"
+  dp:t = "prop_side_6"
+
+  dp:t = "fan01_6"
+  dp:t = "fan02_6"
+  dp:t = "fan03_6"
+}
+
+//dm_parts_to_collision_points_map.blk
+
+contact {
+  dm:t = "wing_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 0, 1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.05
+
+  axis4:p3 = 0, 1, 0
+  dm4:t = "wing_l_dm"
+  side4:r = -1.05
+
+  axis5:p3 = 0, -1, 0
+  dm5:t = "wing_l_dm"
+  side5:r = -1.05
+}
+
+contact {
+  dm:t = "wing1_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 1, 0
+  dm3:t = "wing1_l_dm"
+  side3:r = -1.05
+
+  axis4:p3 = 0, -1, 0
+  dm4:t = "wing1_l_dm"
+  side4:r = -1.05
+}
+
+contact {
+  dm:t = "wing2_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 1, 0
+  dm3:t = "wing2_l_dm"
+  side3:r = -1.05
+
+  axis4:p3 = 0, -1, 0
+  dm4:t = "wing2_l_dm"
+  side4:r = -1.05
+}
+
+contact {
+  dm:t = "wing_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 0, -1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.05
+
+  axis4:p3 = 0, 1, 0
+  dm4:t = "wing_r_dm"
+  side4:r = -1.05
+
+  axis5:p3 = 0, -1, 0
+  dm5:t = "wing_r_dm"
+  side5:r = -1.05
+}
+
+contact {
+  dm:t = "wing1_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 1, 0
+  dm3:t = "wing1_r_dm"
+  side3:r = -1.05
+
+  axis4:p3 = 0, -1, 0
+  dm4:t = "wing1_r_dm"
+  side4:r = -1.05
+}
+
+contact {
+  dm:t = "wing2_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 1, 0
+  dm3:t = "wing2_r_dm"
+  side3:r = -1.05
+
+  axis4:p3 = 0, -1, 0
+  dm4:t = "wing2_r_dm"
+  side4:r = -1.05
+}
+
+//_dm_parts_common_to_collision_points.blk
+
+contact {
+  dm:t = "tail_dm"
+
+  contact:t = "_Clip_tail_%d"
+}
+
+contact {
+  dm:t = "fin_dm"
+
+  contact:t = "_Clip_tail_%d"
+}
+
+contact {
+  dm:t = "gear_l_dm"
+
+  contact:t = "_ClipLGear"
+  contact:t = "_ClipLGear_%02d"
+}
+
+contact {
+  dm:t = "gear_1l_dm"
+
+  contact:t = "_Clip1LGear"
+  contact:t = "_Clip1LGear_%02d"
+}
+
+contact {
+  dm:t = "gear_r_dm"
+
+  contact:t = "_ClipRGear"
+  contact:t = "_ClipRGear_%02d"
+}
+
+contact {
+  dm:t = "gear_1r_dm"
+
+  contact:t = "_Clip1RGear"
+  contact:t = "_Clip1RGear_%02d"
+}
+
+contact {
+  dm:t = "gear_c_dm"
+
+  contact:t = "_ClipCGear"
+  contact:t = "_ClipNGear"
+  contact:t = "_ClipCGear_%02d"
+}
+
+contact {
+  dm:t = "gear_2c_dm"
+
+  contact:t = "_Clip2CGear"
+  contact:t = "_Clip2CGear_%02d"
+}
+
+contact {
+  dm:t = "gear_3c_dm"
+
+  contact:t = "_Clip3CGear"
+  contact:t = "_Clip3CGear_%02d"
+}
+
+//dm_parts_to_weapons_map.blk
+
+weapon {
+  dm:t = "wing_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 0, 1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.05
+}
+
+weapon {
+  dm:t = "wing1_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+}
+
+weapon {
+  dm:t = "wing2_l_dm"
+
+  axis1:p3 = 0, 0, 1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+}
+
+weapon {
+  dm:t = "wing_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+
+  axis3:p3 = 0, 0, -1
+  dm3:t = "fuse_dm"
+  dm3:t = "fuse%d_dm"
+  side3:r = 1.05
+}
+
+weapon {
+  dm:t = "wing1_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+}
+
+weapon {
+  dm:t = "wing2_r_dm"
+
+  axis1:p3 = 0, 0, -1
+  side1:r = -1.0
+
+  axis2:p3 = 1, 0, 0
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = 1.0
+}
+
+weapon {
+  dm:t = "tail_dm"
+
+  axis1:p3 = -1, 0, 0
+  dm1:t = "tail_dm"
+  dm1:t = "stab_dm"
+  dm1:t = "stab1_dm"
+  dm1:t = "stab2_dm"
+  dm1:t = "elevator_dm"
+  dm1:t = "elevator0_dm"
+  dm1:t = "elevator1_dm"
+  side1:r = -1.0
+}
+
+weapon {
+  dm:t = "fin_dm"
+
+  axis1:p3 = 0, 1, 0
+  side1:r = -1.0
+
+  axis2:p3 = -1, 0, 0
+  dm2:t = "tail_dm"
+  dm2:t = "stab_dm"
+  dm2:t = "stab1_dm"
+  dm2:t = "stab2_dm"
+  dm2:t = "elevator_dm"
+  dm2:t = "elevator0_dm"
+  dm2:t = "elevator1_dm"
+  side2:r = -1.0
+}
+
+//dm_parts_to_visual_effects_map.blk
+
+cutablePart:t = "aileron_l"
+cutablePart:t = "aileron%d_l"
+cutablePart:t = "aileron_interceptor_l"
+cutablePart:t = "aileron_interceptor%d_l"
+cutablePart:t = "elevon_l"
+
+cutablePart:t = "aileron_r"
+cutablePart:t = "aileron%d_r"
+cutablePart:t = "aileron_interceptor_r"
+cutablePart:t = "aileron_interceptor%d_r"
+cutablePart:t = "elevon_r"
+
+cutablePart:t = "elevator"
+cutablePart:t = "elevator%d"
+
+cutablePart:t = "rudder"
+cutablePart:t = "rudder%d"
+cutablePart:t = "rudder_interceptor_l"
+cutablePart:t = "rudder_interceptor%d_l"
+cutablePart:t = "rudder_interceptor_r"
+cutablePart:t = "rudder_interceptor%d_r"
+
+cutablePart:t = "flap_l"
+cutablePart:t = "flap%d_l"
+cutablePart:t = "flap_r"
+cutablePart:t = "flap%d_r"
+cutablePart:t = "flap_c"
+
+cutablePart:t = "flap_airbrake_l"
+cutablePart:t = "flap_airbrake%d_l"
+cutablePart:t = "flap_airbrake_r"
+cutablePart:t = "flap_airbrake%d_r"
+
+cutablePart:t = "airbrake_l"
+cutablePart:t = "airbrake_r"
+cutablePart:t = "airbrake_c"
+
+damageablePart:t = "fuse%d"
+
+damageablePart:t = "stab"
+damageablePart:t = "stab%d"
+
+damageablePart:t = "fin"
+damageablePart:t = "fin%d"
+
+// left wing
+
+// damaged part
+
+visual {
+
+  dependency {
+    dm:t = "wing_l_dm"
+    dm:t = "wing1_l_dm"
+    dm:t = "wing2_l_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_l"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+  }
+}
+
+// cut - restore
+
+visual {
+  dependency {
+    dm:t = "wing_l_dm"
+    dm:t = "wing1_l_dm"
+    dm:t = "wing2_l_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "cuttingPlanes"
+      model:i = 1
+
+      planeIndex1:i = 0
+      plane1:p4 = 0, 0, 0, 1
+
+      planeIndex2:i = 3
+      plane2:p4 = 0, 0, 0, -1
+
+      planeIndex3:i = 4
+      plane3:p4 = 0, 0, 0, -1
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+}
+
+//cutting
+
+visual {
+  tag:i = 0
+
+  dm:t = "wing_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing_l_dm"
+      childDm:t = "wing1_l_dm"
+      childDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing0_l_from"
+        planeAnchorMax1:t = "emtr_break_wing0_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing0_l_to"
+        planeAnchorMax1:t = "emtr_break_wing0_l_from"
+
+        planeIndex2:i = 1
+        plane2:p4 = 0, 0, 0, 1
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        planeAnchor4:t = "emtr_break_wing_tail"
+        planeTmAxisIndex4:i = -1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 4
+        planeAnchor6:t = "emtr_break_wing_biplane"
+        planeAxis6:p3 = 0, -1, 0
+
+        planeIndex7:i = 5
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        plane8:p4 = 0, 0, 0, 1
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 1
+
+  dm:t = "wing_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing1_l_dm"
+      childDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing0_l_from"
+        planeAnchorMax1:t = "emtr_break_wing0_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 2
+
+  dm:t = "wing1_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing1_l_dm"
+      childDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing1_l_from"
+        planeAnchorMax1:t = "emtr_break_wing1_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing1_l_to"
+        planeAnchorMax1:t = "emtr_break_wing1_l_from"
+
+        planeIndex2:i = 1
+        plane2:p4 = 0, 0, 0, 1
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        planeAnchor4:t = "emtr_break_wing_tail"
+        planeTmAxisIndex4:i = -1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 4
+        planeAnchor6:t = "emtr_break_wing_biplane"
+        planeAxis6:p3 = 0, -1, 0
+
+        planeIndex7:i = 5
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        plane8:p4 = 0, 0, 0, 1
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 3
+
+  dm:t = "wing1_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing1_l_from"
+        planeAnchorMax1:t = "emtr_break_wing1_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 4
+
+  dm:t = "wing2_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing2_l_from"
+        planeAnchorMax1:t = "emtr_break_wing2_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing2_l_to"
+        planeAnchorMax1:t = "emtr_break_wing2_l_from"
+
+        planeIndex2:i = 1
+        plane2:p4 = 0, 0, 0, 1
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        planeAnchor4:t = "emtr_break_wing_tail"
+        planeTmAxisIndex4:i = -1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 4
+        planeAnchor6:t = "emtr_break_wing_biplane"
+        planeAxis6:p3 = 0, -1, 0
+
+        planeIndex7:i = 5
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        plane8:p4 = 0, 0, 0, 1
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 5
+
+  dm:t = "wing2_l_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing2_l_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 0
+        planeAnchor1:t = "emtr_break_wing2_l_from"
+        planeAnchorMax1:t = "emtr_break_wing2_l_to"
+
+        planeIndex2:i = 3
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 4
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+// cutting rules
+
+visual {
+  dependency {
+    dm:t = "wing1_l_dm"
+    dm:t = "wing2_l_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 0
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 0
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 1
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "wing2_l_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 2
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 2
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 3
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "wing_l_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 2
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 2
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 3
+      enabled:b = no
+    }
+  }
+}
+
+visual {
+  dm:t = "wing1_l_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 4
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 4
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 5
+      enabled:b = no
+    }
+  }
+}
+
+//right wing
+
+// damaged part
+
+visual {
+
+  dependency {
+    dm:t = "wing_r_dm"
+    dm:t = "wing1_r_dm"
+    dm:t = "wing2_r_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "wing_r"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+  }
+}
+
+// cut - restore
+
+visual {
+  dependency {
+    dm:t = "wing_r_dm"
+    dm:t = "wing1_r_dm"
+    dm:t = "wing2_r_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "cuttingPlanes"
+      model:i = 1
+
+      planeIndex1:i = 1
+      plane1:p4 = 0, 0, 0, 1
+
+      planeIndex2:i = 5
+      plane2:p4 = 0, 0, 0, -1
+
+      planeIndex3:i = 6
+      plane3:p4 = 0, 0, 0, -1
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+}
+
+// cutting
+
+visual {
+  tag:i = 6
+
+  dm:t = "wing_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing_r_dm"
+      childDm:t = "wing1_r_dm"
+      childDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing0_r_from"
+        planeAnchorMax1:t = "emtr_break_wing0_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        plane1:p4 = 0, 0, 0, 1
+
+        planeIndex2:i = 1
+        planeAnchor2:t = "emtr_break_wing0_r_to"
+        planeAnchorMax2:t = "emtr_break_wing0_r_from"
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        plane4:p4 = 0, 0, 0, 1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 5
+        planeAnchor6:t = "emtr_break_wing_tail"
+        planeTmAxisIndex6:i = -1
+
+        planeIndex7:i = 6
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        planeAnchor8:t = "emtr_break_wing_biplane"
+        planeAxis8:p3 = 0, -1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 7
+
+  dm:t = "wing_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing_r_dm"
+      childDm:t = "wing1_r_dm"
+      childDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing0_r_from"
+        planeAnchorMax1:t = "emtr_break_wing0_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 8
+
+  dm:t = "wing1_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing1_r_dm"
+      childDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing1_r_from"
+        planeAnchorMax1:t = "emtr_break_wing1_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        plane1:p4 = 0, 0, 0, 1
+
+        planeIndex2:i = 1
+        planeAnchor2:t = "emtr_break_wing1_r_to"
+        planeAnchorMax2:t = "emtr_break_wing1_r_from"
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        plane4:p4 = 0, 0, 0, 1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 5
+        planeAnchor6:t = "emtr_break_wing_tail"
+        planeTmAxisIndex6:i = -1
+
+        planeIndex7:i = 6
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        planeAnchor8:t = "emtr_break_wing_biplane"
+        planeAxis8:p3 = 0, -1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 9
+
+  dm:t = "wing1_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing1_r_dm"
+      childDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing1_r_from"
+        planeAnchorMax1:t = "emtr_break_wing1_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 10
+
+  dm:t = "wing2_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing2_r_from"
+        planeAnchorMax1:t = "emtr_break_wing2_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        plane1:p4 = 0, 0, 0, 1
+
+        planeIndex2:i = 1
+        planeAnchor2:t = "emtr_break_wing2_r_to"
+        planeAnchorMax2:t = "emtr_break_wing2_r_from"
+
+        planeIndex3:i = 2
+        plane3:p4 = 0, 0, 0, 1
+
+        planeIndex4:i = 3
+        plane4:p4 = 0, 0, 0, 1
+
+        planeIndex5:i = 4
+        planeAnchor5:t = "emtr_break_wing_tail"
+        planeTmAxisIndex5:i = -1
+
+        planeIndex6:i = 5
+        plane6:p4 = 0, 0, 0, 1
+
+        planeIndex7:i = 6
+        plane7:p4 = 0, 0, 0, 1
+
+        planeIndex8:i = 6
+        planeAnchor8:t = "emtr_break_wing_biplane"
+        planeAxis8:p3 = 0, -1, 0
+      }
+    }
+  }
+}
+
+visual {
+  tag:i = 11
+
+  dm:t = "wing2_r_dm"
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "wing2_r_dm"
+
+      massCenter:p3 = 0.5, 0.5, 0.375
+      attachPoint:p3 = 0.25, 0.0, 1.0
+
+      modelCuttingPlanes {
+        planeIndex1:i = 1
+        planeAnchor1:t = "emtr_break_wing2_r_from"
+        planeAnchorMax1:t = "emtr_break_wing2_r_to"
+
+        planeIndex2:i = 5
+        planeAnchor2:t = "emtr_break_wing_tail"
+        planeTmAxisIndex2:i = 1
+
+        planeIndex3:i = 6
+        planeAnchor3:t = "emtr_break_wing_biplane"
+        planeAxis3:p3 = 0, 1, 0
+      }
+    }
+  }
+}
+
+// cutting rules
+
+visual {
+  dependency {
+    dm:t = "wing1_r_dm"
+    dm:t = "wing2_r_dm"
+    type:t = "min"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 6
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 7
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 6
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 7
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "wing2_r_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 8
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 9
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 8
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 9
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "wing_r_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 8
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 9
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 8
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 9
+      enabled:b = no
+    }
+  }
+}
+
+visual {
+  dm:t = "wing1_r_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      type:t = "switchTag"
+      tag:i = 10
+      enabled:b = yes
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 11
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+    effect {
+      type:t = "switchTag"
+      tag:i = 10
+      enabled:b = no
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 11
+      enabled:b = no
+    }
+  }
+}
+
+// tail
+
+visual {
+  dm:t = "tail_dm"
+
+  state {
+    state:t = "normal"
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      type:t = "cuttingPlanes"
+      model:i = 1
+
+      planeIndex1:i = 2
+      plane1:p4 = 0, 0, 0, 1
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 12
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "normal"
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked_smoke"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "tail_smoke"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+  state {
+    state:t = "damaged"
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      extended:b = yes
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked_smoke"
+      emitter:i = 2
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "tail_smoke"
+      emitter:i = 0
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "tail_dm"
+      childDm:t = "stab_dm"
+      childDm:t = "stab1_dm"
+      childDm:t = "stab2_dm"
+      childDm:t = "fin_dm"
+      childDm:t = "fin1_dm"
+      childDm:t = "fin2_dm"
+
+      massCenter:p3 = 0.25, 0.5, 0.5
+      attachPoint:p3 = 1.0, 0.5, 0.5
+
+      modelCuttingPlanes {
+        planeIndex1:i = 2
+        planeAnchor1:t = "emtr_break_tail_from"
+        planeAnchorMax1:t = "emtr_break_tail_to"
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        plane1:p4 = 0, 0, 0, 1
+
+        planeIndex2:i = 1
+        plane2:p4 = 0, 0, 0, 1
+
+        planeIndex3:i = 2
+        planeAnchor3:t = "emtr_break_tail_to"
+        planeAnchorMax3:t = "emtr_break_tail_from"
+
+        planeIndex4:i = 3
+        plane4:p4 = 0, 0, 0, 1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 5
+        plane6:p4 = 0, 0, 0, 1
+
+        planeIndex7:i = 6
+        plane7:p4 = 0, 0, 0, 1
+      }
+    }
+    effect {
+      type:t = "switchTag"
+      tag:i = 12
+      enabled:b = no
+    }
+  }
+}
+
+visual {
+  tag:i = 12
+
+  dm:t = "fin_dm"
+
+  state {
+    state:t = "normal"
+
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      type:t = "cuttingPlanes"
+      model:i = 1
+
+      planeIndex1:i = 2
+      plane1:p4 = 0, 0, 0, 1
+    }
+  }
+
+  state {
+    state:t = "normal"
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked_smoke"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "tail_smoke"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      part:t = "fin"
+      model:i = 1
+      type:t = "visibility"
+      extended:b = yes
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "wrecked_smoke"
+      emitter:i = 2
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "tail"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "tail_smoke"
+      emitter:i = 0
+      enabled:b = yes
+    }
+    effect {
+      part:t = "tail"
+      model:i = 1
+      type:t = "break"
+
+      rootDm:t = "fin_dm"
+      childDm:t = "rudder_dm"
+
+      massCenter:p3 = 0.25, 0.5, 0.5
+      attachPoint:p3 = 1.0, 0.5, 0.5
+
+      modelCuttingPlanes {
+        planeIndex1:i = 2
+        planeAnchor1:t = "emtr_break_tail_from"
+        planeAnchorMax1:t = "emtr_break_tail_to"
+      }
+
+      partCuttingPlanes {
+        planeIndex1:i = 0
+        plane1:p4 = 0, 0, 0, 1
+
+        planeIndex2:i = 1
+        plane2:p4 = 0, 0, 0, 1
+
+        planeIndex3:i = 2
+        planeAnchor3:t = "emtr_break_tail_to"
+        planeAnchorMax3:t = "emtr_break_tail_from"
+
+        planeIndex4:i = 3
+        plane4:p4 = 0, 0, 0, 1
+
+        planeIndex5:i = 4
+        plane5:p4 = 0, 0, 0, 1
+
+        planeIndex6:i = 5
+        plane6:p4 = 0, 0, 0, 1
+
+        planeIndex7:i = 6
+        plane7:p4 = 0, 0, 0, 1
+      }
+    }
+  }
+}
+
+visual {
+  dm:t = "wing_l_dm"
+  dm:t = "wing1_l_dm"
+  dm:t = "wing2_l_dm"
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      part:t = "wing_l"
+      model:i = 1
+      type:t = "visibility"
+      extended:b = yes
+      enabled:b = no
+    }
+  }
+}
+
+visual {
+  dm:t = "wing_r_dm"
+  dm:t = "wing1_r_dm"
+  dm:t = "wing2_r_dm"
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      part:t = "wing_r"
+      model:i = 1
+      type:t = "visibility"
+      extended:b = yes
+      enabled:b = no
+    }
+  }
+}
+
+visual {
+  dependency {
+    dm:t = "fuse_dm"
+  }
+  dependency {
+    dependency {
+      dm:t = "wing_l_dm"
+      dm:t = "wing1_l_dm"
+      dm:t = "wing2_l_dm"
+      dm:t = "wing_r_dm"
+      dm:t = "wing1_r_dm"
+      dm:t = "wing2_r_dm"
+      type:t = "min"
+    }
+    type:t = "shift_state_down"
+  }
+  type:t = "min"
+
+  state {
+    state:t = "normal"
+
+    effect {
+      part:t = "fuse"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    effect {
+      part:t = "fuse"
+      model:i = 0
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 2
+      type:t = "visibility"
+      enabled:b = no
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 1
+      type:t = "visibility"
+      enabled:b = yes
+    }
+    effect {
+      part:t = "fuse"
+      model:i = 3
+      type:t = "visibility"
+      enabled:b = yes
+    }
+  }
+}
+
+//_dm_parts_to_visual_effects_engines_map.blk
+visual {
+  dm:t = "engine1_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 0
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 0
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 0
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 0
+      enabled:b = false
+    }
+  }
+}
+
+visual {
+  dm:t = "engine2_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 1
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 1
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 1
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 1
+      enabled:b = false
+    }
+  }
+}
+
+visual {
+  dm:t = "engine3_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 2
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 2
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 2
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 2
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 2
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 2
+      enabled:b = false
+    }
+  }
+}
+
+visual {
+  dm:t = "engine4_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 3
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 3
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 3
+      enabled:b = false
+    }
+  }
+}
+
+visual {
+  dm:t = "engine5_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 4
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 4
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 4
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 4
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 4
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 4
+      enabled:b = false
+    }
+  }
+}
+
+visual {
+  dm:t = "engine6_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "leak_water"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fuel_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_oil_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 5
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 5
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "engine_fire"
+      emitter:i = 5
+      enabled:b = yes
+    }
+    effect {
+      type:t = "particles"
+      particles:t = "engine_smoke"
+      emitter:i = 5
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      type:t = "propellerVisibility"
+      index:i = 5
+      enabled:b = false
+    }
+  }
+}
+
+
+//_dm_parts_to_visual_effects_oils_map.blk
+visual {
+  dm:t = "oil1_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil2_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil3_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 2
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil4_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil5_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 4
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil6_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 5
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil7_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 6
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 6
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil8_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 7
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 7
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil9_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 8
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 8
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil10_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 9
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 9
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil11_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 10
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 10
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "oil12_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 11
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_oil"
+
+    effect {
+      type:t = "particles"
+      particles:t = "oil_leak"
+      emitter:i = 11
+      enabled:b = yes
+    }
+  }
+}
+
+//_dm_parts_to_visual_effects_waters_map.blk
+visual {
+  dm:t = "water1_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "water2_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "water3_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 2
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "water4_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "water5_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 4
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "water6_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 5
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak_water"
+
+    effect {
+      type:t = "particles"
+      particles:t = "water_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+}
+
+//_dm_parts_to_visual_effects_fuel_tanks_map.blk
+visual {
+  dm:t = "tank1_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 0
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 0
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 0
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank2_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 1
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 1
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 1
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank3_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 2
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 2
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 2
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank4_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 3
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 3
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 3
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank5_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 4
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 4
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 4
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank6_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 5
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 5
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 5
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank7_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 6
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 6
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 6
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 6
+      enabled:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "tank8_dm"
+
+  state {
+    state:t = "normal"
+
+    deniedDamageEffect:t = "any"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 7
+      enabled:b = no
+    }
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 7
+      enabled:b = no
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "fire"
+    deniedDamageEffect:t = "expl"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_fire"
+      emitter:i = 7
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "damaged"
+
+    requiredDamageEffect:t = "leak"
+    deniedDamageEffect:t = "expl"
+    deniedDamageEffect:t = "fire"
+
+    effect {
+      type:t = "particles"
+      particles:t = "fuel_leak"
+      emitter:i = 7
+      enabled:b = yes
+    }
+  }
+}
+
+
+visual {
+  dm:t = "gear_l_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_l"
+      dm:t = "gear_l_dm"
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_l"
+      dm:t = "gear_l_dm"
+      enabled:b = no
+    }
+
+    effect {
+      model:i = 1
+      type:t = "cut"
+      part:t = "gear_l"
+      dm:t = "gear_l_dm"
+      multicut:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "gear_r_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_r"
+      dm:t = "gear_r_dm"
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_r"
+      dm:t = "gear_r_dm"
+      enabled:b = no
+    }
+
+    effect {
+      model:i = 1
+      type:t = "cut"
+      part:t = "gear_r"
+      dm:t = "gear_r_dm"
+      multicut:b = yes
+    }
+  }
+}
+
+visual {
+  dm:t = "gear_c_dm"
+
+  state {
+    state:t = "normal"
+    state:t = "damaged"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_c"
+      dm:t = "gear_c_dm"
+      enabled:b = yes
+    }
+  }
+
+  state {
+    state:t = "wrecked"
+
+    effect {
+      model:i = 0
+      type:t = "visibility"
+      part:t = "gear_c"
+      dm:t = "gear_c_dm"
+      enabled:b = no
+    }
+
+    effect {
+      model:i = 1
+      type:t = "cut"
+      part:t = "gear_c"
+      dm:t = "gear_c_dm"
+      multicut:b = yes
+    }
+  }
+}

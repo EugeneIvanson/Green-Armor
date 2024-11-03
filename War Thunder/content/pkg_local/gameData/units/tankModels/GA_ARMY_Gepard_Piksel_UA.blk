@@ -1,0 +1,33 @@
+include "#/develop/gameBase/gameData/units/tankModels/germ_flakpz_I_Gepard.blk"
+skin{
+name:t="GA_ARMY_Gepard_Piksel_UA"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Gepard_Piksel_UA\ger_camo_bronzegruen.dds"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Gepard_Piksel_UA\flakpz_i_gepard_body.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Gepard_Piksel_UA\flakpz_i_gepard_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Gepard_Piksel_UA\flakpz_i_gepard_gun.dds"
+  param:t="camo_skin_tex"
+}
+
+
+
+}

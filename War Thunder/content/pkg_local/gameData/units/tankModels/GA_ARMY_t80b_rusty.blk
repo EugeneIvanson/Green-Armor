@@ -1,0 +1,37 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_80b.blk"
+skin{
+
+name:t="GA_ARMY_t80b_rusty"
+
+set_tex{
+  from:t="t_80b_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80b_rusty\t_80b_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80b_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80b_rusty\t_80b_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80b_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80b_rusty\t_80b_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="era_kontakt_1_t_64_bv_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80b_rusty\era_kontakt_1_t_64_bv_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80b_tpv_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t80b_rusty\t_80b_tpv_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

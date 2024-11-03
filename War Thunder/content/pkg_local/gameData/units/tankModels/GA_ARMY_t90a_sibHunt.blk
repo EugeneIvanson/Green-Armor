@@ -1,0 +1,24 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_90a.blk"
+skin{
+
+name:t="GA_ARMY_t90a_sibHunt"
+
+set_tex{
+  from:t="t_90a_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90a_sibHunt\t_90a_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90a_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90a_sibHunt\t_90a_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90a_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90a_sibHunt\t_90a_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}
