@@ -1,0 +1,1328 @@
+// Alertovsk_sputnik_RU - гибридная карта с видом от спутника и нанесёнными дорогами на русском языке \ hybrid map with satellite view and mapped roads in Russian
+// Alertovsk_map_RU - классическая нарисовання карта в стиле гугл на русском языке \ classic drawn "Google map" in Russian
+// Alertovsk_map_UA - классическая нарисовання карта в стиле гугл на украинском \ classic drawn "Google map" in Ukrainian
+// Alertovsk_map_EN - классическая нарисовання карта в стиле гугл на английском \ classic drawn "Google map" in English
+// Alertovsk_map_CN - классическая нарисовання карта в стиле гугл на китайском  \ classic drawn "Google map" in Chinese
+
+// вставьте названание сюда, не забудьте про кавычки и .jpg \ paste the title here, don't forget the quotation marks and .jpg
+customLevelMap:t="levels\Alertovsk_sputnik_RU.jpg"
+geo{
+  latitude:r=48
+  longitude:r=44
+  year:i=1940
+  month:i=1
+  day:i=15
+}
+
+puddlesPowerScale:r=2.0
+puddlesSpread:r=1.0
+mandatoryLandquality:i=1
+mapCoord0:p2 = -4500, -4200  // m
+mapCoord1:p2 = 3692, 3992// m
+minAreaSize:p2 = 8192, 8192         // m
+
+tankMapCoord0:p2 = -4500, -4200// m
+tankMapCoord1:p2 = 3692, 3992 // m
+
+aiMapCoord0:p2 = -42768, -42768 // m
+aiMapCoord1:p2 = 42768, 42768   // m
+
+numBorderCellsXPos:i = 0
+numBorderCellsXNeg:i = 0
+numBorderCellsZPos:i = 0
+numBorderCellsZNeg:i = 0
+
+gridSteps:p2 = 3250, 3250
+vsmAngleThreshold:r = 20//angle, after which vsm disabled. 5degrees - diable evening+, 9degrees - disable morning+, 40 - day+
+
+weatherPreset:t = "gameData/environments/weather_preset_1.blk"
+weatherTypes:t = "gameData/environments/weather_types.blk"
+water_level:r=0
+
+
+weather {
+  cloudsOffsetBase:r = 100 //высота НА которую опускаются облака вдалеке
+  cloudsOffsetFrom:r = 20000 //радиус начиная с которого облака опускаются
+  cloudsOffsetTo:r = 40000 // радиус ДО которого опускаются облака
+
+  minCloudBaseKm:r = 0.4 // (в км)  ниже этой высоты облаков не будет точно.
+  minHazeBaseKm:r = -50 //ниже этой высоты основания хейза не будет. Логично иметь не ниже МИНИМАЛЬНОЙ высоты в уровне
+}
+
+micro_details{
+  micro_detail:t=microdetail_stone_a_tex_n*
+  micro_detail:t=microdetail_scan_gravel_a_tex_n*
+  micro_detail:t=microdetail_sand_a_tex_n*
+  micro_detail:t=microdetail_soil_a_tex_n*
+  micro_detail:t=microdetail_generic_granules_a_tex_n*
+  micro_detail:t=microdetail_grass_a_tex_n*
+  micro_detail:t=microdetail_forest_floor_a_tex_n*
+  micro_detail:t=microdetail_fabric_a_tex_n
+  micro_detail:t=microdetail_wood_b_tex_n
+  micro_detail:t=microdetail_metal_a_tex_n*
+  micro_detail:t=microdetail_snow_a_tex_n
+  micro_detail:t=microdetail_generic_granules_a_tex_n
+  land_micro_details_uv_scale:r=0.73
+}
+
+shader_vars{
+  water{
+
+    water_sparkles_mul:r=0.006    
+    water_sparkles_fade_from:r=1000
+    water_sparkles_fade_to:r=24000
+
+    water3d_min_fresnel:r=0.08  
+    water3d_max_fresnel:r=0.98
+    water3d_fresnel_power:r=7
+
+    water_reflection_color:c=255,248,229, 0  //255,248,229  184,224,245 в далеке  78,100,98   //green 227,255,255  //yellow sunny 255,248,229
+    water_surface_refraction_color:c=8,10,0,0 // 25,40,28,0 зелёный  35,50,38  1,30,8
+    water_color_tex_scale_x:r=18500
+    water_color_tex_scale_y:r=8000
+
+
+    
+    water_shore_blending_min_height:r=2
+    water_depth_to_opacity_exp_base:r=0.982
+    water_color:p4=0.18, 0.20, 0.21, 1
+                      
+  }
+}
+
+randomGrass
+{
+avg_fulda_detailed_biome_tex_d:t = "avg_fulda_fields_a_scatter_mask"
+  cireland_fields_village_tex:t = "cireland_fields_village_tex_m"
+  cireland_small_fields_tile:t = "small_fields_tile_tex_m"
+  khalkhin_gol_fields_e:t = "khalkhin_gol_fields_e_tex_m"
+  mozdok_detailed_forest:t = "stalingrad_forest_tex_m"
+
+  layer{
+    maskChannel:p4 = 0, 1, 1, 0
+    res:t ="grass_fill_a"
+    density:r = 10
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.2
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+
+    include ":/levels/grass_colors/_grass_color_fill_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+  layer{
+    maskChannel:p4 = 1, 0, 0, 0
+    res:t ="grass_fill_a"
+    density:r = 8
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.8
+    verMinScale:r = 0.9
+    windMul:r = 0.05
+
+    include ":/levels/grass_colors/_grass_color_fill_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 1, 0, 0, 0
+    res:t ="grass_reed_a"
+    density:r = 3
+    horScale:r = 1.2                      
+    horMinScale:r = 0.9
+    verScale:r = 1.2
+    verMinScale:r = 0.9
+    windMul:r = 0.05
+    radiusMul:r = 0.4
+
+  include ":/levels/grass_colors/_grass_color_reed_a.blk"
+  include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 1, 1, 0
+    res:t ="grass_sword_a"
+    density:r = 3
+    horScale:r = 1.2                      
+    horMinScale:r = 0.9
+    verScale:r = 1.2
+    verMinScale:r = 0.9
+    windMul:r = 0.05
+    radiusMul:r = 0.4
+
+    include ":/levels/grass_colors/_grass_color_sword_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 1, 0, 0
+    res:t ="grass_daisies_a"
+    density:r = 1
+    horScale:r = 1.2                      
+    horMinScale:r = 0.9
+    verScale:r = 1.2
+    verMinScale:r = 0.9
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_daisies_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 0, 1, 0
+    res:t ="grass_heather_a"
+    density:r = 5
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.2
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_heather_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 0, 1, 0
+    res:t ="grass_tavolga_a"
+    density:r = 3
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.2
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_tavolga_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 1, 0, 0
+    res:t ="grass_paigle_a"
+    density:r = 0.5
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.2
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_paigle_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 0, 1, 0, 0
+    res:t ="grass_tulip_a"
+    density:r = 0.3
+    horScale:r = 1.2                      
+    horMinScale:r = 0.5
+    verScale:r = 1.2
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_tulip_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 1, 0, 0, 0
+    res:t ="grass_wheat_a"
+    density:r = 6
+    horScale:r = 1.8                      
+    horMinScale:r = 0.9
+    verScale:r = 1.2
+    verMinScale:r = 0.8
+    windMul:r = 0.05
+    radiusMul:r = 0.3
+
+    include ":/levels/grass_colors/_grass_color_wheat_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+  layer{
+    maskChannel:p4 = 1, 1, 0, 0
+    res:t ="grass_simple_a"
+    density:r = 7
+    horScale:r = 1.2                      
+    horMinScale:r = 0.9
+    verScale:r = 1
+    verMinScale:r = 0.5
+    windMul:r = 0.05
+    radiusMul:r = 0.5
+
+    include ":/levels/grass_colors/_grass_color_simple_a.blk"
+    include ":/levels/grass_colors/_grass_color_lightness_warm.blk"
+  }
+
+}
+
+waterStub
+{
+  enable:b = true//default false
+  //minZ:r = -32768//default -infinit
+}
+
+water_3d
+{
+  magnitude1:r = 4
+  heightmapStep1:r = 2
+  speed1:p2 = -20, 0
+  magnitude2:r = 2
+  heightmapStep2:r = 1
+  speed2:p2 = -5, 5
+  LODCoefficient:r = 17
+  LODAddedTerm:r = 0
+  morphStart:r = 0.7
+  heightmap:t = "water_hm_a"
+  colorTex:t = "underocean_britain"
+  scaleTex:t = "underocean_scale"
+//  scaleTex:t = "wake_underocean_scale"
+  scaleTexCoord0:p2 = -32768, -32768 // m
+  scaleTexCoord1:p2 = 32768, 32768   // m
+
+  color:p3 = 0.5, 0.5, 0.5
+}
+
+overrideRiLodRange{
+tree_oak_larger_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_birch_larger_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_birch_larger_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_birch_larger_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_smaller_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_birch_smaller_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_birch_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_birch_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_bush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+
+dry_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_fall_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_fall_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_fall_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+dry_tree_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_larger_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_larger_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_smaller_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_smaller_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_oak_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_bush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_spruce_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_bush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_bush_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_bush_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_larger_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_larger_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_apple_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_dead_poplar_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_dead_poplar_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_fall_poplar_bush_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_bush_large_a{
+lod0: r=0
+lod1: r=0
+lod2: r=0
+lod3: r=0
+}
+
+tree_poplar_bush_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_bush_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_bush_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_poplar_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_a_secondlayer{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_b_secondlayer{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_c_secondlayer{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+bush_flowers_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cupressus_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cupressus_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cupressus_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cupressus_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cypress_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cypress_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cypress_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_cypress_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+
+tree_burnt_lush_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_lush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_lush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_lush_d{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_large_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_large_d{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_large_e{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_medium_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_medium_d{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_smaller_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_smaller_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+
+tree_burnt_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_small_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_stump_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_stump_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_burnt_stump_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_burnt_stump_d{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+dry_tree_burnt_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_burnt_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_burnt_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_burnt_d{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_burnt_f{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_bush_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+dry_tree_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+wood_village_fence_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+wood_village_fence_f{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+stone_fence_02{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+stone_fence_b_04{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+wood_village_fence_k{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+wood_village_fence_l{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+wood_village_fence_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_crimea_pine_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_crimea_pine_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_picea_engelmannii_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_picea_engelmannii_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_picea_engelmannii_small_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+tree_picea_engelmannii_small_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_picea_engelmannii_tall_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_picea_engelmannii_tall_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_fagus_hurtgen_pl_l_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_hurtgen_pl_l_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_hurtgen_pl_m_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_hurtgen_pl_m_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_hurtgen_tl_l_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_hurtgen_tl_l_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fagus_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+
+tree_poplar_bush_large_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+
+tree_poplar_bush_large_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_c{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_bush_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_medium_a{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+tree_fall_poplar_medium_b{
+lod0: r=3550.0
+lod1: r=6500.0
+lod2: r=8500.0
+lod3: r=12000.0
+}
+
+}

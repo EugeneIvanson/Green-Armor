@@ -1,0 +1,24 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_64_b_bv_body_c*"
+  to:t="t_64_b_bv_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="era_kontakt_1_t_64_bv_mount_c*"
+  to:t="era_kontakt_1_t_64_bv_mount.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_64_b_bv_gun_c*"
+  to:t="t_64_b_bv_gun.dds"
+  param:t="camo_skin_tex"
+}

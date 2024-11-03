@@ -1,0 +1,42 @@
+name:t="user"
+
+replace_tex{
+  from:t="uk_camo_very_dark_drab*"
+  to:t="uk_camo_very_dark_drab.tga"
+}
+
+set_tex{
+  from:t="challenger_1_body_c*"
+  to:t="challenger_1_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="challenger_mk_3_c*"
+  to:t="challenger_mk_3_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="challenger_1_turret_c*"
+  to:t="challenger_1_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="challenger_1_gun_c*"
+  to:t="challenger_1_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="challenger_1_mount_c*"
+  to:t="challenger_1_mount_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_l37a1_c*"
+  to:t="mg_l37a1.tga"
+  param:t="camo_skin_tex"
+}

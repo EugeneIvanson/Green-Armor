@@ -1,0 +1,36 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="ussr_camo_green.tga"
+}
+
+set_tex{
+  from:t="t_64_b_bv_body_c*"
+  to:t="t_64_b_bv_body.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_64_b_bv_turret_c*"
+  to:t="t_64_b_bv_turret.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_64_b_bv_gun_c*"
+  to:t="t_64_b_bv_gun.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="era_kontakt_1_t_64_bv_c*"
+  to:t="era_kontakt_1_t_64_bv.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="era_kontakt_1_t_64_bv_mount_c*"
+  to:t="era_kontakt_1_t_64_bv_mount.tga"
+  param:t="camo_skin_tex"
+}

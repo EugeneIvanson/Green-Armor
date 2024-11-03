@@ -1,0 +1,25 @@
+include "#/develop/gameBase/gameData/units/tankModels/germ_bmp_1_ddr.blk"
+skin{
+
+name:t="GA_ARMY_bmp1_piksel_UA_2"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_bmp1_piksel_UA\ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="bmp_1_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_bmp1_piksel_UA\bmp_1_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_1_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_bmp1_piksel_UA\bmp_1_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+
+}
+

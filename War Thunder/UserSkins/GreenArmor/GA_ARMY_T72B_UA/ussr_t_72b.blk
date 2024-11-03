@@ -1,0 +1,56 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_72b_body_c*"
+  to:t="t_72b_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_body_c*"
+  to:t="t_72b_body_c_set.dds"
+}
+
+replace_tex{
+  from:t="t_72b_body_n*"
+  to:t="t_72b_body_n.dds"
+}
+
+set_tex{
+  from:t="t_72b_turret_c*"
+  to:t="t_72b_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_turret_n*"
+  to:t="t_72b_turret_n.dds"
+}
+
+set_tex{
+  from:t="t_72b_gun_c*"
+  to:t="t_72b_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_72b_gun_n*"
+  to:t="t_72b_gun_n.dds"
+}
+
+set_tex{
+  from:t="mg_nsvt_mount_c*"
+  to:t="mg_nsvt_mount_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="mg_nsvt_mount_n*"
+  to:t="mg_nsvt_mount_n.dds"
+}
+

@@ -1,0 +1,24 @@
+name:t="user"
+
+replace_tex{
+  from:t="su_25sm3_c*"
+  to:t="su_25sm3_c.dds"
+}
+
+replace_tex{
+  from:t="su_25sm3_n*"
+  to:t="su_25sm3_n.dds"
+}
+
+
+
+replace_tex{
+  from:t="su_25sm3_pylon_c*"
+  to:t="su_25sm3_pylon_c.dds"
+}
+
+replace_tex{
+  from:t="su_25sm3_pylon_n*"
+  to:t="su_25sm3_pylon_n.dds"
+}
+

@@ -1,0 +1,49 @@
+model:t="Det3BTR82"
+subclass:t="fortification"
+dynCollisionGeom:b = true
+//hasExpl:b = false // наличие expl геометрии
+//hasDmg2:b = false // наличие Dmg2 геометрии
+//hasDmg2Collision:b = false
+hasDmg:b = true // наличие Dmg
+damageableByGun:b = true //повреждаемость от выстрелов
+expClass:t = "exp_zero" // класс по которому начисляется опыт и высвечивается оповещение об уничтожении объекта
+renderInWaterReflection:b = true // отражение объекта в воде
+toGround:b = true // расположение объекта по нормали лэндмеша
+forceFastPhysForAI:b = true // если в ресурсах отсутствует fastPhys, необходимо поставить true чтобы работала анимация
+useDestrPhysObj:b = true // наличие PhysObj
+substRI:b = true // создание rendInst остова
+//riDebris:t=”model_name” // Использование в качестве остова другую rendisnt модель
+
+damageCollisionMultiplier:r = 0.01 // Коэффициент пересчета импульса удара от коллизии при наезде (как легко будет рушиться)
+explosionImpulse:r = 100 // Импульс создаваемый взрывом при разрушении
+
+hasExpl:b = false
+
+
+DamageParts{
+
+formatVersion:i = 2 //tells to proccess parameters as tank ones
+/*
+oil_derrick{
+  armorClass:t = "RHA_tank";
+  body_dm {
+    armorThickness:r=10;
+    armorThrough:r=100;
+    hp:r = 40;}
+  } */
+}
+
+DamageEffects{
+  part{
+    name:t="body_dm"
+    onKill {expl:r = 1;}
+  }
+}
+
+timeToFire:r = 4
+
+explosion {
+  expl {
+    explosionEffectName:t = "ad_explosion_big"
+  }
+}

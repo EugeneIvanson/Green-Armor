@@ -1,0 +1,41 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_90m_2020.blk"
+
+skin{
+name:t="GA_ARMY_t90m_sasha"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\ussr_camo_green.tga"
+}
+
+set_tex{
+  from:t="t_90m_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\t_90m_body.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_add_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\t_90m_add_body.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="ussr_t_90m_phys_track_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\ussr_t_90m_phys_track.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\t_90m_turret.tga"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_sasha\t_90m_gun.tga"
+  param:t="camo_skin_tex"
+}
+
+}

@@ -1,0 +1,36 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_80uk_c*"
+  to:t="t_80uk_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80u_body_c*"
+  to:t="t_80u_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="era_kontakt_5_t_80u_c*"
+  to:t="era_kontakt_5_t_80u_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80u_gun_c*"
+  to:t="t_80u_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_mount_nsvt_t_80u_c*"
+  to:t="mg_mount_nsvt_t_80u.tga"
+  param:t="camo_skin_tex"
+}

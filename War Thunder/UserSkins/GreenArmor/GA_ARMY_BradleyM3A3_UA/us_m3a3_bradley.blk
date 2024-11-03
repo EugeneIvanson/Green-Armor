@@ -1,0 +1,21 @@
+name:t="user"
+
+
+set_tex{
+  from:t="m3a3_bradley_body_c*"
+  to:t="m3a3_bradley_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m3a3_bradley_turret_c*"
+  to:t="m3a3_bradley_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m3a3_bradley_gun_c*"
+  to:t="m3a3_bradley_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+

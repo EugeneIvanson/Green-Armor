@@ -1,0 +1,56 @@
+name:t="user"
+
+replace_tex{
+  from:t="bmp_2_body_n*"
+  to:t="Body4kn.dds"
+}
+
+replace_tex{
+  from:t="bmp_2_turret_n*"
+  to:t="Turret4kn.dds"
+}
+
+replace_tex{
+  from:t="bmp_2d_turret_addarmor_n*"
+  to:t="TurretAddOnN.dds"
+}
+
+replace_tex{
+  from:t="bmp_2_gun_n*"
+  to:t="Gun4kn.dds"
+}
+
+replace_tex{
+  from:t="bmp_2d_body_addarmor_n*"
+  to:t="BodyAddOnN.dds"
+}
+
+set_tex{
+  from:t="bmp_2_body_c*"
+  to:t="Body4k.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_2_turret_c*"
+  to:t="Turret4k.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_2_gun_c*"
+  to:t="Gun4k.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_2d_turret_addarmor_c*"
+  to:t="TurretAddOn.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_2d_body_addarmor_c*"
+  to:t="BodyAddOn.dds"
+  param:t="camo_skin_tex"
+}

@@ -1,0 +1,11 @@
+name:t="user"
+
+replace_tex{
+  from:t="su_25_c*"
+  to:t="su_25.dds"
+}
+
+replace_tex{
+  from:t="su_25_c_dmg*"
+  to:t="su_25_c_dmg.dds"
+}

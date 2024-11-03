@@ -1,0 +1,47 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="BGDark.dds"
+}
+
+set_tex{
+  from:t="t_80bvm_armor_c*"
+  to:t="t_80bvm_armor_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_body_c*"
+  to:t="t_80bvm_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_gun_c*"
+  to:t="t_80bvm_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_mount_nsvt_t_80_c*"
+  to:t="mg_mount_nsvt_t_80_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_80bvm_turret_c*"
+  to:t="t_80bvm_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="t_80bvm_armor_n*"
+  to:t="t_80bvm_armor_n.dds"
+}
+
+set_tex{
+  from:t="t_80bvm_armor_mod_c*"
+  to:t="t_80bvm_armor_mod_c.dds"
+  param:t="camo_skin_tex"
+}

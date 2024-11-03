@@ -1,0 +1,14 @@
+name:t="user"
+
+set_tex{
+  from:t="9p149_gun_c*"
+  to:t="9p149_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="9p149_body_c*"
+  to:t="9p149_body_c.dds"
+  param:t="camo_skin_tex"
+}
+

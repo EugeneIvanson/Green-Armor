@@ -1,0 +1,30 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_90m_2020.blk"
+
+skin{
+name:t="GA_ARMY_t90m_rus166"
+
+set_tex{
+  from:t="t_90m_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_rus166\t_90m_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_add_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_rus166\t_90m_add_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_rus166\t_90m_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90m_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_rus166\t_90m_gun.dds"
+  param:t="camo_skin_tex"
+}
+
+}

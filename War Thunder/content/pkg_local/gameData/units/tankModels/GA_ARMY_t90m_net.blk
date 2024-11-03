@@ -1,0 +1,51 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_90m_2020.blk"
+
+skin{
+name:t="GA_ARMY_t90m_net"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\ussr_camo_green.dds"
+}
+
+replace_tex{
+  from:t="t_90m_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_body_c.dds"
+}
+
+replace_tex{
+  from:t="t_90m_add_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_add_body_c.dds"
+}
+
+replace_tex{
+  from:t="t_90m_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_turret_c.dds"
+}
+
+replace_tex{
+  from:t="t_90m_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_gun_c.dds"
+}
+
+replace_tex{
+  from:t="t_90m_body_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_body_n.dds"
+}
+
+replace_tex{
+  from:t="t_90m_add_body_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_add_body_n.dds"
+}
+
+replace_tex{
+  from:t="t_90m_turret_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_turret_n.dds"
+}
+
+replace_tex{
+  from:t="t_90m_gun_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t90m_net\t_90m_gun_n.dds"
+}
+
+}

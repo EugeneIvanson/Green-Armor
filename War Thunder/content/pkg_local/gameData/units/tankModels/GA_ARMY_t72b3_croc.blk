@@ -1,0 +1,34 @@
+include "#/develop/gameBase/gameData/units/tankModels/ussr_t_72b3_2011.blk"
+skin{
+name:t="GA_ARMY_t72b3_croc"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_croc\ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="t_72b_1989_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_croc\t_72b_1989_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b_1989_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_croc\t_72b_1989_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b3_2011_2017_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_croc\t_72b3_2011_2017_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_72b_1989_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_t72b3_croc\t_72b_1989_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

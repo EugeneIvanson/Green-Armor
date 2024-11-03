@@ -1,0 +1,2757 @@
+imports{}
+triggers{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  SMOKE{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      periodicEvent{
+        time:r=1
+      }
+    }
+
+    conditions{}
+    actions{
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="tank_fire_big"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_aeroport02"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="land_crash_smoke"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_BACKGROUND"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="location_sand_wind_dense_composite_fx"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_aeroport00"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="fire_base_napalm_medium"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_aeroport01"
+        mustExist:b=yes
+      }
+    }
+
+    else_actions{}
+  }
+
+  hideMarks{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      initMission{}
+    }
+
+    conditions{}
+    actions{
+      unitSetProperties{
+        object:t="sqSMOKE_BACKGROUND"
+        stealthRadius:r=-1
+        forceVisibleOnMap:b=no
+      }
+
+      unitSetProperties{
+        object:t="sqSMOKE_aeroport00"
+        object:t="sqSMOKE_aeroport01"
+        object:t="sqSMOKE_aeroport02"
+        stealthRadius:r=-1
+        forceVisibleOnMap:b=no
+      }
+    }
+
+    else_actions{}
+  }
+}
+
+mission_objectives{
+  isCategory:b=yes
+  is_enabled:b=yes
+}
+
+variables{}
+dialogs{}
+airfields{}
+effects{}
+units{
+  squad{
+    name:t="sqSMOKE_aeroport00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1077.38, 131.864, -2967.42]]
+
+    props{
+      squad_members:t="SMOKEstr_56"
+      squad_members:t="SMOKEstr_57"
+      squad_members:t="SMOKEstr_58"
+      squad_members:t="SMOKEstr_59"
+      squad_members:t="SMOKEstr_60"
+      squad_members:t="SMOKEstr_61"
+      squad_members:t="SMOKEstr_62"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_56"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1071.23, 131.864, -2986.79]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_57"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1095.55, 131.864, -2854.87]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_58"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1216.18, 131.864, -2818.86]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_59"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1126.36, 131.864, -3109.74]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_60"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1427.89, 131.865, -2996.03]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_61"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1457.08, 132.054, -2755.92]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_62"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [900.549, 131.864, -3146.19]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_aeroport01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1087.45, 131.864, -2945.36]]
+
+    props{
+      squad_members:t="SMOKEstr_63"
+      squad_members:t="SMOKEstr_64"
+      squad_members:t="SMOKEstr_65"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_63"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1480.09, 131.864, -2750.37]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_64"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1123.01, 131.865, -3162.17]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_65"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [807.058, 131.898, -3007.7]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_aeroport02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1095.15, 131.864, -2925.78]]
+
+    props{
+      squad_members:t="SMOKEstr_66"
+      squad_members:t="SMOKEstr_67"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_66"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1519.61, 131.864, -2750.97]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_67"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1513.42, 131.864, -2751.98]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_BACKGROUND"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3805.29, 34.3374, 461.885]]
+
+    props{
+      squad_members:t="SMOKEstr_133"
+      squad_members:t="SMOKEstr_134"
+      squad_members:t="SMOKEstr_135"
+      squad_members:t="SMOKEstr_136"
+      squad_members:t="SMOKEstr_137"
+      squad_members:t="SMOKEstr_138"
+      squad_members:t="SMOKEstr_139"
+      squad_members:t="SMOKEstr_140"
+      squad_members:t="SMOKEstr_141"
+      squad_members:t="SMOKEstr_142"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_133"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4838.95, 28.8159, -1215.11]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_134"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5820.24, 28.8157, 495.474]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_135"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5836.44, 28.8162, 791.621]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_136"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5629.82, 28.8164, 623.936]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_137"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8904.32, 28.8171, -4313.97]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_138"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8564.03, 28.8167, -4561.25]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_139"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5184.1, 28.8167, -4058.07]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_140"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [4697.87, 28.8164, -6903.49]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_141"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [5160.59, 28.8164, -6971.65]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_142"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1070.25, 28.8169, -12542.5]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="tankModels_01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1081.59, 131.904, -2905.49]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_01"
+    tm:m=[[-0.229215, 0, 1.29995] [0, 1.32, 0] [-1.29995, 0, -0.229215] [1079.61, 131.865, -2902.44]]
+    unit_class:t="GA_SSOstand3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_02"
+    tm:m=[[1.17085, 0, 0.609508] [0, 1.32, 0] [-0.609508, 0, 1.17085] [1083.18, 131.865, -2903.78]]
+    unit_class:t="GA_SSOtouch1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_03"
+    tm:m=[[1.17085, 0, 0.609508] [0, 1.32, 0] [-0.609508, 0, 1.17085] [1080.22, 131.865, -2901.32]]
+    unit_class:t="GA_SSOsad1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_04"
+    tm:m=[[1.17085, 0, 0.609508] [0, 1.32, 0] [-0.609508, 0, 1.17085] [1084.5, 131.865, -2903.43]]
+    unit_class:t="GA_SSOfixing2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_09"
+    tm:m=[[-0.819152, 0, -0.573576] [0, 1, 0] [0.573576, 0, -0.819152] [1336.55, 131.904, -3075.73]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_10"
+    tm:m=[[1.30871, 0, -0.172295] [0, 1.32, 0] [0.172295, 0, 1.30871] [1339.91, 131.865, -3077.09]]
+    unit_class:t="GA_SSOtalking12"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_11"
+    tm:m=[[-0.609508, 0, -1.17085] [0, 1.32, 0] [1.17085, 0, -0.609508] [1346.15, 131.865, -3069.14]]
+    unit_class:t="GA_SSOstand23"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_12"
+    tm:m=[[-1.14315, 0, -0.66] [0, 1.32, 0] [0.66, 0, -1.14315] [1340.05, 131.865, -3078.37]]
+    unit_class:t="GA_SSOsad1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_08"
+    tm:m=[[-0.609508, 0, -1.17085] [0, 1.32, 0] [1.17085, 0, -0.609508] [1345.79, 131.865, -3068.09]]
+    unit_class:t="GA_SSOfixing2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_13"
+    tm:m=[[0.0436193, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436193] [1343.55, 131.904, -3064.5]]
+    unit_class:t="Kamaz5350_med"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_14"
+    tm:m=[[0.557856, 0, 1.19633] [0, 1.32, 0] [-1.19633, 0, 0.557856] [1340.82, 131.865, -3075.79]]
+    unit_class:t="GA_SoldatTextingRadio"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_22"
+    tm:m=[[2.98023e-08, 0, 1] [0, 1, 0] [-1, 0, 2.98023e-08] [1474.63, 131.758, -2871.29]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_23"
+    tm:m=[[-0.891779, 0, -0.973206] [0, 1.32, 0] [0.973206, 0, -0.891779] [1473.95, 131.746, -2880.32]]
+    unit_class:t="GA_SSOtalking12"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_24"
+    tm:m=[[-1.08128, 0, 0.757121] [0, 1.32, 0] [-0.757121, 0, -1.08128] [1472.6, 131.781, -2880.97]]
+    unit_class:t="GA_SSOstand4"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_25"
+    tm:m=[[1.28871, 0, -0.2857] [0, 1.32, 0] [0.2857, 0, 1.28871] [1473.36, 131.786, -2879.57]]
+    unit_class:t="GA_SSOstand1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_26"
+    tm:m=[[-0.609508, 0, 1.17085] [0, 1.32, 0] [-1.17085, 0, -0.609508] [1475.59, 131.735, -2883.25]]
+    unit_class:t="GA_SSOfixing2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_27"
+    tm:m=[[-0.843391, 0, 0.5373] [0, 1, 0] [-0.5373, 0, -0.843391] [1479.81, 131.462, -2883.47]]
+    unit_class:t="Kamaz5350"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_21"
+    tm:m=[[0.66, 0, -1.14315] [0, 1.32, 0] [1.14315, 0, 0.66] [1474.5, 131.76, -2881.81]]
+    unit_class:t="GA_SoldatSitting1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_28"
+    tm:m=[[-0.999048, 0, 0.0436195] [0, 1, 0] [-0.0436195, 0, -0.999048] [1475.61, 131.872, -2850.44]]
+    unit_class:t="Ural4320_Grad"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_29"
+    tm:m=[[-0.999048, 0, 0.0436195] [0, 1, 0] [-0.0436195, 0, -0.999048] [1478.83, 131.872, -2891.45]]
+    unit_class:t="Ural4320_tent"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{
+      structures_29_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1475.94, 131.734, -2891.79]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+          waitTime:r=33
+        }
+      }
+
+      structures_29_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1442.52, 131.865, -2893.43]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1413.71, 131.885, -2892.9]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1393.65, 132.109, -2902.36]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1380.25, 132.003, -2919.59]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1367.82, 131.992, -2957.4]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_07{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1371.35, 131.857, -2997.04]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_08{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1381.46, 131.857, -3014.74]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_29_wp_09{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1389.42, 131.857, -3058.31]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  tankModels{
+    name:t="structures_38"
+    tm:m=[[0.965926, 0, -0.258819] [0, 1, 0] [0.258819, 0, 0.965926] [1196.34, 132.424, -2497.28]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_39"
+    tm:m=[[0.84848, 0, 1.01118] [0, 1.32, 0] [-1.01118, 0, 0.84848] [1203.7, 132.59, -2494.18]]
+    unit_class:t="GA_SSOtalking12"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_40"
+    tm:m=[[1.11328, 0, -0.709236] [0, 1.32, 0] [0.709236, 0, 1.11328] [1205.03, 132.634, -2493.48]]
+    unit_class:t="GA_SSOstand4"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_41"
+    tm:m=[[-1.29995, 0, 0.229216] [0, 1.32, 0] [-0.229216, 0, -1.29995] [1204.33, 132.615, -2494.91]]
+    unit_class:t="GA_SSOstand1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_42"
+    tm:m=[[0.66, 0, -1.14315] [0, 1.32, 0] [1.14315, 0, 0.66] [1202.43, 132.54, -2491.68]]
+    unit_class:t="GA_SSOfixing2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_43"
+    tm:m=[[0.866025, 0, -0.5] [0, 1, 0] [0.5, 0, 0.866025] [1200, 132.51, -2492.34]]
+    unit_class:t="GasTigerArbalet"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="structures_44"
+    tm:m=[[-0.709235, 0, 1.11328] [0, 1.32, 0] [-1.11328, 0, -0.709235] [1203.09, 132.565, -2492.72]]
+    unit_class:t="GA_SoldatSitting1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_37"
+    tm:m=[[1, 0, -2.57045e-07] [0, 1, 0] [2.57045e-07, 0, 1] [1194.89, 132.539, -2485.38]]
+    unit_class:t="Ural4320_tent"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_45"
+    tm:m=[[-0.34202, 0, -0.939693] [0, 1, 0] [0.939693, 0, -0.34202] [1225.44, 133.463, -2428.69]]
+    unit_class:t="Ural4320_tent"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_46"
+    tm:m=[[0.793353, 0, 0.608761] [0, 1, 0] [-0.608761, 0, 0.793353] [1187.39, 132.287, -2549.04]]
+    unit_class:t="Ural4320_tent"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="structures_47"
+    tm:m=[[0.866025, 0, -0.5] [0, 1, 0] [0.5, 0, 0.866025] [1196.02, 132.51, -2479.78]]
+    unit_class:t="GasTigerArbalet"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{
+      structures_47_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1198.3, 132.563, -2481.05]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+          waitTime:r=10
+        }
+      }
+
+      structures_47_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1252.42, 133.174, -2508.29]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1314.89, 132.303, -2522.78]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1343.62, 132.303, -2549.23]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1360.99, 132.32, -2595.41]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1366.37, 130.907, -2702.72]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_07{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1368.2, 132.025, -2794.86]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_08{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1379.05, 132.112, -2927.59]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_09{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1394.84, 131.859, -2974.09]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_10{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1427.79, 131.865, -3076.66]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_11{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1448.52, 131.865, -3106.6]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_47_wp_12{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1463.76, 131.865, -3135.18]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  tankModels{
+    name:t="structures_15"
+    tm:m=[[-0.819152, 0, -0.573576] [0, 1, 0] [0.573576, 0, -0.819152] [1335.26, 131.904, -3069.1]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{
+      structures_15_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1330.65, 131.857, -3071.96]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1321.62, 131.869, -3083.48]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1299.32, 131.926, -3122.82]]
+
+        props{
+          speed:r=30
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1262.5, 132.19, -3155.83]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1173.59, 131.894, -3201.75]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1116.03, 131.855, -3235.85]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_07{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1064.22, 131.883, -3249.43]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_08{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1047.29, 131.876, -3242.88]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_09{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1017.38, 131.127, -3231.84]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_10{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [980.262, 131.85, -3216.17]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_11{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [964.27, 131.871, -3203.86]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_12{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [955.856, 131.865, -3181.8]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_13{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [953.299, 131.865, -3143.53]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_14{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [959.242, 131.865, -3115.75]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_15{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [978.234, 131.865, -3094.26]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_16{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1007.67, 131.865, -3078.18]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_17{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1022.96, 131.865, -3057.6]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_18{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1067.43, 131.986, -2972.19]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_19{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1097.32, 131.997, -2913.88]]
+
+        props{
+          speed:r=300
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_20{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1104.5, 131.877, -2884.56]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      structures_15_wp_21{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1103.05, 131.865, -2872.07]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="armada_01"
+    tm:m=[[0.0871557, 0, 0.996195] [0, 1, 0] [-0.996195, 0, 0.0871557] [1520.63, 437.135, -5681.41]]
+    unit_class:t="su_25sm3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=2
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      armada_01_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1439.87, 515.287, -208.848]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-746.944, 485.862, 1599.57]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1186.85, 431.498, -1351.07]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [2339.12, 524.543, -3823.46]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [4642.9, 631.423, -2108.14]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [5534.98, 502.564, 7740.63]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_07{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [38.0089, 418.169, -6538.32]]
+
+        props{
+          speed:r=300
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_08{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1710.7, 409.107, -6274.14]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_09{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1136.91, 423.186, -1851.34]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_10{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [2021.19, 492.128, 314.775]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_11{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [4472.31, 631.466, -1092.05]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_01_wp_12{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-258.825, 435.111, -3643.57]]
+
+        props{
+          speed:r=500
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  tankModels{
+    name:t="tankModels_02"
+    tm:m=[[0.382683, 0, 0.92388] [0, 1, 0] [-0.92388, 0, 0.382683] [1017.32, 131.904, -2958.17]]
+    unit_class:t="Kamaz5350_med"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{
+      tankModels_02_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1018.38, 131.865, -2955.17]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+          waitTime:r=25
+        }
+      }
+
+      tankModels_02_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1047.12, 131.865, -2896.29]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1092.99, 131.873, -2812.12]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1104.77, 131.766, -2778.63]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1126.87, 131.805, -2735.5]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1145.8, 131.502, -2728.08]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_07{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1170.96, 130.987, -2689.91]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_08{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1190.05, 131.569, -2648.77]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_09{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1197.25, 132.55, -2610]]
+
+        props{
+          speed:r=30
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_10{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1206.7, 132.499, -2577.05]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_11{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1206.16, 132.63, -2566.57]]
+
+        props{
+          speed:r=33
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_12{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1201.51, 132.375, -2551.34]]
+
+        props{
+          speed:r=22
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      tankModels_02_wp_13{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1195.28, 132.287, -2542.55]]
+
+        props{
+          speed:r=11
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+}
+
+areas{}
+objLayers{
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+}
+
+wayPoints{}

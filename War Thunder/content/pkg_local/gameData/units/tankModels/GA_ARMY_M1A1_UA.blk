@@ -1,0 +1,70 @@
+include "#/develop/gameBase/gameData/units/tankModels/us_m1a1_abrams.blk"
+skin{
+name:t="GA_ARMY_M1A1_UA"
+
+replace_tex{
+  from:t="us_camo_olive*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\us_camo_modern_green.tga"
+}
+
+set_tex{
+  from:t="m1a1_abrams_body_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\m1a1_abrams_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_turret_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\m1a1_abrams_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_m240_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\mg_m240_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_ammo_box_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\m1a1_abrams_ammo_box_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_gun_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\m1a1_abrams_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="water_barrel_a_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\water_barrel_a_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bag_roll_b_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\bag_roll_b_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="attch_m1a1_abrams_track_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\attch_m1a1_abrams_track_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bag_a_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\bag_a_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_body_add_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_M1A1_UA\m1a1_abrams_body_add_c.dds"
+  param:t="camo_skin_tex"
+}
+
+}

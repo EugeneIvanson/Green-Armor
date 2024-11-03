@@ -1,0 +1,8456 @@
+// GA_TestDrive missions: 
+//
+// Player_veh00 - gaz66
+// Player_veh01 - GasTiger (no machine gun)
+// Player_veh02 - GasTigerArbalet (with machine gun)
+// Player_veh03 - Kamaz5350
+// Player_veh04 - Kamaz5350_gas
+// Player_veh05 - Kamaz5350_med 
+// (THIS) Player_veh06 - Kamaz5350_open 
+// Player_veh07 - Ural4320_grad
+// Player_veh08 - Ural4320_load
+// Player_veh09 - Ural4320_open
+// Player_veh10 - Ural4320_s60
+// Player_veh11 - Ural4320_tent
+// Player_veh12 - Chekan
+// Player_veh13 - Lancet
+// Player_veh14 - Mavic
+// Player_veh15 - Fpv_1
+//  
+// Поменяйте технику игрока, вставив название (Player_veh0*) в поле wing вместо аналогичной записи.
+// Поменяйте технику и её камуфляж, выбрав название техники (найдите их по пути War Thunder\content\pkg_local\gameData\units\tankModels)
+// (например, не GasTigerArbalet, а GasTigerArbalet_camo), и вставив это название в поле unit_class:t="***" того юнита "Player_veh**",
+// который активен в миссии (вписан в поле wing:t="Player_veh**". 
+//
+// Change the player's vehicle by inserting the name (Player_veh0*) in the wing field instead of a similar line.
+// Change the vehicle and its camouflage by selecting the name of the technique (find them along the way War Thunder\content\pkg_local\gameData\units\tankModels)
+// (for example, not GasTigerArbalet, but GasTigerArbalet_camo), and inserting this name into the unit_class:t="***" field 
+// of the unit "Player_veh**" that is active in the mission (entered in the wing:t="Player_veh**" line).
+//
+
+selected_tag:t=""
+bin_dump_file:t=""
+
+mission_settings{
+  player{
+    army:i=1
+    wing:t="Player_veh06"
+  }
+
+  player_teamB{
+    army:i=2
+  }
+
+  mission{
+    type:t="singleMission"
+    level:t="levels/alertovsk.bin"
+    environment:t="Day"
+    weather:t="clear"
+    locName:t="GA__TestDrive_Kamaz5350_open"
+    locDesc:t="Test drive mission. To choose a different vehicle for the game, go to the warthunder\userMissions\greenArmor folder and open this mission file (GA__TestDrive), view the instructions in it"
+    showTacticalMapCellSize:b=yes
+    campaign:t="Green_Armor"
+  }
+
+  briefing{
+    place_loc:t="Alertovsk region"
+    date_loc:t="**/**/****"
+    objective_loc:t="Test drive mission. To choose a different vehicle for the game, go to the warthunder\userMissions\greenArmor folder and open this mission file (GA__TestDrive), view the instructions in it"
+    music:t="naval/effects/telegraph_ring"
+  }
+}
+
+imports{}
+triggers{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  SMOKE{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      periodicEvent{
+        time:r=1
+      }
+    }
+
+    conditions{}
+    actions{
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="tank_fire_big"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_alerstal01"
+        target:t="sqSMOKE_kamenskoe02"
+        target:t="sqSMOKE_vishgorka03"
+        target:t="sqSMOKE_aeroport02"
+        target:t="sqSMOKE_Alertovsk01"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="land_crash_smoke"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_alerstal02"
+        target:t="sqSMOKE_Pavlovka_03"
+        target:t="sqSMOKE_bolotnyavka02"
+        target:t="sqSMOKE_BACKGROUND"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="location_sand_wind_dense_composite_fx"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_alerstal03"
+        target:t="sqSMOKE_kamenskoe03"
+        target:t="sqSMOKE_Pavlovka_01"
+        target:t="sqSMOKE_Roads01"
+        target:t="sqSMOKE_vishgorka02"
+        target:t="sqSMOKE_aeroport00"
+        target:t="sqSMOKE_burnedCity00"
+        target:t="sqSMOKE_bugurov00"
+        target:t="sqSMOKE_bolotnyavka00"
+        target:t="sqSMOKE_Alertovsk00"
+        mustExist:b=yes
+      }
+
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="fire_base_napalm_medium"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_kamenskoe01"
+        target:t="sqSMOKE_Pavlovka_02"
+        target:t="sqSMOKE_vishgorka01"
+        target:t="sqSMOKE_aeroport01"
+        target:t="sqSMOKE_burnedCity01"
+        target:t="sqSMOKE_bugurov01"
+        target:t="sqSMOKE_bolotnyavka01"
+        target:t="sqSMOKE_Alertovsk02"
+        mustExist:b=yes
+      }
+    }
+
+    else_actions{}
+  }
+
+  hideMarks{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      initMission{}
+    }
+
+    conditions{}
+    actions{
+      unitSetProperties{
+        object:t="sqSMOKE_alerstal01"
+        object:t="sqSMOKE_alerstal02"
+        object:t="sqSMOKE_alerstal03"
+        object:t="sqSMOKE_kamenskoe01"
+        object:t="sqSMOKE_kamenskoe02"
+        object:t="sqSMOKE_kamenskoe03"
+        object:t="sqSMOKE_vishgorka01"
+        object:t="sqSMOKE_vishgorka02"
+        object:t="sqSMOKE_vishgorka03"
+        object:t="sqSMOKE_BACKGROUND"
+        object:t="sqSMOKE_Alertovsk02"
+        object:t="sqSMOKE_Alertovsk01"
+        stealthRadius:r=-1
+        forceVisibleOnMap:b=no
+      }
+
+      unitSetProperties{
+        object:t="sqSMOKE_bolotnyavka01"
+        object:t="sqSMOKE_bolotnyavka02"
+        object:t="sqSMOKE_Alertovsk00"
+        object:t="sqSMOKE_bolotnyavka00"
+        object:t="sqSMOKE_aeroport00"
+        object:t="sqSMOKE_aeroport01"
+        object:t="sqSMOKE_aeroport02"
+        object:t="sqSMOKE_burnedCity00"
+        object:t="sqSMOKE_burnedCity01"
+        object:t="sqSMOKE_bugurov00"
+        object:t="sqSMOKE_bugurov01"
+        object:t="squad_player"
+        stealthRadius:r=-1
+        forceVisibleOnMap:b=no
+      }
+
+      unitSetProperties{
+        object:t="squad_signs"
+        stealthRadius:r=-1
+      }
+    }
+
+    else_actions{}
+  }
+
+  TestDrive{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    sound{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_sound"
+        }
+      }
+
+      actions{
+        wait{
+          time:r=4
+        }
+
+        playSound{
+          name:t="naval/effects/repair"
+          loop:b=no
+          start:b=yes
+        }
+      }
+
+      else_actions{}
+    }
+
+    Text{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        addTextToUnit{
+          langID:t="Alerstal"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_00"
+        }
+
+        addTextToUnit{
+          langID:t="Kamenskoye"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_01"
+        }
+
+        addTextToUnit{
+          langID:t="Vishgorka"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_02"
+        }
+
+        addTextToUnit{
+          langID:t="Pavlovka"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_03"
+        }
+
+        addTextToUnit{
+          langID:t="Bugurov"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_04"
+        }
+
+        addTextToUnit{
+          langID:t="Bolotnyavka"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_05"
+        }
+
+        addTextToUnit{
+          langID:t="Alertovsk"
+          fontSize:t="small_accented"
+          set:b=yes
+          target_marking:i=0
+          target:t="teleport_text_06"
+        }
+      }
+
+      else_actions{}
+    }
+
+    out{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_out_02"
+          target:t="area_out_01"
+          target:t="area_out_03"
+          target:t="area_out_04"
+        }
+      }
+
+      actions{
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport00{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_00"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_00"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport01{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_01"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_01"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport02{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_02"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_02"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport03{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_03"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_03"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport04{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_04"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_04"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport05{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_05"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_05"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Teleport06{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_tp_06"
+        }
+      }
+
+      actions{
+        unitMoveTo{
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          target:t="area_to_tp_06"
+          target_var_name:t=""
+          target_var_comp_op:t="equal"
+          target_var_value:i=0
+          target_marking:i=0
+          waypointReachedDist:r=10
+          recalculatePathDist:r=-1
+          follow_target:b=no
+          fastClimb:b=no
+          destTimeMode:b=no
+          teleportHeightType:t="absolute"
+          useUnitHeightForTele:b=yes
+          shouldKeepFormation:b=no
+          teleportHeightValue:r=1000
+          horizontalDirectionForTeleport:b=yes
+          object:t="squad_player"
+          move_type:t="teleport"
+          useForTriggerFiltered:b=yes
+        }
+
+        triggerEnable{
+          target:t="Text_delete"
+        }
+      }
+
+      else_actions{}
+    }
+
+    Text_delete{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        addTextToUnit{
+          langID:t="Alerstal"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_00"
+        }
+
+        addTextToUnit{
+          langID:t="Kamenskoye"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_01"
+        }
+
+        addTextToUnit{
+          langID:t="Vishgorka"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_02"
+        }
+
+        addTextToUnit{
+          langID:t="Pavlovka"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_03"
+        }
+
+        addTextToUnit{
+          langID:t="Bugurov"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_04"
+        }
+
+        addTextToUnit{
+          langID:t="Bolotnyavka"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_05"
+        }
+
+        addTextToUnit{
+          langID:t="Alertovsk"
+          fontSize:t="small_accented"
+          set:b=no
+          target_marking:i=0
+          target:t="teleport_text_06"
+        }
+
+        unitPutToSleep{
+          target:t="teleport_text_00"
+          target:t="teleport_text_01"
+          target:t="teleport_text_02"
+          target:t="teleport_text_03"
+          target:t="teleport_text_04"
+          target:t="teleport_text_05"
+          target:t="teleport_text_06"
+        }
+      }
+
+      else_actions{}
+    }
+  }
+
+  Obj{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    Alerstal{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_alerstal"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Alerstal"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Orekhovka{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_orekhovka"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Orekhovka"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Volkovo{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_volkovo"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Volkovo"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Kamenskoye{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_kamenskoye"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Kamenskoye"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Pavlovka{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_pavlovka"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Pavlovka"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Airfield{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_airfield"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Airfield"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Vishgorka{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_vishgorka"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Vishgorka"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Bugurov{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_bugurov"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Bugurov"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Bolotnyavka{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_bolotnyavka"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Bolotnyavka"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+
+    Alertovsk{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenInArea{
+          math:t="3D"
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          check_objects:t="any"
+          object:t="squad_player"
+          target:t="area_alertovsk"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Visit Alertovsk"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+      }
+
+      else_actions{}
+    }
+  }
+}
+
+mission_objectives{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  "Visit Alerstal"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Orekhovka"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Volkovo"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Kamenskoye"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Bugurov"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Vishgorka"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Pavlovka"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Bolotnyavka"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Alertovsk"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Visit Airfield"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Explore the location without enemies and visit all the places. To choose a different vehicle for the game, go to the warthunder\userMissions\green Armor folder and open this mission file (GA__TestDrive), view the instructions in it"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=no
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+}
+
+variables{}
+dialogs{}
+airfields{}
+effects{}
+units{
+  tankModels{
+    name:t="Player_veh00"
+    tm:m=[[0.707107, 0, 0.707107] [0, 1, 0] [-0.707107, 0, 0.707107] [-1176.1, 84.6926, 1378.09]]
+    unit_class:t="gas66"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_00"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-364.336, 82.9932, 2507.39]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_alerstal01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-40.9509, 85.9113, 2336.86]]
+
+    props{
+      squad_members:t="SMOKEstr_00"
+      squad_members:t="SMOKEstr_01"
+      squad_members:t="SMOKEstr_02"
+      squad_members:t="SMOKEstr_03"
+      squad_members:t="SMOKEstr_04"
+      squad_members:t="SMOKEstr_05"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_alerstal02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [25.9579, 85.3967, 2333.32]]
+
+    props{
+      squad_members:t="SMOKEstr_06"
+      squad_members:t="SMOKEstr_07"
+      squad_members:t="SMOKEstr_08"
+      squad_members:t="SMOKEstr_09"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_alerstal03"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [92.8667, 84.9975, 2329.78]]
+
+    props{
+      squad_members:t="SMOKEstr_10"
+      squad_members:t="SMOKEstr_11"
+      squad_members:t="SMOKEstr_12"
+      squad_members:t="SMOKEstr_13"
+      squad_members:t="SMOKEstr_14"
+      squad_members:t="SMOKEstr_15"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_kamenskoe01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1533.32, 85.9111, 1387.65]]
+
+    props{
+      squad_members:t="SMOKEstr_16"
+      squad_members:t="SMOKEstr_21"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_kamenskoe02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1598.08, 85.9111, 1405.49]]
+
+    props{
+      squad_members:t="SMOKEstr_17"
+      squad_members:t="SMOKEstr_18"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_kamenskoe03"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1662.85, 85.9111, 1423.32]]
+
+    props{
+      squad_members:t="SMOKEstr_19"
+      squad_members:t="SMOKEstr_20"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_01"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-519.317, 80.2853, 2552.2]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_02"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-606.838, 80.438, 2555.27]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_03"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-651.461, 83.9677, 2248.56]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_04"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-610.143, 83.3434, 2074.68]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_05"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-614.458, 78.5258, 2762.68]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_06"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-272.694, 84.163, 2497.72]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_07"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-354.421, 84.9452, 2398.18]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_08"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-360.868, 88.7954, 2189.68]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_09"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-522.15, 92.0952, 1651.27]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_10"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-150.927, 91.1676, 2160.84]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_11"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-230.618, 91.5858, 2118.88]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_12"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1552.87, 62.3618, 1226.39]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_13"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-85.9665, 91.089, 2164.91]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_14"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-9.23473, 88.1076, 2252.37]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_15"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [76.8857, 87.2607, 2240.4]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_16"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1614.85, 60.9187, 1238.81]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_17"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1619, 60.9187, 1210.85]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_18"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1668.85, 60.9187, 1215.92]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_19"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1659.36, 60.9187, 1251.73]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_20"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1818.85, 61.155, 1277.09]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_21"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [2279.19, 66.6058, 1526.01]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_22"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-875.327, 28.8179, -839.416]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_Pavlovka_01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1052.9, 30.9797, -746.305]]
+
+    props{
+      squad_members:t="SMOKEstr_23"
+      squad_members:t="SMOKEstr_24"
+      squad_members:t="SMOKEstr_25"
+      squad_members:t="SMOKEstr_26"
+      squad_members:t="SMOKEstr_27"
+      squad_members:t="SMOKEstr_28"
+      squad_members:t="SMOKEstr_29"
+      squad_members:t="SMOKEstr_30"
+      squad_members:t="SMOKEstr_31"
+      squad_members:t="SMOKEstr_32"
+      squad_members:t="SMOKEstr_33"
+      squad_members:t="SMOKEstr_22"
+      squad_members:t="SMOKEstr_39"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_Pavlovka_02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1011.32, 30.9797, -746.305]]
+
+    props{
+      squad_members:t="SMOKEstr_34"
+      squad_members:t="SMOKEstr_35"
+      squad_members:t="SMOKEstr_36"
+      squad_members:t="SMOKEstr_37"
+      squad_members:t="SMOKEstr_40"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_Pavlovka_03"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-969.732, 30.9797, -746.305]]
+
+    props{
+      squad_members:t="SMOKEstr_38"
+      squad_members:t="SMOKEstr_39"
+      squad_members:t="SMOKEstr_41"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_23"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1006.59, 29.9244, -796.249]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_24"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1125.83, 30.2762, -917.503]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_25"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-922.226, 30.0093, -1056.23]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_26"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-962.293, 29.2947, -1027.81]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_27"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-961.733, 29.2947, -1027.87]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_28"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1004.42, 36.3287, -1260.41]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_29"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1137.03, 26.5941, -1757.04]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_30"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1252.73, 24.051, -1735.21]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_31"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1185.73, 27.0347, -1604.74]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_32"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1442.69, 17.5304, -1507.81]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_33"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1507.46, 17.5304, -1509.24]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_34"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1000.29, 29.9244, -805.374]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_35"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1185.88, 28.867, -1046.69]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_36"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-999.012, 36.3037, -1252.61]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_37"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1261.25, 23.7146, -1736.85]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_38"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1346.13, 19.2849, -1767.11]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_39"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1438.78, 17.583, -1498.41]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_40"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1449.46, 17.583, -1513.39]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_41"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1449.62, 17.583, -1504.93]]
+    unit_class:t="cargo_drop_structure"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_Roads01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-612.76, 47.6442, -1506]]
+
+    props{
+      squad_members:t="SMOKEstr_42"
+      squad_members:t="SMOKEstr_43"
+      squad_members:t="SMOKEstr_44"
+      squad_members:t="SMOKEstr_45"
+      squad_members:t="SMOKEstr_46"
+      squad_members:t="SMOKEstr_47"
+      squad_members:t="SMOKEstr_48"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_42"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-567.625, 56.9483, -1463.98]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_43"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-586.093, 57.9849, -1240.13]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_44"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-422.319, 54.6229, -1120.1]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_45"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-329.838, 62.3081, -852.699]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_46"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-487.123, 60.1006, -1602.66]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_47"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-286.82, 61.1528, -2264.09]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_48"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-288.29, 59.6043, -2245.78]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_vishgorka01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [652.637, 133.961, -894.536]]
+
+    props{
+      squad_members:t="SMOKEstr_49"
+      squad_members:t="SMOKEstr_50"
+      squad_members:t="SMOKEstr_52"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_49"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [454.704, 85.9537, -1002.46]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_50"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [514.622, 96.0263, -924.927]]
+    unit_class:t="unit_pillar_small_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_51"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [546.803, 90.9641, -1018.9]]
+    unit_class:t="unit_pillar_small_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_52"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [638.353, 90.9641, -1020.1]]
+    unit_class:t="unit_pillar_small_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_53"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [603.382, 92.3625, -1074.06]]
+    unit_class:t="unit_pillar_small_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alerstal01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-114.647, 93.1309, 1833.96]]
+    unit_class:t="GA_SignAlerstal1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alerstal02"
+    tm:m=[[0.887011, 0, -0.461749] [0, 1, 0] [0.461749, 0, 0.887011] [-174.35, 91.7807, 1695.14]]
+    unit_class:t="GA_SignAlerstal2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_kamyanskoye01"
+    tm:m=[[0.130526, 0, -0.991445] [0, 1, 0] [0.991445, 0, 0.130526] [1535.97, 61.9147, 1264.53]]
+    unit_class:t="GA_SignKamyanskoe1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_kamyanskoye02"
+    tm:m=[[1, 0, 1.49012e-08] [0, 1, 0] [-1.49012e-08, 0, 1] [1792.61, 71.9258, 1029.18]]
+    unit_class:t="GA_SignKamyanskoe2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_orekhovka02"
+    tm:m=[[0.793353, 0, -0.608761] [0, 1, 0] [0.608761, 0, 0.793353] [-1042.21, 78.502, 2538.21]]
+    unit_class:t="GA_SignOrehovka1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_orekhovka01"
+    tm:m=[[-0.939693, 0, 0.34202] [0, 1, 0] [-0.34202, 0, -0.939693] [-1355.52, 75.9144, 1930.41]]
+    unit_class:t="GA_SignOrehovka2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_volkovo02"
+    tm:m=[[0.999048, 0, 0.0436195] [0, 1, 0] [-0.0436195, 0, 0.999048] [-1615.95, 88.8926, 1370.05]]
+    unit_class:t="GA_SignVolkovo1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_volkovo01"
+    tm:m=[[-0.999048, 0, 0.0436191] [0, 1, 0] [-0.0436191, 0, -0.999048] [-1591.77, 84.747, 1167.82]]
+    unit_class:t="GA_SignVolkovo2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_bugurov02"
+    tm:m=[[0.507254, 0, -0.861797] [0, 1, 0] [0.861797, 0, 0.507254] [-2508.46, 28.8153, -338.704]]
+    unit_class:t="GA_SignBugurov1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_bugurov01"
+    tm:m=[[-0.988754, 0, 0.149549] [0, 1, 0] [-0.149549, 0, -0.988754] [-2873.65, 28.8153, -726.607]]
+    unit_class:t="GA_SignBugurov2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_pavlovka02"
+    tm:m=[[0.0232129, 0, -0.999731] [0, 1, 0] [0.999731, 0, 0.0232129] [-740.374, 29.2318, -808.915]]
+    unit_class:t="GA_SignPavlovka1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_pavlovka01"
+    tm:m=[[-0.756083, 0, 0.654476] [0, 1, 0] [-0.654476, 0, -0.756083] [-1591.88, 16.2284, -1590.64]]
+    unit_class:t="GA_SignPavlovka2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_vyshgorka"
+    tm:m=[[-0.375378, 0, -0.926872] [0, 1, 0] [0.926872, 0, -0.375378] [740.147, 91.3603, -1219]]
+    unit_class:t="GA_SignVyshgorka"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alertovsk01"
+    tm:m=[[0.544539, 0, 0.838736] [0, 1, 0] [-0.838736, 0, 0.544539] [-1128.5, 12.0149, -3447.45]]
+    unit_class:t="GA_SignAlertovsk1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alertovsk02"
+    tm:m=[[-0.87144, 0, 0.490502] [0, 1, 0] [-0.490502, 0, -0.87144] [-2111.38, 9.43552, -2208.14]]
+    unit_class:t="GA_SignAlertovsk2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alertovsk04"
+    tm:m=[[-0.226443, 0, -0.974024] [0, 1, 0] [0.974024, 0, -0.226443] [-2800.96, 18.1872, -2571.79]]
+    unit_class:t="GA_SignAlertovsk3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_alertovsk03"
+    tm:m=[[-0.90481, 0, 0.425817] [0, 1, 0] [-0.425817, 0, -0.90481] [-3406.37, 21.0188, -3015.51]]
+    unit_class:t="GA_SignAlertovsk4"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_bolotnyavka02"
+    tm:m=[[0.944086, 0, -0.3297] [0, 1, 0] [0.3297, 0, 0.944086] [-3379.1, 26.6271, -2999.64]]
+    unit_class:t="GA_SignBolotnyavka1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_bolotnyavka01"
+    tm:m=[[0.184119, 0, 0.982904] [0, 1, 0] [-0.982904, 0, 0.184119] [-2806.38, 22.6837, -2553.05]]
+    unit_class:t="GA_SignBolotnyavka2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="GA_roadSign_bolotnyavka03"
+    tm:m=[[-0.913229, 0, 0.407446] [0, 1, 0] [-0.407446, 0, -0.913229] [-3637.64, 35.8256, -2193.89]]
+    unit_class:t="GA_SignBolotnyavka3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_54"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [541.762, 86.4636, -1126.57]]
+    unit_class:t="unit_pillar_small_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_vishgorka02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [670.324, 133.961, -876.166]]
+
+    props{
+      squad_members:t="SMOKEstr_51"
+      squad_members:t="SMOKEstr_53"
+      squad_members:t="SMOKEstr_54"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_55"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [496.743, 87.5217, -1046.34]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_vishgorka03"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [694.66, 133.961, -859.074]]
+
+    props{
+      squad_members:t="SMOKEstr_51"
+      squad_members:t="SMOKEstr_53"
+      squad_members:t="SMOKEstr_54"
+    }
+  }
+
+  squad{
+    name:t="sqSMOKE_aeroport00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1077.38, 131.864, -2967.42]]
+
+    props{
+      squad_members:t="SMOKEstr_56"
+      squad_members:t="SMOKEstr_57"
+      squad_members:t="SMOKEstr_58"
+      squad_members:t="SMOKEstr_59"
+      squad_members:t="SMOKEstr_60"
+      squad_members:t="SMOKEstr_61"
+      squad_members:t="SMOKEstr_62"
+      squad_members:t="SMOKEstr_68"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_56"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1071.23, 131.864, -2986.79]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_57"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1095.55, 131.864, -2854.87]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_58"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1216.18, 131.864, -2818.86]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_59"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1126.36, 131.864, -3109.74]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_60"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1427.89, 175.882, -2996.03]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_61"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1457.08, 132.054, -2755.92]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_62"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [900.549, 131.864, -3146.19]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_aeroport01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1087.45, 131.864, -2945.36]]
+
+    props{
+      squad_members:t="SMOKEstr_63"
+      squad_members:t="SMOKEstr_64"
+      squad_members:t="SMOKEstr_65"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_63"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1482.02, 131.864, -2837.29]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_64"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1123.01, 131.865, -3162.17]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_65"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [807.058, 131.898, -3007.7]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_aeroport02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [1095.15, 131.864, -2925.78]]
+
+    props{
+      squad_members:t="SMOKEstr_66"
+      squad_members:t="SMOKEstr_67"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_66"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1485.81, 131.864, -2845.54]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_67"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [1462.1, 131.864, -2842.19]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_burnedCity00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-39.6038, 76.3201, -2411.58]]
+
+    props{
+      squad_members:t="SMOKEstr_69"
+      squad_members:t="SMOKEstr_70"
+      squad_members:t="SMOKEstr_73"
+      squad_members:t="SMOKEstr_72"
+      squad_members:t="SMOKEstr_76"
+      squad_members:t="SMOKEstr_75"
+      squad_members:t="SMOKEstr_79"
+      squad_members:t="SMOKEstr_78"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_68"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [421.047, 95.69, -2386.07]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_69"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-119.156, 77.8595, -2448.05]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_70"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-136.698, 78.2319, -2456.92]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_73"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-206.498, 76.3585, -2466.79]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_72"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-123.378, 78.7948, -2478.11]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_76"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-145.142, 79.3017, -2517.03]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_75"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-135.145, 79.6503, -2576.96]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_79"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-237.496, 69.4222, -2561.81]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_78"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-219.954, 69.6243, -2552.95]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_burnedCity01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-58.2281, 76.489, -2404.31]]
+
+    props{
+      squad_members:t="SMOKEstr_71"
+      squad_members:t="SMOKEstr_74"
+      squad_members:t="SMOKEstr_77"
+      squad_members:t="SMOKEstr_80"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_71"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-116.131, 77.8595, -2492.72]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_74"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-122.217, 77.8595, -2583.32]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_77"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-179.915, 77.8595, -2458.21]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_80"
+    tm:m=[[6.9751e-08, -1, 2.88918e-08] [0.92388, 7.54979e-08, 0.382683] [-0.382683, 0, 0.92388] [-198.747, 77.8595, -2474.3]]
+    unit_class:t="unit_pillar_a"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_bugurov00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2701.56, 28.8157, -341.474]]
+
+    props{
+      squad_members:t="SMOKEstr_81"
+      squad_members:t="SMOKEstr_82"
+      squad_members:t="SMOKEstr_83"
+      squad_members:t="SMOKEstr_84"
+      squad_members:t="SMOKEstr_85"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_81"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2687.12, 28.8157, -556.926]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_82"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2740.41, 28.8156, -670.117]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_83"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2852.04, 28.8156, -630.062]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_84"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2565.35, 28.8156, -595.587]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_85"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2600.11, 28.8157, -703.149]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_bugurov01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2682.58, 28.8156, -316.581]]
+
+    props{
+      squad_members:t="SMOKEstr_86"
+      squad_members:t="SMOKEstr_87"
+      squad_members:t="SMOKEstr_88"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_86"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2565.97, 28.8157, -593.145]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_87"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2621.45, 28.8157, -609.583]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_88"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2614.91, 28.8157, -613.553]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_bolotnyavka00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3460.07, 32.44, -2422.54]]
+
+    props{
+      squad_members:t="SMOKEstr_89"
+      squad_members:t="SMOKEstr_90"
+      squad_members:t="SMOKEstr_91"
+      squad_members:t="SMOKEstr_92"
+      squad_members:t="SMOKEstr_93"
+      squad_members:t="SMOKEstr_94"
+      squad_members:t="SMOKEstr_95"
+      squad_members:t="SMOKEstr_96"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_89"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3240.17, 32.8349, -2489.89]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_90"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3169.71, 30.6212, -2566.99]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_91"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3147.23, 30.6203, -2713.72]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_92"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3320.13, 30.8631, -2687.38]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_93"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3419.6, 30.4797, -2780.95]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_94"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3562.97, 30.4843, -2822.68]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_95"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2998.53, 30.1333, -2654.44]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_96"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3018.6, 30.4078, -2696.37]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_bolotnyavka01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3433.81, 34.3373, -2440.51]]
+
+    props{
+      squad_members:t="SMOKEstr_97"
+      squad_members:t="SMOKEstr_98"
+      squad_members:t="SMOKEstr_99"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_97"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3219.64, 31.6815, -2508.8]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_98"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3238.25, 30.4797, -2893.84]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_99"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3232.88, 30.4797, -2897.88]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_100"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3736.08, 30.4797, -2877.39]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_101"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3944.01, 30.4797, -2620.04]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_102"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4045.27, 4.43433, -3131.65]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_103"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4401.73, 17.2391, -2652.64]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_bolotnyavka02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3407.88, 34.3373, -2460.26]]
+
+    props{
+      squad_members:t="SMOKEstr_100"
+      squad_members:t="SMOKEstr_101"
+      squad_members:t="SMOKEstr_102"
+      squad_members:t="SMOKEstr_103"
+      squad_members:t="SMOKEstr_104"
+      squad_members:t="SMOKEstr_105"
+      squad_members:t="SMOKEstr_106"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_104"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-3389.62, 3.14133, -3266.47]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_105"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4038.92, 3.1413, -3290.47]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_106"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4075.74, 30.4798, -2008.19]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_Alertovsk00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1424.67, 34.3374, -2979.45]]
+
+    props{
+      squad_members:t="SMOKEstr_107"
+      squad_members:t="SMOKEstr_108"
+      squad_members:t="SMOKEstr_109"
+      squad_members:t="SMOKEstr_110"
+      squad_members:t="SMOKEstr_111"
+      squad_members:t="SMOKEstr_112"
+      squad_members:t="SMOKEstr_113"
+      squad_members:t="SMOKEstr_114"
+      squad_members:t="SMOKEstr_129"
+      squad_members:t="SMOKEstr_130"
+      squad_members:t="SMOKEstr_131"
+      squad_members:t="SMOKEstr_132"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_107"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2291.07, 8.91692, -3099.27]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_108"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2198.8, 8.91692, -3044.55]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_109"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2127.5, 8.92648, -2905.04]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_110"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2327.81, 8.91692, -2827.84]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_111"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2584.35, 8.84418, -3098.77]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_112"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1842.51, 8.91692, -3163.36]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_113"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-1778.17, 10.4501, -2684.73]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_114"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2145.93, 8.91692, -2470.71]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_Alertovsk01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1376.54, 34.3374, -2975.14]]
+
+    props{
+      squad_members:t="SMOKEstr_115"
+      squad_members:t="SMOKEstr_116"
+      squad_members:t="SMOKEstr_117"
+      squad_members:t="SMOKEstr_118"
+      squad_members:t="SMOKEstr_119"
+      squad_members:t="SMOKEstr_120"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_115"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2286.44, 8.91692, -3100.02]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_116"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2215.76, 8.91692, -3126.8]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_117"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2133.21, 8.91692, -3144.84]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_118"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2089.73, 8.91692, -3140.77]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_119"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2047.93, 8.91692, -3204.14]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_120"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2234.25, 8.91705, -3035.44]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_Alertovsk02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1335.1, 34.3374, -2974.83]]
+
+    props{
+      squad_members:t="SMOKEstr_121"
+      squad_members:t="SMOKEstr_122"
+      squad_members:t="SMOKEstr_123"
+      squad_members:t="SMOKEstr_124"
+      squad_members:t="SMOKEstr_125"
+      squad_members:t="SMOKEstr_126"
+      squad_members:t="SMOKEstr_127"
+      squad_members:t="SMOKEstr_128"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_121"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2284.18, 8.91693, -3099.03]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_122"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2273.82, 8.91693, -3102.18]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_123"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2256.69, 8.91693, -3109.53]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_124"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2214.08, 8.91693, -3120.76]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_125"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2123.76, 8.91693, -3134.67]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_126"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2094.21, 8.91693, -3139.4]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_127"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2198.98, 8.91693, -3044.49]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_128"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2191.77, 8.91693, -3039.88]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_129"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2085.55, 8.91693, -3142.82]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_130"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2189.34, 8.91693, -3051.4]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_131"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2237.52, 8.91693, -3111.57]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_132"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-2328.34, 8.91693, -3021.06]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_BACKGROUND"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3805.29, 34.3374, 461.885]]
+
+    props{
+      squad_members:t="SMOKEstr_133"
+      squad_members:t="SMOKEstr_134"
+      squad_members:t="SMOKEstr_135"
+      squad_members:t="SMOKEstr_136"
+      squad_members:t="SMOKEstr_137"
+      squad_members:t="SMOKEstr_138"
+      squad_members:t="SMOKEstr_139"
+      squad_members:t="SMOKEstr_140"
+      squad_members:t="SMOKEstr_141"
+      squad_members:t="SMOKEstr_142"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_133"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4838.95, 28.8159, -1215.11]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_134"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5820.24, 28.8157, 495.474]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_135"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5836.44, 28.8162, 791.621]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_136"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5629.82, 28.8164, 623.936]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_137"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8904.32, 28.8171, -4313.97]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_138"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8564.03, 28.8167, -4561.25]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_139"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5184.1, 28.8167, -4058.07]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_140"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [4697.87, 28.8164, -6903.49]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_141"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [5160.59, 28.8164, -6971.65]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_142"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1070.25, 28.8169, -12542.5]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh01"
+    tm:m=[[1, 0, -9.13912e-08] [0, 1, 0] [9.13912e-08, 0, 1] [-1192.08, 84.6926, 1388.93]]
+    unit_class:t="GasTiger"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh02"
+    tm:m=[[1, 0, -9.13912e-08] [0, 1, 0] [9.13912e-08, 0, 1] [-1192.25, 84.6926, 1383.62]]
+    unit_class:t="GasTigerArbalet"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh03"
+    tm:m=[[0.887011, 0, 0.461749] [0, 1, 0] [-0.461749, 0, 0.887011] [-1192.67, 84.6926, 1375.74]]
+    unit_class:t="Kamaz5350"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh04"
+    tm:m=[[1, 0, -9.13912e-08] [0, 1, 0] [9.13912e-08, 0, 1] [-1192.16, 84.6926, 1367.26]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh05"
+    tm:m=[[1, 0, -9.13912e-08] [0, 1, 0] [9.13912e-08, 0, 1] [-1192.16, 84.6926, 1361.59]]
+    unit_class:t="Kamaz5350_med"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh06"
+    tm:m=[[0.866026, 0, 0.5] [0, 1, 0] [-0.5, 0, 0.866026] [-1192.13, 84.6926, 1353.84]]
+    unit_class:t="Kamaz5350_open"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh07"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1169.19, 84.7078, 1501.87]]
+    unit_class:t="Ural4320_Grad"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh08"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1163.46, 84.7078, 1501.87]]
+    unit_class:t="Ural4320_load"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh09"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1157.73, 84.7078, 1501.87]]
+    unit_class:t="ural4320_open"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh10"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1152, 84.7078, 1501.87]]
+    unit_class:t="ural4320_s60"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh11"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1146.27, 84.7078, 1501.87]]
+    unit_class:t="Ural4320_tent"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Player_veh12"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1139.78, 84.7056, 1503.18]]
+    unit_class:t="chekan"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_00"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1143.24, 87.2011, 1381.43]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1143.24, 87.2011, 1369.26]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_02"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1143.24, 87.2011, 1357.84]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_03"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1143.24, 87.2011, 1351.65]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_04"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1121.08, 87.6897, 1423.61]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_05"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1121.08, 87.6897, 1435.32]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="teleport_text_06"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1121.08, 87.6897, 1441.72]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="squad_player"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1173.69, 84.6994, 1432.43]]
+
+    props{
+      squad_members:t="Player_veh00"
+      squad_members:t="Player_veh01"
+      squad_members:t="Player_veh02"
+      squad_members:t="Player_veh03"
+      squad_members:t="Player_veh04"
+      squad_members:t="Player_veh05"
+      squad_members:t="Player_veh06"
+      squad_members:t="Player_veh07"
+      squad_members:t="Player_veh08"
+      squad_members:t="Player_veh09"
+      squad_members:t="Player_veh10"
+      squad_members:t="Player_veh11"
+      squad_members:t="Player_veh12"
+    }
+  }
+
+  squad{
+    name:t="squad_signs"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1440.52, 49.3526, -542.202]]
+
+    props{
+      squad_members:t="GA_roadSign_alerstal01"
+      squad_members:t="GA_roadSign_alerstal02"
+      squad_members:t="GA_roadSign_alertovsk01"
+      squad_members:t="GA_roadSign_alertovsk02"
+      squad_members:t="GA_roadSign_alertovsk03"
+      squad_members:t="GA_roadSign_alertovsk04"
+      squad_members:t="GA_roadSign_bolotnyavka01"
+      squad_members:t="GA_roadSign_bolotnyavka02"
+      squad_members:t="GA_roadSign_bolotnyavka03"
+      squad_members:t="GA_roadSign_bugurov01"
+      squad_members:t="GA_roadSign_bugurov02"
+      squad_members:t="GA_roadSign_kamyanskoye01"
+      squad_members:t="GA_roadSign_kamyanskoye02"
+      squad_members:t="GA_roadSign_orekhovka01"
+      squad_members:t="GA_roadSign_orekhovka02"
+      squad_members:t="GA_roadSign_pavlovka01"
+      squad_members:t="GA_roadSign_pavlovka02"
+      squad_members:t="GA_roadSign_volkovo01"
+      squad_members:t="GA_roadSign_volkovo02"
+      squad_members:t="GA_roadSign_vyshgorka"
+    }
+  }
+
+  armada{
+    name:t="Player_veh13"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1139.78, 177.965, 1503.18]]
+    unit_class:t="lancet_drive"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="Player_veh14"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1067.22, 177.965, 1503.18]]
+    unit_class:t="mavic"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="Player_veh15"
+    tm:m=[[0.0436194, 0, -0.999048] [0, 1, 0] [0.999048, 0, 0.0436194] [-1032.77, 177.965, 1503.18]]
+    unit_class:t="fpv_1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+}
+
+areas{
+  area_tp_00{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1145.91, 85.0229, 1381.27]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_01{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1145.91, 85.0229, 1369.33]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_02{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1145.91, 85.0229, 1358.12]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_03{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1145.91, 85.0229, 1350.76]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_04{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1124.03, 85.0229, 1423.56]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_05{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1124.03, 85.0229, 1434.83]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_tp_06{
+    type:t="Box"
+    tm:m=[[-10.3787, 0, 0] [0, 5.92, 0] [0, 0, -7.11] [-1124.27, 85.0229, 1442.3]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_00{
+    type:t="Sphere"
+    tm:m=[[-4.85648, 0, -15.4028] [0, 16.1503, 0] [15.4028, 0, -4.85648] [-137.213, 88.2836, 2266.58]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_01{
+    type:t="Sphere"
+    tm:m=[[-7.45736, 0, 14.3255] [0, 16.1503, 0] [-14.3255, 0, -7.45736] [1781.07, 60.6937, 1290.95]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_02{
+    type:t="Sphere"
+    tm:m=[[13.9866, 0, -8.07513] [0, 16.1503, 0] [8.07513, 0, 13.9866] [527.228, 88.8476, -1105.74]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_03{
+    type:t="Sphere"
+    tm:m=[[8.07513, 0, 13.9865] [0, 16.1503, 0] [-13.9865, 0, 8.07513] [-857.929, 28.844, -830.75]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_04{
+    type:t="Sphere"
+    tm:m=[[-8.07513, 0, -13.9865] [0, 16.1503, 0] [13.9865, 0, -8.07513] [-2797.34, 28.7803, -508.499]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_05{
+    type:t="Sphere"
+    tm:m=[[-6.8254, 0, -14.6371] [0, 16.1503, 0] [14.6371, 0, -6.8254] [-3496.95, 32.6737, -2808.24]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_tp_06{
+    type:t="Sphere"
+    tm:m=[[-16.1503, 0, -2.35697e-06] [0, 16.1503, 0] [2.35697e-06, 0, -16.1503] [-2454.48, 8.918, -3030.76]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_sound{
+    type:t="Sphere"
+    tm:m=[[221.302, 0, 0] [0, 221.302, 0] [0, 0, 221.302] [-1158.98, 84.6965, 1421.91]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_out_01{
+    type:t="Box"
+    tm:m=[[-93.6404, 0, 0] [0, 343.572, 0] [0, 0, -490.528] [-1400.93, 15.36, 1418.19]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_out_02{
+    type:t="Box"
+    tm:m=[[-93.6404, 0, 0] [0, 343.572, 0] [0, 0, -490.528] [-947.853, 15.36, 1418.19]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_out_03{
+    type:t="Box"
+    tm:m=[[-7.06965e-06, 0, 93.6404] [0, 343.572, 0] [-490.528, 0, -3.70338e-05] [-1172.85, 15.3595, 1218.02]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_out_04{
+    type:t="Box"
+    tm:m=[[-7.06965e-06, 0, 93.6404] [0, 343.572, 0] [-490.528, 0, -3.70338e-05] [-1169.84, 15.3596, 1629.44]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_alerstal{
+    type:t="Sphere"
+    tm:m=[[1049.13, 0, 0] [0, 1049.13, 0] [0, 0, 1049.13] [-317.457, 87.3378, 2292.91]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_orekhovka{
+    type:t="Sphere"
+    tm:m=[[690.776, 0, 0] [0, 690.776, 0] [0, 0, 690.776] [-1132.13, 72.7166, 2224.41]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_volkovo{
+    type:t="Sphere"
+    tm:m=[[1072.49, 0, 0] [0, 1072.49, 0] [0, 0, 1072.49] [-1873.54, 86.0674, 1404.12]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_kamenskoye{
+    type:t="Sphere"
+    tm:m=[[547.065, 0, 0] [0, 547.065, 0] [0, 0, 547.065] [1758.45, 59.0859, 1307.47]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_pavlovka{
+    type:t="Box"
+    tm:m=[[-509.089, 0, -977.951] [0, 220.922, 0] [827.807, -0.000244141, -430.929] [-1108.01, -24.521, -1241.5]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_airfield{
+    type:t="Box"
+    tm:m=[[-509.089, 0, -977.951] [0, 220.922, 0] [827.807, -0.000244141, -430.929] [1309.51, -24.5223, -2769.37]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_vishgorka{
+    type:t="Sphere"
+    tm:m=[[534.154, 0, 0] [0, 534.154, 0] [0, 0, 534.154] [573.635, 89.0364, -1026.48]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_bugurov{
+    type:t="Sphere"
+    tm:m=[[727.918, 0, 0] [0, 727.918, 0] [0, 0, 727.918] [-2660.73, 28.8157, -489.807]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_bolotnyavka{
+    type:t="Sphere"
+    tm:m=[[797.526, 0, 0] [0, 797.526, 0] [0, 0, 797.526] [-3270.57, 30.6584, -2591.05]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_alertovsk{
+    type:t="Sphere"
+    tm:m=[[1552.9, 0, 0] [0, 1552.9, 0] [0, 0, 1552.9] [-1978.32, 10.5443, -2980.35]]
+    objLayer:i=0
+
+    props{}
+  }
+}
+
+objLayers{
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+}
+
+wayPoints{}

@@ -1,0 +1,16 @@
+include "#/develop/gameBase/gameData/flightModels/su_25.blk"
+skin{
+
+name:t="GA_ARMY_Su25_UA"
+
+replace_tex{
+  from:t="su_25_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Su25_UA\su_25.dds"
+}
+
+replace_tex{
+  from:t="su_25_c_dmg*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_Su25_UA\su_25_c_dmg.dds"
+}
+
+}

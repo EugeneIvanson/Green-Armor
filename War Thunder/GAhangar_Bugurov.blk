@@ -1,0 +1,701 @@
+//----------------------------------------------------------------------------------------
+//  ▒█▀▀█ ▒█▀▀█ ▒█▀▀▀ ▒█▀▀▀ ▒█▄░▒█ 　 ░█▀▀█ ▒█▀▀█ ▒█▀▄▀█ ▒█▀▀▀█ ▒█▀▀█ 
+//  ▒█░▄▄ ▒█▄▄▀ ▒█▀▀▀ ▒█▀▀▀ ▒█▒█▒█ 　 ▒█▄▄█ ▒█▄▄▀ ▒█▒█▒█ ▒█░░▒█ ▒█▄▄▀ 
+//  ▒█▄▄█ ▒█░▒█ ▒█▄▄▄ ▒█▄▄▄ ▒█░░▀█ 　 ▒█░▒█ ▒█░▒█ ▒█░░▒█ ▒█▄▄▄█ ▒█░▒█
+//
+//		▒█░▒█ ░█▀▀█ ▒█▄░▒█ ▒█▀▀█ ░█▀▀█ ▒█▀▀█ 
+//		▒█▀▀█ ▒█▄▄█ ▒█▒█▒█ ▒█░▄▄ ▒█▄▄█ ▒█▄▄▀ 
+//		▒█░▒█ ▒█░▒█ ▒█░░▀█ ▒█▄▄█ ▒█░▒█ ▒█░▒█ 
+//---------------------------------------------------------------------------------------- 
+//
+// Этот ангар - часть мода Green Armor. Убедитесь, что у вас установлен мод целиком для корректной работы ангара.
+// Установите его, добавив в config.blk строку: 
+// 		hangarBlk:t="GAhangar_Bugurov.blk"
+// Использованная территория - Бугуров и другие районы.
+
+// This hangar is part of the Green Armor mod. Make sure that you have the entire mod installed for the correct operation of the hangar.
+// Install it by adding the following line to config.blk: 
+// 		hangarBlk:t="GAhangar_Bugurov.blk"
+// The used territory is Bugurov city and others
+//
+//				█▀█ █▀▀ ▄▀█ █▀▄ █▀▄▀█ █▀▀
+//				█▀▄ ██▄ █▀█ █▄▀ █░▀░█ ██▄
+//
+//     VERSION: 1.0                    
+//             от 27.10.2024
+//     Hangar by:
+//             Eugene_Ivanson :
+//             https://live.warthunder.com/profile/persistent/soANkbsbsb/
+//             https://www.youtube.com/eugeneivanson
+//             https://vk.com/eugene.ivanson
+//             https://discord.gg/JXDHnYR
+// 
+//---------------------------------------------------------------------------------------- 
+
+weather:t="cloudy" 
+hqWeather:t="cloudy"
+env{
+  env:t = "8.5" 
+  weight:r = 93 
+}
+
+env{
+  env:t = "9.5" 
+  weight:r = 93 
+}
+
+env{
+  env:t = "16.5" 
+  weight:r = 93
+}
+
+env{
+  env:t = "13.5" 
+  weight:r = 93
+}
+
+env{
+   env:t="14.5"
+   weight:r=93
+}
+
+env{
+ env:t = "18"
+ weight:r = 40.0
+}
+
+env{
+ env:t = "12"
+ weight:r = 50.0
+}
+
+env{
+ env:t = "15"
+ weight:r = 60.0
+}
+
+env{
+ env:t = "16"
+ weight:r = 70.0
+}
+
+env{
+ env:t = "6"
+ weight:r = 70.0
+}
+
+objectSphereDefaultScreenAspectRatio:r = 1.177777
+objectSphereViscosity:r = 0.333
+objectSphereAirplaneYFactor:r = 0.65
+objectSphereTankYFactor:r = 0.75
+spheroidFov:p2 = 45, 65
+yScale:r = 0.5
+cameraPlanes:p2 = 1.0, 13000.0
+fovRange:p2 = 5, 130
+vertRange:p2 = -30, 85
+rotationSpeed:r = 90
+vrotationSpeed:r = 90
+passiveRotSpeed:r = 1
+shakeSpeed:r = 0.02
+shakeRange:p2 = 0.01, 0.06
+cursorSpeed:p2 = 100, 100
+level:t = "levels/alertovsk19_3.bin"
+defCameraTime:p2 = 5, 10
+fadeTime:p2 = 0.6, 0.4
+mouseRotationSpeed:r = 0.01
+mouseZoomSpeed:r  = 0.0001333
+mouseDecalRotSpeed:r = 0.0002
+mouseDecalSizeSpeed:r = 0.0001
+dof_near_proc_cam_settings:p3 = 0, 0, 0
+dof_far_proc_cam_settings:p3 = 0, 0, 0
+dof_near_settings:p3 = 0, 0, 0
+dof_near_base_radius:r = 0
+dof_far_settings_unzoom:p3 = 0, 0, 0
+dof_far_settings_zoom:p3 = 0, 0, 0
+timeForMouselookCamera:r = 90
+timeToIdle:r = 91
+additionalHangarCameraBias:r = 0.13
+
+/////////////////////////////////////////////////////////   
+// █▀▄▀█ █ █▀ █▀ █ █▀█ █▄░█   █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █▀▀ //
+// █░▀░█ █ ▄█ ▄█ █ █▄█ █░▀█   █▄▄ █▀█ █▀█ █░▀█ █▄█ ██▄ //
+// to change mission - delete "//" before string.      //
+// only ONE mission must be used in a time             //
+// чтобы изменить миссию - удалите "//" перед строкой. //
+// единовременно должна быть использована только ОДНА  //
+// миссия, а остальные отключены.                      //
+// *ретекстуры - это модели с пользовательскими скинами//
+/////////////////////////////////////////////////////////
+
+ hangarMission:t="GAhngrmsn_Bugurov.blk"
+
+////////////////////////////////////////////////////////
+
+
+weather:t="good"
+hqWeather:t="good"
+
+fov:r = 90
+defaultDir:p2 = 57, 4
+minCamAlt:r = 0.7
+zoomSpeed:r = 40
+cameraTargetPos:p3 = 0, 1.77, 0
+cameraRelativePos:p3 = 0.14, 1.54, 12.1
+
+modelRotation:r = 60
+modelVerticalShift:r = 0.01
+modelPos:p3 = 2154, 17.7, -684.4
+
+unitPos {
+  hangarPlace:t = "aircraft"
+  modelPos:p3 = -2124, 82.8, 1316.1
+  modelRotation:r = 117
+  unitOffset:p3 = 0, 0, 0
+}
+
+unitPos {
+  hangarPlace:t = "aircraft"
+  modelPos:p3 = -2052.6, 86.5, 1622.2
+  modelRotation:r = 70
+  unitOffset:p3 = 0, 0, 0
+  tag:t="type_bomber"	
+}
+
+unitPos {
+  hangarPlace:t = "aircraft"
+  modelPos:p3 = -2678.5, 28.2, -323.2
+  modelRotation:r = 123
+  unitOffset:p3 = 0, 0, 0
+  tag:t="type_attack_helicopter"	
+}
+
+unitPos {
+  hangarPlace:t = "aircraft"
+  modelPos:p3 = -2678.5, 28.2, -323.2
+  modelRotation:r = 293
+  unitOffset:p3 = 0, 0, 0
+  tag:t="type_utility_helicopter"	
+}
+
+
+unitPos {
+  hangarPlace:t = "tank"
+  modelPos:p3 = -2756.5, 28.8, -668.2
+  modelRotation:r = 260
+  unitOffset:p3 = 0, 1, 0
+  tag:t="type_medium_tank"
+}
+
+unitPos {
+  hangarPlace:t = "tank"
+  modelPos:p3 = -2747.5, 28.2, -655.1
+  modelRotation:r = 190
+  unitOffset:p3 = 0, 1, 0
+  tag:t="type_spaa"
+}
+
+
+unitPos {
+  hangarPlace:t = "tank"
+  modelPos:p3 = -2792, 28.2, -597.9
+  modelRotation:r = 200
+  unitOffset:p3 = 0, 1, 0
+}
+
+unitPos {
+  hangarPlace:t = "ship"
+  modelPos:p3 = -1509, 0, -4751.1
+  modelRotation:r = 120
+  unitOffset:p3 = 0, 3, 0
+}
+
+unitPos {
+  hangarPlace:t = "hydroplane"
+  modelPos:p3 = -1509, 0, -4751.1
+  modelRotation:r = -62.5
+  unitOffset:p3 = 0, 1, 0
+}
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+env{
+  env:t = "8.5" 
+  weight:r = 93 
+}
+
+env{
+  env:t = "9.5" 
+  weight:r = 93 
+}
+
+env{
+  env:t = "16.5" 
+  weight:r = 93
+}
+
+env{
+  env:t = "13.5" 
+  weight:r = 93
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 0, 1, 0.5
+    }
+
+    end
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 1, 1, 0.7
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0, 1, 0
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0, 1, 1
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 0, 1, 0.5
+    }
+
+    end
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 1, 1, 0.3
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0, 1, 0
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0, 1, 1
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 10
+
+  from
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1.3, 1.5, 0.3
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = -0.2, 1.5, 0.3
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1, 0.3, 0.3
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = -0.5, 0.3, 0.3
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 10
+
+  from
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1.3, 1.1, -0.3
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 0.2, 1.1, -0.3
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1.1, 0.8, 0.3
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 0, 0.8, 0.3
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 10
+
+  from
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1.3, 1.1, 1.3
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 0.2, 1.1, 1.3
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1.1, 0.8, 0.7
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 0, 0.8, 0.7
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 0.5, 1.7, 2
+    }
+
+    end
+    {
+      nodeName:t = "fuse_dm"
+      offset:p3 = 1, 0.5, 3
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "tail_dm"
+      offset:p3 = 0, 0, 0
+    }
+
+    end
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 0, 0, 0
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 1.4, 1.5, 0
+    }
+
+    end
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 1.4, 1.5, 0.8
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 0, 0, 0
+    }
+
+    end
+    {
+      nodeName:t = "wing_r_dm"
+      offset:p3 = 0, 0, 0.8
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 1.4, 1.5, 1
+    }
+
+    end
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 1.4, 1.5, 0.2
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 0, 0, 1
+    }
+
+    end
+    {
+      nodeName:t = "wing_l_dm"
+      offset:p3 = 0, 0, 0.2
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 12
+
+  from
+  {
+    start
+    {
+      nodeName:t = "tail_dm"
+      offset:p3 = 0.5, 1, 0.9
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0.5, 1, 1.7
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 1.5, 1, 0.5
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 1.5, 1, 0.5
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 12
+
+  from
+  {
+    start
+    {
+      nodeName:t = "tail_dm"
+      offset:p3 = 0.5, 1, 0.1
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 0.5, 1, -0.7
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 1.5, 1, 1.5
+    }
+
+    end
+    {
+      nodeName:t = "pilot_dm"
+      offset:p3 = 1.5, 1, 1.5
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "track_l_dm"
+      offset:p3 = 0, 1, 1.1
+    }
+
+    end
+    {
+      nodeName:t = "track_l_dm"
+      offset:p3 = 1, 1, 1.1
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "track_l_dm"
+      offset:p3 = 0.1, 1, 0.9
+    }
+
+    end
+    {
+      nodeName:t = "track_l_dm"
+      offset:p3 = 1.1, 1, 0.9
+    }
+  }
+}
+
+procCamera
+{
+  fov:r = 80
+  zNear:r = 0.05
+  time:r = 8
+
+  from
+  {
+    start
+    {
+      nodeName:t = "track_r_dm"
+      offset:p3 = 0, 1, -0.1
+    }
+
+    end
+    {
+      nodeName:t = "track_r_dm"
+      offset:p3 = 1, 1, -0.1
+    }
+  }
+
+  to
+  {
+    start
+    {
+      nodeName:t = "track_r_dm"
+      offset:p3 = 0.1, 1, 0.1
+    }
+
+    end
+    {
+      nodeName:t = "track_r_dm"
+      offset:p3 = 1.1, 1, 0.1
+    }
+  }
+}
+
+

@@ -1,0 +1,28 @@
+include "#/develop/gameBase/gameData/flightModels/su_25sm3.blk"
+skin{
+
+name:t="GA_ARMY_su25sm3_red29"
+
+replace_tex{
+  from:t="su_25sm3_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_su25sm3_red29\su_25sm3_c.dds"
+}
+
+replace_tex{
+  from:t="su_25sm3_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_su25sm3_red29\su_25sm3_n.dds"
+}
+
+
+
+replace_tex{
+  from:t="su_25sm3_pylon_c*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_su25sm3_red29\su_25sm3_pylon_c.dds"
+}
+
+replace_tex{
+  from:t="su_25sm3_pylon_n*"
+  to:t="UserSkins\GreenArmor\GA_ARMY_su25sm3_red29\su_25sm3_pylon_n.dds"
+}
+
+}

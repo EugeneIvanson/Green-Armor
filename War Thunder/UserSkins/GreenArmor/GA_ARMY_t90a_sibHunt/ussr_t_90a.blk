@@ -1,0 +1,19 @@
+name:t="user"
+
+set_tex{
+  from:t="t_90a_body_c*"
+  to:t="t_90a_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90a_turret_c*"
+  to:t="t_90a_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="t_90a_gun_c*"
+  to:t="t_90a_gun_c.dds"
+  param:t="camo_skin_tex"
+}
