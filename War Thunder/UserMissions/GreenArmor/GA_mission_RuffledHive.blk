@@ -1,0 +1,5961 @@
+selected_tag:t=""
+bin_dump_file:t=""
+
+mission_settings{
+  player{
+    army:i=1
+    wing:t="Player_veh"
+  }
+
+  player_teamB{
+    army:i=2
+  }
+
+  mission{
+    type:t="singleMission"
+    level:t="levels/alertovsk.bin"
+    environment:t="Day"
+    weather:t="thin_clouds"
+    locName:t="GA_mission_RuffledHive"
+    locDesc:t="An attack by enemy kamikaze drones has begun on your base. Your task is to protect your base from damage. Shoot down incoming drones, preventing the enemy from inflicting damage on the helicopters and vehicles stationed at your base. \n Arcade mode is recommended."
+    showTacticalMapCellSize:b=yes
+    campaign:t="Green_Armor"
+  }
+
+  briefing{
+    place_loc:t="Alertovsk region"
+    date_loc:t="** / ** / ****"
+    objective_loc:t="An attack by enemy kamikaze drones has begun on your base. Your task is to protect your base from damage. Shoot down incoming drones, preventing the enemy from inflicting damage on the helicopters and vehicles stationed at your base. \n Arcade mode is recommended."
+    music:t="naval/effects/telegraph_ring"
+
+    part{
+      event:t=""
+      minTime:i=0
+
+      slide{
+        map:b=yes
+        minTime:i=4
+        picture:t=""
+        showAirMap:b=no
+
+        icon{
+          icontype:t="truck"
+          side:t="player"
+          target:t="Player_veh"
+        }
+
+        icon{
+          icontype:t="truck"
+          side:t="player"
+          target:t="Our_Unit_08"
+        }
+
+        icon{
+          icontype:t="truck"
+          side:t="player"
+          target:t="our_heli_02"
+        }
+
+        icon{
+          icontype:t="fighter"
+          side:t="enemy"
+          target:t="warmate_01"
+        }
+
+        icon{
+          icontype:t="fighter"
+          side:t="enemy"
+          target:t="warmate_03"
+        }
+
+        icon{
+          icontype:t="fighter"
+          side:t="enemy"
+          target:t="warmate_06"
+        }
+
+        icon{
+          icontype:t="fighter"
+          side:t="enemy"
+          target:t="warmate_10"
+        }
+
+        icon{
+          icontype:t="fighter"
+          side:t="enemy"
+          target:t="warmate_15"
+        }
+      }
+    }
+  }
+}
+
+imports{}
+triggers{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  SMOKE{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      periodicEvent{
+        time:r=1
+      }
+    }
+
+    conditions{}
+    actions{
+      unitPlayEffect{
+        effect_type:t="specify"
+        effect:t="land_crash_smoke"
+        offset:p3=0, 0, 0
+        show:b=yes
+        attach:b=no
+        scale:r=1
+        loopSpawn:b=yes
+        delay:p2=1, 1
+        target:t="sqSMOKE_BACKGROUND"
+        mustExist:b=yes
+      }
+    }
+
+    else_actions{}
+  }
+
+  hideMarks{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      initMission{}
+    }
+
+    conditions{}
+    actions{
+      unitSetProperties{
+        object:t="sqSMOKE_BACKGROUND"
+        object:t="cinemaPoint01"
+        object:t="cinemaPoint02"
+        object:t="cinemaPoint05"
+        object:t="cinemaPoint06"
+        object:t="squad_soldiers"
+        object:t="armada_01"
+        object:t="armada_02"
+        object:t="armada_03"
+        object:t="squad_our_vehicles"
+        object:t="squad_our_helis"
+        object:t="target"
+        stealthRadius:r=-1
+        forceVisibleOnMap:b=no
+      }
+
+      unitPutToSleep{
+        target:t="warmate_01"
+        target:t="warmate_02"
+        target:t="armada_01"
+        target:t="warmate_03"
+        target:t="warmate_04"
+        target:t="warmate_07"
+        target:t="warmate_06"
+        target:t="warmate_08"
+        target:t="warmate_09"
+        target:t="warmate_11"
+        target:t="warmate_10"
+        target:t="warmate_12"
+        target:t="warmate_13"
+        target:t="warmate_14"
+        target:t="warmate_15"
+      }
+    }
+
+    else_actions{}
+  }
+
+  Our_base_field{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    our_base_field{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        unitSetProperties{
+          object:t="squad_our_helis"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          aiGunnersEnabled:b=no
+          increasedCollisionDamage:b=yes
+          aiEnabled:b=no
+          enginesEnabled:b=no
+          hasExhaust:b=no
+          disableFallUndergroundAtDestroyed:b=yes
+
+          controls{}
+        }
+
+        unitSetProperties{
+          object:t="squad_our_vehicles"
+          increasedCollisionDamage:b=yes
+          aiEnabled:b=no
+          hasExhaust:b=no
+        }
+
+        unitSetProperties{
+          object:t="squad_warmates"
+          increasedCollisionDamage:b=yes
+        }
+      }
+
+      else_actions{}
+    }
+
+    Our_TargetIndicator{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=yes
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        missionSetTargetsIndicator{
+          target_type:t="isAlive"
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          delta:i=0
+          icon:t="truck"
+          "icon army":i=1
+          set:b=yes
+          target:t="squad_our_vehicles"
+        }
+
+        missionSetTargetsIndicator{
+          target_type:t="isAlive"
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          delta:i=0
+          icon:t="helicopter"
+          "icon army":i=1
+          set:b=yes
+          target:t="squad_our_helis"
+        }
+      }
+
+      else_actions{}
+    }
+  }
+
+  spawnPlace{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    Cinema{
+      is_enabled:b=yes
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        playerWhenSpawn{}
+      }
+
+      actions{
+        wait{
+          time:r=0.1
+        }
+
+        playSound{
+          name:t="naval/effects/reload_cannon"
+          loop:b=no
+          start:b=yes
+        }
+
+        triggerActivate{
+          target:t="TXT_1"
+          activate_type:t="checkConidtions"
+          check_trigger_status:b=no
+          after_activation:t="disable"
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t=""
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=5
+          priority:i=0
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        showSmartCutscene{
+          sceneType:t="ground_units"
+          startSubTypeOnTheMarch:t=""
+          startSubTypeGroundUnits:t="far"
+          startSubTypeArea:t=""
+          startSubTypeUnitAttackUnit:t=""
+          startSubTypeUnitMoveToUnit:t=""
+          startSubTypeTwoUnits:t=""
+          startSubTypeTakeoff:t=""
+          startSubTypeFlyBy:t=""
+          duration:r=5
+          wait:b=no
+          changeCameras:b=yes
+          teleportAllAttackers:b=no
+          allowTeleportAttackers:b=no
+          inverseCameraDirection:b=no
+          delayPlayer:b=yes
+          fadeIn:b=yes
+          fadeOut:b=no
+          allowDeadUnits:b=no
+          object:t="cinemaPoint01"
+          finalZoom:r=3
+        }
+
+        wait{
+          time:r=5
+        }
+
+        showSmartCutscene{
+          sceneType:t="ground_units"
+          startSubTypeOnTheMarch:t=""
+          startSubTypeGroundUnits:t="far"
+          startSubTypeArea:t=""
+          startSubTypeUnitAttackUnit:t=""
+          startSubTypeUnitMoveToUnit:t=""
+          startSubTypeTwoUnits:t=""
+          startSubTypeTakeoff:t=""
+          startSubTypeFlyBy:t=""
+          duration:r=5
+          wait:b=no
+          changeCameras:b=yes
+          teleportAllAttackers:b=no
+          allowTeleportAttackers:b=no
+          inverseCameraDirection:b=no
+          delayPlayer:b=yes
+          fadeIn:b=yes
+          fadeOut:b=no
+          allowDeadUnits:b=no
+          object:t="cinemaPoint02"
+          finalZoom:r=3
+        }
+
+        wait{
+          time:r=5
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t=""
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=5
+          priority:i=0
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        showSmartCutscene{
+          sceneType:t="ground_units"
+          startSubTypeOnTheMarch:t=""
+          startSubTypeGroundUnits:t="far"
+          startSubTypeArea:t=""
+          startSubTypeUnitAttackUnit:t=""
+          startSubTypeUnitMoveToUnit:t=""
+          startSubTypeTwoUnits:t=""
+          startSubTypeTakeoff:t=""
+          startSubTypeFlyBy:t=""
+          duration:r=5
+          wait:b=no
+          changeCameras:b=yes
+          teleportAllAttackers:b=no
+          allowTeleportAttackers:b=no
+          inverseCameraDirection:b=no
+          delayPlayer:b=yes
+          fadeIn:b=yes
+          fadeOut:b=no
+          allowDeadUnits:b=no
+          object:t="cinemaPoint03"
+          finalZoom:r=3
+        }
+
+        wait{
+          time:r=5
+        }
+
+        wait{
+          time:r=5
+        }
+
+        triggerEnable{
+          target:t="MapLine"
+        }
+
+        moAddMissionObjective{
+          target:t="Move to the position!"
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+
+        triggerDisable{
+          target:t="Cinema"
+        }
+      }
+
+      else_actions{}
+    }
+
+    TXT_1{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        wait{
+          time:r=1
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t="- Veles, answer to Dnepr!"
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=3
+          priority:i=2
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        wait{
+          time:r=3.02
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t="- Veles at a reception for Dnepr."
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=3
+          priority:i=2
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        wait{
+          time:r=3.02
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t="- Veles, alarm, drones are six kilometers away from us, start a Gaz-66 urgently and move to position two!"
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=4
+          priority:i=2
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        wait{
+          time:r=5.02
+        }
+
+        playHint{
+          hintType:t="bottom"
+          name:t="- Dnepr, accepted, over!"
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=2
+          priority:i=2
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        wait{
+          time:r=8.02
+        }
+
+        unitWakeUp{
+          target:t="armada_01"
+        }
+
+        unitRestore{
+          target_marking:i=0
+          ressurectIfDead:b=no
+          fullRestore:b=yes
+          target:t="Player_veh"
+          ammoRestore:b=yes
+        }
+      }
+
+      else_actions{}
+    }
+  }
+
+  moveToCenter{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    MapLine{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        missionShowMapIcon{
+          show:b=yes
+          iconName:t="ui/gameuiskin#attack"
+          areaName:t="route08"
+          colorCode:t="White"
+          scale:r=0.5
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route1"
+          areaNameTo:t="route02"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route02"
+          areaNameTo:t="route03"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route03"
+          areaNameTo:t="route04"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route04"
+          areaNameTo:t="route05"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route05"
+          areaNameTo:t="route06"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route06"
+          areaNameTo:t="route07"
+          colorCode:t="White"
+        }
+
+        missionShowMapLine{
+          areaNameFrom:t="route07"
+          areaNameTo:t="route08"
+          colorCode:t="White"
+        }
+      }
+
+      else_actions{}
+    }
+  }
+
+  EnemyFlows{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    TargetIndicator{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=yes
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{}
+      actions{
+        missionSetTargetsIndicator{
+          target_type:t="isAlive"
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+          delta:i=0
+          icon:t="air"
+          "icon army":i=2
+          set:b=yes
+          target:t="warmate_01"
+          target:t="warmate_02"
+          target:t="warmate_03"
+          target:t="warmate_04"
+        }
+      }
+
+      else_actions{}
+    }
+
+    1st_flow{
+      isCategory:b=yes
+      is_enabled:b=yes
+
+      activate_enemy{
+        is_enabled:b=yes
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{
+          unitWhenInArea{
+            math:t="3D"
+            object_type:t="isAlive"
+            object_marking:i=0
+            object_var_name:t=""
+            object_var_comp_op:t="equal"
+            check_objects:t="any"
+            object:t="Player_veh"
+            target:t="area_to_start"
+          }
+        }
+
+        actions{
+          unitPutToSleep{
+            target:t="squad_soldiers"
+          }
+
+          moSetObjectiveStatus{
+            target:t="Move to the position!"
+            status:i=2
+            object_marking:i=0
+            object_var_comp_op:t="equal"
+            object_var_name:t=""
+          }
+
+          moAddMissionObjective{
+            target:t="Destroy enemy drones"
+          }
+
+          playSound{
+            name:t="aircraft/ambient/alarm"
+            loop:b=no
+            start:b=yes
+          }
+
+          triggerEnable{
+            target:t="spawn_drone"
+            target:t="TargetIndicator"
+            target:t="drone1_likvidator"
+            target:t="drone2_likvidator"
+            target:t="drone3_likvidator"
+            target:t="drone4_likvidator"
+            target:t="Our_TargetIndicator"
+          }
+
+          unitRestore{
+            target_marking:i=0
+            ressurectIfDead:b=no
+            fullRestore:b=yes
+            target:t="Player_veh"
+            ammoRestore:b=yes
+          }
+
+          wait{
+            time:r=60
+          }
+
+          triggerEnable{
+            target:t="activate_enemy_2"
+          }
+
+          wait{
+            time:r=150
+          }
+
+          unitDamage{
+            power:r=1
+            useEffect:b=yes
+            countEffects:i=1
+            delay:p2=1, 1
+            offset:p3=0, 0, 0
+            radiusOffset:p2=10, 15
+            target:t="warmate_01"
+            target:t="warmate_02"
+            target:t="warmate_03"
+            target:t="warmate_04"
+            fireAmmo:b=yes
+            explodeAmmo:b=yes
+            doExplosion:b=yes
+          }
+        }
+
+        else_actions{}
+      }
+
+      spawn_drone{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          moAddMissionObjective{
+            target:t="Destroy enemy drones"
+          }
+
+          unitWakeUp{
+            target:t="warmate_01"
+            target:t="warmate_02"
+            target:t="warmate_03"
+            target:t="warmate_04"
+          }
+
+          triggerEnable{
+            target:t="drone1_down"
+            target:t="drone2_down"
+            target:t="drone3_down"
+            target:t="drone4_down"
+          }
+        }
+
+        else_actions{}
+      }
+
+      drones_down{
+        isCategory:b=yes
+        is_enabled:b=yes
+
+        drone1_down{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=300
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_01"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_01"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_01"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone2_down{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=300
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_02"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_02"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_02"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone3_down{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=250
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_03"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_03"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_03"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone4_down{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=250
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_04"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_04"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_04"
+            }
+          }
+
+          else_actions{}
+        }
+
+        likvidators{
+          isCategory:b=yes
+          is_enabled:b=yes
+
+          drone1_likvidator{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_01"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_01"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone2_likvidator{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_02"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_02"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone3_likvidator{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_03"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_03"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone4_likvidator{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_04"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_04"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+        }
+      }
+    }
+
+    2nd_flow{
+      isCategory:b=yes
+      is_enabled:b=yes
+
+      activate_enemy_2{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          wait{
+            time:r=20
+          }
+
+          playSound{
+            name:t="aircraft/ambient/alarm"
+            loop:b=no
+            start:b=yes
+          }
+
+          triggerDisable{
+            target:t="TargetIndicator"
+          }
+
+          triggerEnable{
+            target:t="spawn_drone_2"
+            target:t="TargetIndicator_2"
+            target:t="drone_likvidator_6"
+            target:t="drone_likvidator_7"
+            target:t="drone_likvidator_8"
+            target:t="drone_likvidator_9"
+          }
+
+          wait{
+            time:r=70
+          }
+
+          triggerEnable{
+            target:t="activate_enemy_3"
+          }
+
+          wait{
+            time:r=170
+          }
+
+          unitDamage{
+            power:r=1
+            useEffect:b=yes
+            countEffects:i=1
+            delay:p2=1, 1
+            offset:p3=0, 0, 0
+            radiusOffset:p2=10, 15
+            target:t="warmate_07"
+            target:t="warmate_06"
+            target:t="warmate_08"
+            target:t="warmate_09"
+            fireAmmo:b=yes
+            explodeAmmo:b=yes
+            doExplosion:b=yes
+          }
+        }
+
+        else_actions{}
+      }
+
+      TargetIndicator_2{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=yes
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          missionSetTargetsIndicator{
+            target_type:t="isAlive"
+            target_marking:i=0
+            object_var_name:t=""
+            object_var_comp_op:t="equal"
+            object_var_value:i=0
+            delta:i=0
+            icon:t="air"
+            "icon army":i=2
+            set:b=yes
+            target:t="warmate_07"
+            target:t="warmate_06"
+            target:t="warmate_08"
+            target:t="warmate_09"
+          }
+        }
+
+        else_actions{}
+      }
+
+      spawn_drone_2{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          unitWakeUp{
+            target:t="warmate_06"
+            target:t="warmate_07"
+            target:t="warmate_08"
+            target:t="warmate_09"
+          }
+
+          triggerEnable{
+            target:t="drone_down_6"
+            target:t="drone_down_7"
+            target:t="drone_down_8"
+            target:t="drone_down_9"
+          }
+        }
+
+        else_actions{}
+      }
+
+      drones_down_2{
+        isCategory:b=yes
+        is_enabled:b=yes
+
+        drone_down_6{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=340
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_06"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_06"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_06"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_7{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=340
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_07"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_07"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_07"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_8{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=325
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_08"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_08"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_08"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_9{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=341
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_09"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_09"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_09"
+            }
+          }
+
+          else_actions{}
+        }
+
+        likvidators_2{
+          isCategory:b=yes
+          is_enabled:b=yes
+
+          drone_likvidator_6{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_06"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_06"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_7{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_07"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_07"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_8{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_08"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_08"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_9{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_09"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_09"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+        }
+      }
+    }
+
+    3rd_flow{
+      isCategory:b=yes
+      is_enabled:b=yes
+
+      activate_enemy_3{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          wait{
+            time:r=5
+          }
+
+          playSound{
+            name:t="aircraft/ambient/alarm"
+            loop:b=no
+            start:b=yes
+          }
+
+          triggerDisable{
+            target:t="TargetIndicator_2"
+          }
+
+          triggerEnable{
+            target:t="spawn_drone_3"
+            target:t="TargetIndicator_3"
+            target:t="drone_likvidator_10"
+            target:t="drone_likvidator_11"
+            target:t="drone_likvidator_12"
+            target:t="drone_likvidator_13"
+            target:t="drone_likvidator_14"
+            target:t="drone_likvidator_15"
+          }
+
+          wait{
+            time:r=95
+          }
+
+          unitDamage{
+            power:r=1
+            useEffect:b=yes
+            countEffects:i=1
+            delay:p2=1, 1
+            offset:p3=0, 0, 0
+            radiusOffset:p2=10, 15
+            target:t="warmate_11"
+            target:t="warmate_10"
+            target:t="warmate_14"
+            target:t="warmate_12"
+            target:t="warmate_15"
+            target:t="warmate_13"
+            fireAmmo:b=yes
+            explodeAmmo:b=yes
+            doExplosion:b=yes
+          }
+
+          triggerEnable{
+            target:t="endMission"
+          }
+        }
+
+        else_actions{}
+      }
+
+      spawn_drone_3{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=no
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          unitWakeUp{
+            target:t="warmate_11"
+            target:t="warmate_10"
+            target:t="warmate_14"
+            target:t="warmate_12"
+            target:t="warmate_15"
+            target:t="warmate_13"
+          }
+
+          triggerEnable{
+            target:t="drone_down_10"
+            target:t="drone_down_11"
+            target:t="drone_down_12"
+            target:t="drone_down_13"
+            target:t="drone_down_14"
+            target:t="drone_down_15"
+          }
+        }
+
+        else_actions{}
+      }
+
+      TargetIndicator_3{
+        is_enabled:b=no
+        comments:t=""
+
+        props{
+          actionsType:t="PERFORM_ONE_BY_ONE"
+          conditionsType:t="ALL"
+          enableAfterComplete:b=yes
+        }
+
+        events{
+          periodicEvent{
+            time:r=1
+          }
+        }
+
+        conditions{}
+        actions{
+          missionSetTargetsIndicator{
+            target_type:t="isAlive"
+            target_marking:i=0
+            object_var_name:t=""
+            object_var_comp_op:t="equal"
+            object_var_value:i=0
+            delta:i=0
+            icon:t="air"
+            "icon army":i=2
+            set:b=yes
+            target:t="warmate_11"
+            target:t="warmate_10"
+            target:t="warmate_14"
+            target:t="warmate_12"
+            target:t="warmate_15"
+            target:t="warmate_13"
+          }
+        }
+
+        else_actions{}
+      }
+
+      drones_down_3{
+        isCategory:b=yes
+        is_enabled:b=yes
+
+        drone_down_10{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=340
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_10"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_10"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_10"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_11{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=140
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_11"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_11"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_11"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_12{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=280
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_12"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_12"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_12"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_13{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=310
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_13"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_13"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_13"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_14{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=330
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_14"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_14"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_14"
+            }
+          }
+
+          else_actions{}
+        }
+
+        drone_down_15{
+          is_enabled:b=no
+          comments:t=""
+
+          props{
+            actionsType:t="PERFORM_ONE_BY_ONE"
+            conditionsType:t="ALL"
+            enableAfterComplete:b=yes
+          }
+
+          events{
+            periodicEvent{
+              time:r=0
+            }
+          }
+
+          conditions{
+            unitDistanceBetween{
+              value:r=300
+              math:t="2D"
+              object_type:t="isAlive"
+              object_marking:i=0
+              object_var_name:t=""
+              object_var_comp_op:t="equal"
+              target_type:t="isAlive"
+              target_marking:i=0
+              check_objects:t="any"
+              check_targets:t="any"
+              object:t="warmate_15"
+              target:t="target"
+            }
+          }
+
+          actions{
+            unitSetControls{
+              controls:t="elevator"
+              value:r=-1
+              force:b=yes
+              objects:t="warmate_15"
+              useForTriggerFiltered:b=yes
+            }
+
+            unitSetControls{
+              controls:t="power"
+              value:r=0
+              force:b=yes
+              objects:t="warmate_15"
+            }
+          }
+
+          else_actions{}
+        }
+
+        likvidators_3{
+          isCategory:b=yes
+          is_enabled:b=yes
+
+          drone_likvidator_10{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_10"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_10"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_11{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_11"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_11"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_12{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_12"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_12"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_13{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_13"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_13"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_14{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_14"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_14"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+
+          drone_likvidator_15{
+            is_enabled:b=no
+            comments:t=""
+
+            props{
+              actionsType:t="PERFORM_ONE_BY_ONE"
+              conditionsType:t="ALL"
+              enableAfterComplete:b=no
+            }
+
+            events{
+              periodicEvent{
+                time:r=1
+              }
+            }
+
+            conditions{
+              unitWhenHit{
+                target:t="warmate_15"
+              }
+            }
+
+            actions{
+              unitDamage{
+                power:r=1
+                useEffect:b=yes
+                countEffects:i=1
+                delay:p2=1, 1
+                offset:p3=0, 0, 0
+                radiusOffset:p2=10, 15
+                target:t="warmate_15"
+                fireAmmo:b=yes
+                explodeAmmo:b=yes
+                doExplosion:b=yes
+              }
+            }
+
+            else_actions{}
+          }
+        }
+      }
+    }
+  }
+
+  End{
+    isCategory:b=yes
+    is_enabled:b=yes
+
+    endMission{
+      is_enabled:b=no
+      comments:t=""
+
+      props{
+        actionsType:t="PERFORM_ONE_BY_ONE"
+        conditionsType:t="ALL"
+        enableAfterComplete:b=no
+      }
+
+      events{
+        periodicEvent{
+          time:r=1
+        }
+      }
+
+      conditions{
+        unitWhenCountMatches{
+          object_type:t="isAlive"
+          object_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          func:t="notLess"
+          value:i=25
+          object:t="squad_our_vehicles"
+          object:t="squad_our_helis"
+        }
+      }
+
+      actions{
+        moSetObjectiveStatus{
+          target:t="Destroy enemy drones"
+          status:i=2
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+
+        wait{
+          time:r=5
+        }
+
+        missionCompleted{
+          team:t="Both"
+          showCompleteMessage:b=yes
+          playCompleteMusic:b=yes
+          startReplayCamera:b=yes
+        }
+      }
+
+      else_actions{
+        playHint{
+          hintType:t="standard"
+          name:t="More than 5 vehicles were destroyed. The objectives were not achieved."
+          action:t="show"
+          shouldFadeOut:b=no
+          isOverFade:b=no
+          time:r=9
+          priority:i=0
+          target_marking:i=0
+          object_var_name:t=""
+          object_var_comp_op:t="equal"
+          object_var_value:i=0
+        }
+
+        wait{
+          time:r=10
+        }
+
+        moSetObjectiveStatus{
+          target:t="Destroy enemy drones"
+          status:i=3
+          object_marking:i=0
+          object_var_comp_op:t="equal"
+          object_var_name:t=""
+        }
+
+        wait{
+          time:r=4
+        }
+
+        missionFailed{
+          team:t="Both"
+        }
+      }
+    }
+  }
+}
+
+mission_objectives{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  "Tips: Use arcade mode. Reload the truck to start shooting (just shoot once in the beggining of the game). Turn your head more often. Listen carefully to the sounds. Look for someone who flies closer than the others. Don't leave your position. If more than 5 units are destroyed, you will lose."{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=no
+      timeLimit:i=1800
+      blink:b=yes
+      alwaysShow:b=yes
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Move to the position!"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+
+  "Destroy enemy drones"{
+    is_enabled:b=yes
+    comments:t=""
+    type:t="abstractMissionObjective"
+
+    props{
+      isPrimary:b=yes
+      timeLimit:i=1800
+    }
+
+    onSuccess{}
+    onFailed{}
+  }
+}
+
+variables{}
+dialogs{}
+airfields{}
+effects{}
+units{
+  tankModels{
+    name:t="Player_veh"
+    tm:m=[[0.793353, 0, 0.608762] [0, 1, 0] [-0.608762, 0, 0.793353] [-3376.4, 28.8168, -1692.65]]
+    unit_class:t="gas66"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="sqSMOKE_BACKGROUND"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-5676.38, 34.3389, -71.3025]]
+
+    props{
+      squad_members:t="SMOKEstr_133"
+      squad_members:t="SMOKEstr_134"
+      squad_members:t="SMOKEstr_135"
+      squad_members:t="SMOKEstr_136"
+      squad_members:t="SMOKEstr_137"
+      squad_members:t="SMOKEstr_138"
+      squad_members:t="SMOKEstr_139"
+      squad_members:t="SMOKEstr_140"
+      squad_members:t="SMOKEstr_141"
+      squad_members:t="SMOKEstr_142"
+    }
+  }
+
+  structures{
+    name:t="SMOKEstr_133"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-4838.95, 28.8159, -1215.11]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_134"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5820.24, 28.8157, 495.474]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_135"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5836.44, 28.8162, 791.621]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_136"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5629.82, 28.8164, 623.936]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_137"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8904.32, 28.8171, -4313.97]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_138"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-8564.03, 28.8167, -4561.25]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_139"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [-5184.1, 28.8167, -4058.07]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_140"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [4697.87, 28.8164, -6903.49]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_141"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [5160.59, 28.8164, -6971.65]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="SMOKEstr_142"
+    tm:m=[[0.976296, 0, -0.21644] [0, 1, 0] [0.21644, 0, 0.976296] [1070.25, 28.8169, -12542.5]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=0
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      stealthRadius:r=0
+      setStealth:b=yes
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="cinemaPoint01"
+    tm:m=[[0.631679, 0, 0.77523] [0, 1, 0] [-0.77523, 0, 0.631679] [-3200, 65.2605, -1800]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="cinemaPoint02"
+    tm:m=[[0.103946, 0, -0.994583] [0, 1, 0] [0.994583, 0, 0.103946] [-3772.06, 76.7119, -1754.2]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="cinemaPoint05"
+    tm:m=[[-0.727614, 0, -0.685987] [0, 1, 0] [0.685987, 0, -0.727614] [-3792.22, 136.733, -1035.56]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="cinemaPoint06"
+    tm:m=[[-0.570601, 0, 0.821227] [0, 1, 0] [-0.821227, 0, -0.570601] [-2486.51, 136.733, -1119.03]]
+    unit_class:t="dummy"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="armada_01"
+    tm:m=[[-0.414079, 0, 0.910241] [0, 1, 0] [-0.910241, 0, -0.414079] [-2295.11, 409.444, -3026.34]]
+    unit_class:t="su_25sm3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="warmate_01"
+    tm:m=[[-0.998177, 0, 0.0603564] [0, 1, 0] [-0.0603564, 0, -0.998177] [-2142.14, 170.065, -2209.68]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_01_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2330.12, 189.839, -2281.73]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_01_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3437.98, 188.096, -1634.53]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_02"
+    tm:m=[[-0.421343, 0, 0.906901] [0, 1, 0] [-0.906901, 0, -0.421343] [-2575.1, 170.065, -3578.26]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_02_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2618.18, 178.404, -3556.6]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_02_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3487.39, 176.293, -1611.03]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_03"
+    tm:m=[[-0.421343, 0, 0.906901] [0, 1, 0] [-0.906901, 0, -0.421343] [-2998.71, 170.065, -4710.36]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_03_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3020.11, 189.839, -4639]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_03_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3498.59, 188.096, -1487.13]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_04"
+    tm:m=[[0.0885568, 0, 0.996071] [0, 1, 0] [-0.996071, 0, 0.0885568] [-3640.07, 170.065, -4225.58]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_04_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3637.47, 178.404, -4278.57]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_04_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3614.96, 176.293, -1448.89]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="armada_02"
+    tm:m=[[-0.414079, 0, 0.910241] [0, 1, 0] [-0.910241, 0, -0.414079] [-2464.37, 409.444, -3063.93]]
+    unit_class:t="ucav_recon_micro_360"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      armada_02_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2471.41, 408.918, -3028.5]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_02_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2533.15, 428.968, -1376.02]]
+
+        props{
+          speed:r=120
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_02_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3309.45, 431.06, -1154.13]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_02_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3621.31, 428.817, -1956.75]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_02_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2620.59, 429.761, -2309.47]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_02_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2657.05, 430.03, -1110.6]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="armada_03"
+    tm:m=[[-0.414079, 0, 0.910241] [0, 1, 0] [-0.910241, 0, -0.414079] [-1095.36, 2882.76, -3449.32]]
+    unit_class:t="ucav_mq_1_predator"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=150
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      armada_03_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1102.4, 2890.27, -3413.88]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      armada_03_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1164.14, 2910.32, -1761.4]]
+
+        props{
+          speed:r=120
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_03_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2824.72, 2853.28, -1287.95]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_03_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3842.71, 2910.17, -2355.44]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_03_wp_05{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2797.79, 2911.11, -3029.84]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+
+      armada_03_wp_06{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1288.04, 2839.44, -1495.98]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_ZIGZAG"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_07"
+    tm:m=[[0.700376, 0, 0.713773] [0, 1, 0] [-0.713773, 0, 0.700376] [-5059.52, 354.206, -2820.62]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_05_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-4962.45, 373.98, -2729.79]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_05_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2868.35, 188.096, -1173.49]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_06"
+    tm:m=[[0.996615, 0, -0.0822095] [0, 1, 0] [0.0822095, 0, 0.996615] [-5693.22, 354.206, -2044.62]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_06_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-5354.89, 258.284, -1994.16]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_06_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2669.87, 147.979, -1509.39]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_08"
+    tm:m=[[-0.915704, 0, 0.401852] [0, 1, 0] [-0.401852, 0, -0.915704] [-1294.42, 170.068, -2500.45]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_08_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-1404.73, 189.838, -2443.25]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_08_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-4976.42, 188.097, -1065.71]]
+
+        props{
+          speed:r=150
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_09"
+    tm:m=[[-0.760263, 0, -0.649615] [0, 1, 0] [0.649615, 0, -0.760263] [-2337.55, 170.065, -826.122]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_09_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2414.69, 178.403, -887.553]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_09_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3961.32, 176.292, -1939.85]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  tankModels{
+    name:t="Our_Unit_01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3619.54, 28.8168, -1592.24]]
+    unit_class:t="Kamaz5350"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_02"
+    tm:m=[[0.069031, 0, -0.997615] [0, 1, 0] [0.997615, 0, 0.069031] [-3451.04, 28.8168, -1684.91]]
+    unit_class:t="Kamaz5350_open"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_03"
+    tm:m=[[0.379927, 0, 0.925016] [0, 1, 0] [-0.925016, 0, 0.379927] [-3382.35, 28.5993, -1688]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_04"
+    tm:m=[[0.379927, 0, 0.925016] [0, 1, 0] [-0.925016, 0, 0.379927] [-3408.98, 28.5993, -1724.85]]
+    unit_class:t="Kamaz5350_med_camo"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_05"
+    tm:m=[[0.379927, 0, 0.925016] [0, 1, 0] [-0.925016, 0, 0.379927] [-3435.68, 28.5993, -1747.61]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_06"
+    tm:m=[[0.379927, 0, 0.925016] [0, 1, 0] [-0.925016, 0, 0.379927] [-3459.21, 28.5993, -1718.67]]
+    unit_class:t="gas66"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="fire_at_will_air"
+      accuracy:r=0.25
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_07"
+    tm:m=[[0.379927, 0, 0.925016] [0, 1, 0] [-0.925016, 0, 0.379927] [-3513.51, 28.8168, -1558.67]]
+    unit_class:t="gas66"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="fire_at_will_air"
+      accuracy:r=0.25
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_08"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3474.7, 28.8168, -1598.63]]
+    unit_class:t="Kamaz5350"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_09"
+    tm:m=[[0.575404, 0, -0.817869] [0, 1, 0] [0.817869, 0, 0.575404] [-3445.89, 28.8168, -1602.56]]
+    unit_class:t="ural4320_open"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_10"
+    tm:m=[[0.313771, 0, 0.949498] [0, 1, 0] [-0.949498, 0, 0.313771] [-3449.64, 28.8168, -1637.78]]
+    unit_class:t="ural4320_s60"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_11"
+    tm:m=[[0.805638, 0, 0.592408] [0, 1, 0] [-0.592408, 0, 0.805638] [-3416.61, 28.8168, -1594.93]]
+    unit_class:t="Ural4320_load"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_12"
+    tm:m=[[0.918369, 0, 0.395725] [0, 1, 0] [-0.395725, 0, 0.918369] [-3369.4, 28.8168, -1650.52]]
+    unit_class:t="Ural4320_load_camo"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_13"
+    tm:m=[[-0.510304, 0, 0.859994] [0, 1, 0] [-0.859994, 0, -0.510304] [-3347.81, 28.8168, -1713.05]]
+    unit_class:t="Ural4320_load"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_14"
+    tm:m=[[-0.183218, 0, -0.983072] [0, 1, 0] [0.983072, 0, -0.183218] [-3366.68, 28.7649, -1695.93]]
+    unit_class:t="GasTiger_camo"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_15"
+    tm:m=[[-0.183218, 0, -0.983072] [0, 1, 0] [0.983072, 0, -0.183218] [-3396.95, 28.8168, -1642.15]]
+    unit_class:t="GasTigerArbalet"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_16"
+    tm:m=[[-0.979952, 0, -0.199232] [0, 1, 0] [0.199232, 0, -0.979952] [-3581.48, 28.8167, -1555.54]]
+    unit_class:t="Ural4320_load"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+      attack_type:t="hold_fire"
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="squad_our_vehicles"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3420.8, 28.7592, -1656.97]]
+
+    props{
+      squad_members:t="Our_Unit_01"
+      squad_members:t="Our_Unit_02"
+      squad_members:t="Our_Unit_03"
+      squad_members:t="Our_Unit_04"
+      squad_members:t="Our_Unit_05"
+      squad_members:t="Our_Unit_06"
+      squad_members:t="Our_Unit_07"
+      squad_members:t="Our_Unit_08"
+      squad_members:t="Our_Unit_09"
+      squad_members:t="Our_Unit_10"
+      squad_members:t="Our_Unit_11"
+      squad_members:t="Our_Unit_12"
+      squad_members:t="Our_Unit_13"
+      squad_members:t="Our_Unit_14"
+      squad_members:t="Our_Unit_15"
+      squad_members:t="Our_Unit_16"
+      squad_members:t="Our_Unit_17"
+      squad_members:t="Our_Unit_18"
+      squad_members:t="Our_Unit_20"
+      squad_members:t="Our_Unit_19"
+    }
+  }
+
+  armada{
+    name:t="our_heli_00"
+    tm:m=[[-0.255922, 0, 0.966697] [0, 1, 0] [-0.966697, 0, -0.255922] [-3498.27, 30.6739, -1684.73]]
+    unit_class:t="GA_ARMY_mi8amtsh"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      skin:t="GA_ARMY_mi8amtsh"
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_01"
+    tm:m=[[0.283253, 0, 0.959045] [0, 1, 0] [-0.959045, 0, 0.283253] [-3543.66, 30.6739, -1679.59]]
+    unit_class:t="GA_ARMY_mi8amtsh"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      skin:t="GA_ARMY_mi8amtsh"
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_02"
+    tm:m=[[0.283253, 0, 0.959045] [0, 1, 0] [-0.959045, 0, 0.283253] [-3603.98, 30.6738, -1671.5]]
+    unit_class:t="GA_ARMY_mi8amtsh"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      skin:t="GA_ARMY_mi8amtsh"
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_03"
+    tm:m=[[-0.835016, 0, 0.550226] [0, 1, 0] [-0.550226, 0, -0.835016] [-3575.17, 30.6739, -1622.36]]
+    unit_class:t="GA_ARMY_mi8amtsh"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      skin:t="GA_ARMY_mi8amtsh"
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_04"
+    tm:m=[[0.856938, 0, -0.515419] [0, 1, 0] [0.515419, 0, 0.856938] [-3617.85, 31.2198, -1612.35]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_05"
+    tm:m=[[0.856938, 0, -0.515419] [0, 1, 0] [0.515419, 0, 0.856938] [-3611.89, 31.2198, -1576.96]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_06"
+    tm:m=[[0.856938, 0, -0.515419] [0, 1, 0] [0.515419, 0, 0.856938] [-3561.72, 31.2198, -1523.65]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_07"
+    tm:m=[[0.555372, 0, -0.831602] [0, 1, 0] [0.831602, 0, 0.555372] [-3556.13, 31.2198, -1478.75]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_08"
+    tm:m=[[0.856938, 0, -0.515419] [0, 1, 0] [0.515419, 0, 0.856938] [-3519.98, 31.2198, -1514.06]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_17"
+    tm:m=[[0.069031, 0, -0.997615] [0, 1, 0] [0.997615, 0, 0.069031] [-3535.91, 28.8168, -1683.64]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="squad_our_helis"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3565.35, 30.9772, -1596.81]]
+
+    props{
+      squad_members:t="our_heli_00"
+      squad_members:t="our_heli_01"
+      squad_members:t="our_heli_02"
+      squad_members:t="our_heli_03"
+      squad_members:t="our_heli_04"
+      squad_members:t="our_heli_05"
+      squad_members:t="our_heli_06"
+      squad_members:t="our_heli_07"
+      squad_members:t="our_heli_08"
+      squad_members:t="our_heli_09"
+    }
+  }
+
+  armada{
+    name:t="warmate_11"
+    tm:m=[[0.173368, 0, 0.984857] [0, 1, 0] [-0.984857, 0, 0.173368] [-4261.15, 203.305, -4776.09]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_05_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-4176.46, 316.643, -4578.4]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_05_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3521.02, 188.096, -1182.39]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_10"
+    tm:m=[[0.479256, 0, 0.877675] [0, 1, 0] [-0.877675, 0, 0.479256] [-4726.23, 311.953, -3547.74]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_10_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-4657.1, 336.755, -3353.05]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_10_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3463.74, 176.293, -1370.24]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_14"
+    tm:m=[[0.282458, 0, -0.959279] [0, 1, 0] [0.959279, 0, 0.282458] [-4404.37, 170.065, 173.151]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_12_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-4402.4, 178.404, 101.922]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_12_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3354.56, 176.293, -2119.22]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_12"
+    tm:m=[[-0.0113218, 0, -0.999936] [0, 1, 0] [0.999936, 0, -0.0113218] [-3815.32, 170.065, -563.046]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_13_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3805.81, 189.839, -693.747]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_13_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3572.9, 188.096, -1795.13]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_15"
+    tm:m=[[0.149337, 0, -0.988786] [0, 1, 0] [0.988786, 0, 0.149337] [-3738.27, 170.065, 1066.02]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_15_wp_01{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3768.97, 178.404, 955.038]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_15_wp_02{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3594.39, 176.293, -2152.87]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  armada{
+    name:t="warmate_13"
+    tm:m=[[-0.167498, 0, -0.985872] [0, 1, 0] [0.985872, 0, -0.167498] [-3236.83, 170.065, 503.001]]
+    unit_class:t="warmate"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{
+      warmate_13_wp_03{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3305.85, 189.839, 350.56]]
+
+        props{
+          speed:r=110
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+
+      warmate_13_wp_04{
+        type:t="normal"
+        tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3601.41, 188.096, -1821.95]]
+
+        props{
+          speed:r=100
+          moveType:t="MOVETO_STRAIGHT"
+        }
+      }
+    }
+  }
+
+  tankModels{
+    name:t="Our_Unit_18"
+    tm:m=[[0.069031, 0, -0.997615] [0, 1, 0] [0.997615, 0, 0.069031] [-3599.83, 28.8167, -1688.5]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_19"
+    tm:m=[[0.069031, 0, -0.997615] [0, 1, 0] [0.997615, 0, 0.069031] [-3596.9, 28.8168, -1597.85]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="Our_Unit_20"
+    tm:m=[[0.635437, 0, -0.772153] [0, 1, 0] [0.772153, 0, 0.635437] [-3456.13, 28.8168, -1688.95]]
+    unit_class:t="Kamaz5350_gas"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="our_heli_09"
+    tm:m=[[0.856938, 0, -0.515419] [0, 1, 0] [0.515419, 0, 0.856938] [-3610.34, 30.6734, -1543.31]]
+    unit_class:t="mi_35m"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      fuel:r=0
+      speed:r=0
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="squad_warmates"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3565.92, 198.745, -2147.17]]
+
+    props{
+      squad_members:t="warmate_01"
+      squad_members:t="warmate_02"
+      squad_members:t="warmate_03"
+      squad_members:t="warmate_04"
+      squad_members:t="warmate_06"
+      squad_members:t="warmate_07"
+      squad_members:t="warmate_08"
+      squad_members:t="warmate_09"
+      squad_members:t="warmate_10"
+      squad_members:t="warmate_11"
+      squad_members:t="warmate_12"
+      squad_members:t="warmate_13"
+      squad_members:t="warmate_14"
+      squad_members:t="warmate_15"
+    }
+  }
+
+  structures{
+    name:t="target"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3534, 28.6514, -1637.38]]
+    unit_class:t="dummy_immortal"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_00"
+    tm:m=[[1.22868, 0, 0] [0, 1.22868, 0] [0, 0, 1.22868] [-3370.89, 28.7354, -1695.06]]
+    unit_class:t="GA_SSOstand11"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_01"
+    tm:m=[[1.22868, 0, 0] [0, 1.22868, 0] [0, 0, 1.22868] [-3371.72, 28.7285, -1695.16]]
+    unit_class:t="GA_SSOsit3"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_02"
+    tm:m=[[-1.21438, 0, -0.186915] [0, 1.22868, 0] [0.186915, 0, -1.21438] [-3371.35, 28.7354, -1696.47]]
+    unit_class:t="GA_SSORadio4"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_03"
+    tm:m=[[0.00908408, 0, 1.22865] [0, 1.22868, 0] [-1.22865, 0, 0.00908408] [-3368.24, 28.7354, -1694.78]]
+    unit_class:t="GA_SSOfixing1"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_04"
+    tm:m=[[-0.346141, 0, -1.17892] [0, 1.22868, 0] [1.17892, 0, -0.346141] [-3379.6, 28.6783, -1686.46]]
+    unit_class:t="GA_SSOfixing2"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_05"
+    tm:m=[[1.07005, 0, 0.603856] [0, 1.22868, 0] [-0.603856, 0, 1.07005] [-3367.28, 28.6783, -1657.33]]
+    unit_class:t="GA_SSOak74Stand8"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_06"
+    tm:m=[[-0.77518, 0, -0.953285] [0, 1.22868, 0] [0.953285, 0, -0.77518] [-3366.22, 28.6783, -1658.22]]
+    unit_class:t="GA_SSOak74Stand4"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_07"
+    tm:m=[[1.1738, 0, -0.363114] [0, 1.22868, 0] [0.363114, 0, 1.1738] [-3366.18, 28.6783, -1656.89]]
+    unit_class:t="GA_SoldatLookAtArm"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  structures{
+    name:t="soldier_08"
+    tm:m=[[1.14465, 0, 0.446591] [0, 1.22868, 0] [-0.446591, 0, 1.14465] [-3379.66, 28.6783, -1683.84]]
+    unit_class:t="GA_SoldatLookAtArm"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  squad{
+    name:t="squad_soldiers"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3371.24, 28.7029, -1680.47]]
+
+    props{
+      squad_members:t="soldier_00"
+      squad_members:t="soldier_01"
+      squad_members:t="soldier_02"
+      squad_members:t="soldier_03"
+      squad_members:t="soldier_04"
+      squad_members:t="soldier_05"
+      squad_members:t="soldier_06"
+      squad_members:t="soldier_07"
+      squad_members:t="soldier_08"
+    }
+  }
+}
+
+areas{
+  cinemaPoint03{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3490.84, 266.876, -1629.51]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  cinemaPoint04{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3389.68, 493.081, -1569.88]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route1{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3374.46, 28.7317, -1691.66]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route02{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3363.68, 28.7317, -1676.44]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route03{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3393.55, 28.7317, -1670.12]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route04{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3407.29, 28.7317, -1693.27]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route05{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3435.51, 28.7317, -1667.4]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route06{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3448.07, 28.7317, -1647.69]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route07{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3473.98, 28.7317, -1644.22]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  route08{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-3535.97, 28.7317, -1636.86]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  area_to_start{
+    type:t="Sphere"
+    tm:m=[[45.18, 0, 0] [0, 45.18, 0] [0, 0, 45.18] [-3531.76, 28.8168, -1640.84]]
+    objLayer:i=0
+
+    props{}
+  }
+}
+
+objLayers{
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+}
+
+wayPoints{}
