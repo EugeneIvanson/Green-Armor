@@ -1,0 +1,66 @@
+name:t="user"
+
+replace_tex{
+  from:t="us_camo_olive*"
+  to:t="us_camo_modern_green.tga"
+}
+
+set_tex{
+  from:t="m1a1_abrams_body_c*"
+  to:t="m1a1_abrams_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_turret_c*"
+  to:t="m1a1_abrams_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="mg_m240_c*"
+  to:t="mg_m240_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_ammo_box_c*"
+  to:t="m1a1_abrams_ammo_box_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_gun_c*"
+  to:t="m1a1_abrams_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="water_barrel_a_c*"
+  to:t="water_barrel_a_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bag_roll_b_c*"
+  to:t="bag_roll_b_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="attch_m1a1_abrams_track_c*"
+  to:t="attch_m1a1_abrams_track_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bag_a_c*"
+  to:t="bag_a_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="m1a1_abrams_body_add_c*"
+  to:t="m1a1_abrams_body_add_c.dds"
+  param:t="camo_skin_tex"
+}

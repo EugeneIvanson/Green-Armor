@@ -1,0 +1,24 @@
+name:t="user"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="ger_camo_bronzegruen.dds"
+}
+
+set_tex{
+  from:t="leopard_2a4_body_c*"
+  to:t="leopard_2a4_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="leopard_2a4_turret_c*"
+  to:t="leopard_2a4_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="leopard_2a4_gun_c*"
+  to:t="leopard_2a4_gun.dds"
+  param:t="camo_skin_tex"
+}

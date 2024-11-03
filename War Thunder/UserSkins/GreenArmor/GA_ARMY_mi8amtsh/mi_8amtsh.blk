@@ -1,0 +1,21 @@
+name:t="user"
+
+replace_tex{
+  from:t="mi_8amtsh_c*"
+  to:t="mi_8amtsh_c.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_n*"
+  to:t="mi_8amtsh_n.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_details_c*"
+  to:t="mi_8amtsh_details_c.dds"
+}
+
+replace_tex{
+  from:t="mi_8amtsh_details_n*"
+  to:t="mi_8amtsh_details_n.dds"
+}

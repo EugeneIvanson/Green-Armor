@@ -1,0 +1,25 @@
+name:t="user"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="ger_camo_bronzegruen.dds"
+}
+
+set_tex{
+  from:t="marder_1a1_body_c*"
+  to:t="marder_1a1_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="marder_1a1_turret_c*"
+  to:t="marder_1a1_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="marder_1a1_body_add_c*"
+  to:t="marder_1a1_body_add_c.dds"
+  param:t="camo_skin_tex"
+}

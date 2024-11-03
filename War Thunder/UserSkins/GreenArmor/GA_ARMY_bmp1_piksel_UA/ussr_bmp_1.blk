@@ -1,0 +1,19 @@
+name:t="user"
+
+replace_tex{
+  from:t="ussr_camo_green*"
+  to:t="ussr_camo_green.dds"
+}
+
+set_tex{
+  from:t="bmp_1_body_c*"
+  to:t="bmp_1_body.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="bmp_1_turret_c*"
+  to:t="bmp_1_turret.dds"
+  param:t="camo_skin_tex"
+}
+

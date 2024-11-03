@@ -1,0 +1,28 @@
+name:t="user"
+
+replace_tex{
+  from:t="ger_camo_bronzegruen*"
+  to:t="ger_camo_bronzegruen.dds"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_body_c*"
+  to:t="flakpz_i_gepard_body.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_turret_c*"
+  to:t="flakpz_i_gepard_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+
+set_tex{
+  from:t="flakpz_i_gepard_gun_c*"
+  to:t="flakpz_i_gepard_gun.dds"
+  param:t="camo_skin_tex"
+}
+

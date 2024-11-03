@@ -1,0 +1,34 @@
+name:t="user"
+
+set_tex{
+  from:t="btr_80a_body_c*"
+  to:t="btr_80a_body.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="btr_80a_body_n*"
+  to:t="btr_80a_body_n.dds"
+}
+
+set_tex{
+  from:t="btr_80a_gun_c*"
+  to:t="btr_80a_gun.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="btr_80a_gun_n*"
+  to:t="btr_80a_gun_n.dds"
+}
+
+set_tex{
+  from:t="btr_80a_turret_c*"
+  to:t="btr_80a_turret.dds"
+  param:t="camo_skin_tex"
+}
+
+replace_tex{
+  from:t="btr_80a_turret_n*"
+  to:t="btr_80a_turret_n.dds"
+}

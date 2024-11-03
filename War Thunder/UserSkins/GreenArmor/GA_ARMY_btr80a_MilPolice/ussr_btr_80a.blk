@@ -1,0 +1,22 @@
+name:t="user"
+
+
+set_tex{
+  from:t="btr_80a_body_c*"
+  to:t="btr_80a_body_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="btr_80a_gun_c*"
+  to:t="btr_80a_gun_c.dds"
+  param:t="camo_skin_tex"
+}
+
+set_tex{
+  from:t="btr_80a_turret_c*"
+  to:t="btr_80a_turret_c.dds"
+  param:t="camo_skin_tex"
+}
+
+
